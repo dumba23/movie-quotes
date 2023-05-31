@@ -8,11 +8,17 @@
       </div>
     </div>
     <div>
-      <button class="bg-primary-red px-4 py-2 rounded text-white mb-40">
+      <button
+        class="bg-primary-red px-4 py-2 rounded text-white mb-40"
+        @click="handleModalName('register')"
+      >
         Get Started
       </button>
     </div>
-    <div id="1" ref="first" @click="onClick(first)" class="relative">
+    <RegistrationView v-if="paginationStore.modalName == 'register'" />
+    <MailConfirmModal v-if="paginationStore.modalName == 'confirm'" />
+    <VerifyModal v-if="paginationStore.modalName == 'verify'" />
+    <div id="1" ref="first" @click="handleImageClick(first)" class="relative">
       <div class="flex absolute top-[341px] left-[170px] items-center">
         <div class="w-[53px] bg-white h-[2px] mr-8 mb-28"></div>
         <div class="flex flex-col">
@@ -30,10 +36,10 @@
       <img
         src="@/assets/images/interstellar.png"
         alt="interstellar"
-        class="h-full"
+        class="h-full w-screen"
       />
     </div>
-    <div id="2" ref="second" @click="onClick(second)">
+    <div id="2" ref="second" @click="handleImageClick(second)">
       <div class="flex absolute top-[2204px] left-[170px] items-center">
         <div class="w-[53px] bg-white h-[2px] mr-8 mb-52"></div>
         <div class="flex flex-col">
@@ -52,10 +58,10 @@
       <img
         src="@/assets/images/tenenbaums.png"
         alt="tenenbaums"
-        class="h-full"
+        class="h-full w-screen"
       />
     </div>
-    <div id="3" ref="third" @click="onClick(third)">
+    <div id="3" ref="third" @click="handleImageClick(third)">
       <div class="flex absolute top-[3504px] left-[170px] items-center">
         <div class="w-[53px] bg-white h-[2px] mr-8 mb-52"></div>
         <div class="flex flex-col">
@@ -71,20 +77,37 @@
           </div>
         </div>
       </div>
-      <img src="@/assets/images/tenenbaums2.png" alt="tenenbaums" />
+      <img
+        src="@/assets/images/tenenbaums2.png"
+        alt="tenenbaums"
+        class="h-full w-screen"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
 import TheHeader from "@/components/shared/TheHeader.vue";
-import { ref } from "vue";
+import { usePaginationStore } from "@/store/pagination";
+import { useRoute } from "vue-router";
+import { onMounted, ref } from "vue";
+import MailConfirmModal from "@/components/MailConfirmModal.vue";
+import RegistrationView from "@/views/RegistrationView.vue";
+import VerifyModal from "@/components/VerifyModal.vue";
+
+const route = useRoute();
+const paginationStore = usePaginationStore();
 
 const first = ref(null);
 const second = ref(null);
 const third = ref(null);
 
-const onClick = (ref) => {
+const handleModalName = (name) => {
+  document.documentElement.style.overflow = "hidden";
+  paginationStore.updateModalName({ name });
+};
+
+const handleImageClick = (ref) => {
   const { y } = ref.getBoundingClientRect();
 
   if (y > 0) {
@@ -95,4 +118,11 @@ const onClick = (ref) => {
       .scrollIntoView({ behavior: "smooth" });
   }
 };
+
+onMounted(() => {
+  const { verified } = route.query;
+  if (verified) {
+    handleModalName("verify");
+  }
+});
 </script>
