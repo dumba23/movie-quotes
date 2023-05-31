@@ -38,7 +38,7 @@ import { Form } from "vee-validate";
 import FormInputField from "@/components/ui/FormInputField.vue";
 import FormSubmit from "@/components/ui/FormSubmit.vue";
 import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
-import { registerUser } from "@/services/api";
+import { registerUser } from "@/services/register";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";
 
