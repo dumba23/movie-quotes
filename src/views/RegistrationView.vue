@@ -3,16 +3,17 @@
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
         <h1 class="text-3xl text-white mt-6">Create an account</h1>
-        <p class="text-[#6C757D]">Start your journey!</p>
+        <p class="text-secondary-grey">Start your journey!</p>
       </div>
       <RegistrationForm />
       <div class="flex justify-center mt-8 mb-8">
-        <p class="text-[#6C757D]">
-          Already have an account?<RouterLink
+        <p class="text-secondary-grey">
+          Already have an account?<button
             to="#"
-            class="text-[#0D6EFD] underline ml-1"
-            >Log in</RouterLink
+            class="text-primary-blue underline ml-1"
           >
+            Log in
+          </button>
         </p>
       </div>
     </div>

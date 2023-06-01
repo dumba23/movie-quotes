@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col mb-4">
     <label :for="name" class="text-white mb-2"
-      >{{ labelName }}<span class="text-[#DC3545] ml-1">*</span></label
+      >{{ labelName }}<span class="text-secondary-red ml-1">*</span></label
     >
     <Field :name="name" :rules="rules" v-slot="{ field, errors, value }">
       <div class="relative">
@@ -9,7 +9,7 @@
           v-bind="field"
           :type="type"
           :placeholder="placeholder"
-          class="border border-[#CED4DA] bg-[#CED4DA] w-96 h-10 rounded px-2 focus:shadow-input focus:outline-none"
+          class="border border-light-grey bg-light-grey w-96 h-10 rounded px-2 focus:shadow-input focus:outline-none"
           :class="
             (!!errors.length && 'border-primary-red ',
             !errors.length && value?.length > 0 && 'border-primary-success')

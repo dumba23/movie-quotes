@@ -8,6 +8,12 @@ export default {
         "primary-red": "#E31221",
         "primary-grey": "#D9D9D9",
         "primary-success": "#198754",
+        "primary-blue": "#0D6EFD",
+        "secondary-grey": "#6C757D",
+        "grey-dim": "#222030",
+        "secondary-red": "#DC3545",
+        "light-grey": "#CED4DA",
+        "light-red": "#E31221",
       },
       backgroundImage: {
         "primary-home":

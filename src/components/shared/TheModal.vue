@@ -5,7 +5,7 @@
     ref="target"
   >
     <div
-      class="relative top-56 mx-auto w-[36rem] p-5 shadow-lg rounded-md bg-[#222030] flex justify-center"
+      class="relative top-56 mx-auto w-[36rem] p-5 shadow-lg rounded-md bg-grey-dim flex justify-center"
     >
       <slot></slot>
     </div>
