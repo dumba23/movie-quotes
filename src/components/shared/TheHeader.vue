@@ -15,7 +15,10 @@
         </button>
       </div>
       <div>
-        <button class="px-7 py-2 text-white border border-white rounded">
+        <button
+          @click="handleModalName('auth')"
+          class="px-7 py-2 text-white border border-white rounded"
+        >
           Log in
         </button>
       </div>

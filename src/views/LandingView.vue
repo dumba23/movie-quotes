@@ -18,6 +18,7 @@
     <RegistrationView v-if="paginationStore.modalName == 'register'" />
     <MailConfirmModal v-if="paginationStore.modalName == 'confirm'" />
     <VerifyModal v-if="paginationStore.modalName == 'verify'" />
+    <LoginView v-if="paginationStore.modalName == 'auth'" />
     <div id="1" ref="first" @click="handleImageClick(first)" class="relative">
       <div class="flex absolute top-[341px] left-[170px] items-center">
         <div class="w-[53px] bg-white h-[2px] mr-8 mb-28"></div>
@@ -94,6 +95,7 @@ import { onMounted, ref } from "vue";
 import MailConfirmModal from "@/components/MailConfirmModal.vue";
 import RegistrationView from "@/views/RegistrationView.vue";
 import VerifyModal from "@/components/VerifyModal.vue";
+import LoginView from "@/views/LoginView.vue";
 
 const route = useRoute();
 const paginationStore = usePaginationStore();

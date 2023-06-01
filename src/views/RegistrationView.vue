@@ -9,7 +9,7 @@
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
           Already have an account?<button
-            to="#"
+            @click="handleModalName('auth')"
             class="text-primary-blue underline ml-1"
           >
             Log in
