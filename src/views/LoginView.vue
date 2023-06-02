@@ -2,17 +2,19 @@
   <TheModal v-if="isModalOpen">
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
-        <h1 class="text-3xl text-white mt-6">Create an account</h1>
-        <p class="text-secondary-grey">Start your journey!</p>
+        <h1 class="text-3xl text-white mt-6 mb-2">Log in to your account</h1>
+        <p class="text-secondary-grey">
+          Welcome back! Please enter your details.
+        </p>
       </div>
-      <RegistrationForm />
+      <LoginForm />
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
-          Already have an account?<button
-            @click="handleModalName('auth')"
+          Don't you have an account?<button
+            @click="handleModalName('register')"
             class="text-primary-blue underline ml-1"
           >
-            Log in
+            Sign up
           </button>
         </p>
       </div>
@@ -22,7 +24,7 @@
 
 <script setup>
 import TheModal from "@/components/shared/TheModal.vue";
-import RegistrationForm from "@/components/RegistrationForm.vue";
+import LoginForm from "@/components/LoginForm.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
