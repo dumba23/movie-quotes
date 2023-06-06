@@ -16,9 +16,20 @@
       </button>
     </div>
     <RegistrationView v-if="paginationStore.modalName == 'register'" />
-    <MailConfirmModal v-if="paginationStore.modalName == 'confirm'" />
-    <VerifyModal v-if="paginationStore.modalName == 'verify'" />
-    <LoginView v-if="paginationStore.modalName == 'auth'" />
+    <MailConfirmModal v-else-if="paginationStore.modalName == 'confirm'" />
+    <VerifyModal v-else-if="paginationStore.modalName == 'verify'" />
+    <LoginView v-else-if="paginationStore.modalName == 'auth'" />
+    <RecoveryMailSendModal
+      v-else-if="paginationStore.modalName == 'recovery_mail_send'"
+    />
+    <RecoverySentModal
+      v-else-if="paginationStore.modalName == 'recovery_mail_sent'"
+    />
+    <PasswordChangeView
+      v-else-if="paginationStore.modalName == 'change_password'"
+    />
+    <LinkExpiredModal v-else-if="paginationStore.modalName == 'link_expired'" />
+    <SuccessModal v-else-if="paginationStore.modalName == 'success'" />
     <div id="1" ref="first" @click="handleImageClick(first)" class="relative">
       <div class="flex absolute top-[341px] left-[170px] items-center">
         <div class="w-[53px] bg-white h-[2px] mr-8 mb-28"></div>
@@ -89,15 +100,22 @@
 
 <script setup>
 import TheHeader from "@/components/shared/TheHeader.vue";
-import { usePaginationStore } from "@/store/pagination";
-import { useRoute } from "vue-router";
-import { onMounted, ref } from "vue";
 import MailConfirmModal from "@/components/MailConfirmModal.vue";
 import RegistrationView from "@/views/RegistrationView.vue";
 import VerifyModal from "@/components/VerifyModal.vue";
 import LoginView from "@/views/LoginView.vue";
+import RecoveryMailSendModal from "@/components/RecoveryMailSendModal.vue";
+import PasswordChangeView from "@/views/PasswordChangeView.vue";
+import RecoverySentModal from "@/components/RecoverySentModal.vue";
+import SuccessModal from "@/components/SuccessModal.vue";
+import LinkExpiredModal from "@/components/LinkExpiredModal.vue";
+import { usePaginationStore } from "@/store/pagination";
+import { useRoute, useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
+import { checkTokenIsValid } from "@/services/recovery";
 
 const route = useRoute();
+const router = useRouter();
 const paginationStore = usePaginationStore();
 
 const first = ref(null);
@@ -122,9 +140,22 @@ const handleImageClick = (ref) => {
 };
 
 onMounted(() => {
-  const { verified } = route.query;
+  const { verified, reset_password, token } = route.query;
   if (verified) {
     handleModalName("verify");
+  }
+
+  if (reset_password && token) {
+    checkTokenIsValid(token)
+      .then((res) => {
+        if (res.status === 200) {
+          handleModalName("change_password");
+        }
+      })
+      .catch(() => {
+        handleModalName("link_expired");
+        router.replace({ query: null });
+      });
   }
 });
 </script>

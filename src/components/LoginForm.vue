@@ -1,5 +1,5 @@
 <template>
-  <Form @submit="(values) => handleSubmit(values)">
+  <Form @submit="(values) => handleLogin(values)">
     <FormInputField
       name="login"
       labelName="Email"
@@ -22,7 +22,12 @@
         ><input type="checkbox" name="remember_token" class="mr-2" />Remember
         me</label
       >
-      <button class="text-blue-600 underline">Forgot password</button>
+      <div
+        @click="handleModalName('recovery_mail_send')"
+        class="text-blue-600 underline"
+      >
+        Forgot password
+      </div>
     </div>
     <FormSubmit name="Get started" />
   </Form>
@@ -37,26 +42,28 @@ import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
 import { authByDefault } from "@/services/auth";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";
-import { useRouter } from "vue-router";
 import { ref } from "vue";
 
-const router = useRouter();
 const paginationStore = usePaginationStore();
 const errorMessage = ref("");
 
-const handleSubmit = async (data) => {
-  await authByDefault(data)
-    .then((res) => {
-      if (res.status === 200) {
-        paginationStore.updateModalName({ name: null });
-      }
-    })
-    .catch((error) => {
-      const { status, message } = error.response.data;
-      if (!status) {
-        errorMessage.value = message;
-      }
-    });
+const handleModalName = (name) => {
+  paginationStore.updateModalName({ name });
+  document.documentElement.style.overflow = "auto";
+};
+
+const handleLogin = async (data) => {
+  try {
+    const res = await authByDefault(data);
+    if (res.status === 200) {
+      paginationStore.updateModalName({ name: null });
+    }
+  } catch (error) {
+    const { status, message } = error.response.data;
+    if (!status) {
+      errorMessage.value = message;
+    }
+  }
 };
 
 const handleCustomErrorMessageDisplay = (e) => {

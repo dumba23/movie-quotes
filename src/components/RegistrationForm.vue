@@ -1,5 +1,5 @@
 <template>
-  <Form @submit="(values) => handleSubmit(values)">
+  <Form @submit="(values) => handleRegister(values)">
     <FormInputField
       name="username"
       labelName="Name"
@@ -44,14 +44,15 @@ import { usePaginationStore } from "@/store/pagination";
 
 const paginationStore = usePaginationStore();
 
-const handleSubmit = async (data) => {
-  await registerUser(data)
-    .then((res) => {
-      if (res.status === 201) {
-        paginationStore.updateModalName({ name: "confirm" });
-      }
-    })
-    .catch((error) => console.log(error));
+const handleRegister = async (data) => {
+  const res = await registerUser(data);
+  try {
+    if (res.status === 201) {
+      paginationStore.updateModalName({ name: "confirm" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const handleGoogleLogIn = () => {
