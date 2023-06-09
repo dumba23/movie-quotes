@@ -1,0 +1,13 @@
+name: "Test code on pull request"
+on: pull_request
+jobs:
+  test:
+    runs_on:
+    steps:
+      - uses: actions/checkout@3
+      - uses: actions/setup-node@v3
+            node-version: 18
+      - name: "install npm"
+        run: npm ci
+      - name: "run test"
+        run: npm run lint
