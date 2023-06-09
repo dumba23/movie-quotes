@@ -4,7 +4,7 @@ jobs:
   test:
     runs_on:
     steps:
-      - uses: actions/checkout@3
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
             node-version: 18
       - name: "install npm"
