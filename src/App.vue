@@ -1,9 +1,14 @@
 <script setup>
-import { RouterView } from "vue-router";
+import { RouterView, useRoute } from "vue-router";
+
+const router = useRoute();
 </script>
 
 <template>
-  <div class="bg-primary-home h-[1084px]">
+  <div
+    class="h-screen"
+    :class="router.path === '/' ? 'bg-primary-home' : 'bg-primary-profile'"
+  >
     <RouterView />
   </div>
 </template>
