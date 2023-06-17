@@ -43,7 +43,9 @@ import { authByDefault } from "@/services/auth";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const paginationStore = usePaginationStore();
 const errorMessage = ref("");
 
@@ -57,6 +59,7 @@ const handleLogin = async (data) => {
     const res = await authByDefault(data);
     if (res.status === 200) {
       paginationStore.updateModalName({ name: null });
+      router.push("/profile");
     }
   } catch (error) {
     const { status, message } = error.response.data;

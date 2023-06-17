@@ -1,7 +1,10 @@
 <template>
   <div class="flex flex-col mb-4">
     <label :for="name" class="text-white mb-2"
-      >{{ labelName }}<span class="text-secondary-red ml-1">*</span></label
+      >{{ labelName
+      }}<span class="text-secondary-red ml-1">{{
+        requiredLabel ? "*" : ""
+      }}</span></label
     >
     <Field :name="name" :rules="rules" v-slot="{ field, errors, value }">
       <div class="relative">
@@ -15,7 +18,8 @@
             !errors.length &&
               value?.length > 0 &&
               errorMessage.length <= 0 &&
-              'border-primary-success')
+              'border-primary-success',
+            isProfileField && 'placeholder:text-black')
           "
         />
         <IconInputError
@@ -48,5 +52,7 @@ defineProps({
   placeholder: { type: String, required: true, default: "" },
   rules: { type: String, required: true, default: "" },
   errorMessage: { type: String, required: false, default: "" },
+  requiredLabel: { type: Boolean, required: true, default: true },
+  isProfileField: { type: Boolean, required: true, default: false },
 });
 </script>
