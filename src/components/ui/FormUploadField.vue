@@ -1,6 +1,6 @@
 <template>
   <label
-    class="absolute top-1 translate-x-[6rem] translate-y-[-6rem] text-center"
+    class="absolute top-1 translate-x-[9rem] translate-y-[-6rem] text-center"
   >
     <img
       :src="
