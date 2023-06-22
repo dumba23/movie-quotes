@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-between items-center px-20 py-8 bg-header bg-white bg-opacity-5"
+    class="flex justify-between items-center px-20 py-8 bg-header bg-white bg-opacity-5 relative z-40"
   >
     <div class="text-primary-yellow">MOVIE QUOTES</div>
     <div class="flex justify-between items-center w-80">
@@ -23,7 +23,7 @@
 
 <script setup>
 import IconCaretDown from "@/components/icons/IconCaretDown.vue";
-import { logoutUser } from "../../services/auth";
+import { logoutUser } from "@/services/auth";
 import { useRouter } from "vue-router";
 
 const router = useRouter();

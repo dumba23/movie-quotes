@@ -44,7 +44,7 @@ import IconInputError from "@/components/icons/IconInputError.vue";
 import IconInputSuccess from "@/components/icons/IconInputSuccess.vue";
 import FormError from "@/components/ui/FormError.vue";
 import { Field } from "vee-validate";
-import FormCustomError from "./FormCustomError.vue";
+import FormCustomError from "@/components/ui/FormCustomError.vue";
 defineProps({
   type: { type: String, required: true, default: "" },
   name: { type: String, required: true, default: "" },
