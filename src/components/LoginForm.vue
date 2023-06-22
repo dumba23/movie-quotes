@@ -59,7 +59,7 @@ const handleLogin = async (data) => {
     const res = await authByDefault(data);
     if (res.status === 200) {
       paginationStore.updateModalName({ name: null });
-      router.push("/profile");
+      router.push({ name: "profile" });
     }
   } catch (error) {
     const { status, message } = error.response.data;

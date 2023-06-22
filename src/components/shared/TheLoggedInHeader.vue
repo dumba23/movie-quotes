@@ -32,7 +32,7 @@ const handleLogOut = async () => {
   try {
     const res = await logoutUser();
     if (res.status === 200) {
-      router.push("/");
+      router.push({ name: "home" });
     }
   } catch (error) {
     console.log(error);
