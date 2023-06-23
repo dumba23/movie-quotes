@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-md px-8 py-6 flex flex-col justify-between space-y-8 relative z-10"
+    class="max-w-md py-6 flex flex-col justify-between space-y-8 relative z-50"
   >
     <div>
       <ProfileSidebarField>
@@ -41,10 +41,16 @@
     <div>
       <ProfileSidebarField>
         <template #icon>
-          <IconMovies url="#" />
+          <IconMovies
+            url="/movies"
+            :color="route.name.includes('movie') ? '#E31221' : '#FFF'"
+          />
         </template>
         <template #text>
-          <RouterLink to="#" class="text-white flex flex-col cursor-pointer">
+          <RouterLink
+            to="/movies"
+            class="text-white flex flex-col cursor-pointer"
+          >
             List of movies
           </RouterLink>
         </template>

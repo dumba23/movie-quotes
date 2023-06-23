@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
   theme: {
     extend: {
       colors: {
@@ -16,6 +16,11 @@ export default {
         "light-grey": "#CED4DA",
         "light-red": "#E31221",
         "primary-black": "#11101A",
+        "primary-purple": "#612FFF66",
+        "medium-gray": "#EFEFEF33",
+        white: "#FFF",
+        "secondary-black": "#24222F",
+        "primary-white": "#fff",
       },
       backgroundImage: {
         "primary-home":

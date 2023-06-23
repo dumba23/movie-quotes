@@ -1,7 +1,7 @@
 <template>
   <TheLoggedInHeader />
   <div class="flex text-xl">
-    <div class="max-w-1/3">
+    <div class="max-w-1/3 ml-16">
       <ProfileSidebar
         :username="userStore.user.username"
         :imageUrl="userStore.user.avatar"
@@ -24,7 +24,7 @@
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
 import ProfileSidebar from "@/components/ProfileSidebar.vue";
 import ProfileEditForm from "@/components/ProfileEditForm.vue";
-import { useUserStore } from "../store/user";
+import { useUserStore } from "@/store/user";
 import { onMounted } from "vue";
 
 const userStore = useUserStore();
