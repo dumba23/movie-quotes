@@ -10,7 +10,17 @@ export const getUserMovie = async (movieId) => {
   return await axios.get("/api/movies/" + movieId);
 };
 
-export const addMovie = async (data, id) => {
+export const addMovie = async (data) => {
+  await axios.get("/sanctum/csrf-cookie");
+
+  return axios.post(`/api/movies`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+export const updateMovie = async (data, movieId) => {
   await axios.get("/sanctum/csrf-cookie");
 
   const formData = new FormData();
@@ -25,16 +35,11 @@ export const addMovie = async (data, id) => {
     } else formData.append(key, data[key]);
   });
 
-  return axios.post(`/api/movies/${id}`, formData, {
+  return await axios.post("/api/movies/" + movieId, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
   });
-};
-
-export const updateMovie = async (data, movieId) => {
-  await axios.get("/sanctum/csrf-cookie");
-  return await axios.put("/api/movies/" + movieId, data);
 };
 
 export const deleteMovie = async (movieId) => {

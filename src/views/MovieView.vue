@@ -9,13 +9,13 @@
     </div>
     <div class="relative w-full">
       <h1 class="text-2xl font-medium my-8">Movie description</h1>
-      <div class="flex flex-row">
+      <div class="flex flex-row justify-between">
         <img
           alt="movie"
           :src="moviesStore.movie.image"
-          class="w-2/3 h-[27.5rem] object-cover rounded-xl"
+          class="w-[50rem] h-[27.5rem] object-cover rounded-xl"
         />
-        <div class="ml-8 space-y-4">
+        <div class="max-w-[36rem] space-y-4">
           <div class="flex flex-row justify-between">
             <h2 class="text-primary-yellow text-2xl">
               {{ moviesStore.movie.title?.en }} ({{
@@ -48,7 +48,28 @@
           <div class="text-lg">{{ moviesStore.movie.description?.en }}</div>
         </div>
       </div>
+      <div class="flex items-center mt-8">
+        <div class="text-2xl border-r border-secondary-grey pr-4">
+          Quotes (total {{ moviesStore.movie.quotes?.length }})
+        </div>
+        <button
+          @click="true"
+          class="flex items-center ml-4 bg-primary-red py-2 px-4 rounded"
+        >
+          <IconPlus />
+          <span
+            class="ml-2"
+            @click="paginationStore.updateModalName({ name: 'add-quote' })"
+            >Add quote</span
+          >
+        </button>
+      </div>
+      <QuoteCardList :quotes="moviesStore.movie.quotes" />
     </div>
+    <QuoteAddModal
+      v-if="paginationStore.modalName === 'add-quote'"
+      :movie="moviesStore.movie"
+    />
     <MovieModal v-if="isModalOpen">
       <template #header>
         <div
@@ -82,20 +103,25 @@ import ProfileSidebar from "@/components/ProfileSidebar.vue";
 import MovieModal from "@/components/MovieModal.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
+import IconPlus from "@/components/icons/IconPlus.vue";
 import IconClose from "@/components/icons/IconClose.vue";
 import MovieEdit from "@/components/MovieEdit.vue";
+import QuoteAddModal from "@/components/QuoteAddModal.vue";
 import { useMoviesStore } from "@/store/movies";
+import { usePaginationStore } from "@/store/pagination";
 import { useUserStore } from "@/store/user";
 import { onMounted } from "vue";
 import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { deleteMovie } from "@/services/movies";
 import { useRouter } from "vue-router";
+import QuoteCardList from "../components/QuoteCardList.vue";
 
 const props = defineProps(["id"]);
 
 const router = useRouter();
 const userStore = useUserStore();
+const paginationStore = usePaginationStore();
 const moviesStore = useMoviesStore();
 
 const isModalOpen = ref(false);

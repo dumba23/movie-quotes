@@ -11,7 +11,7 @@ export const useMoviesStore = defineStore("movies", {
       try {
         const res = await getUserMoviesList();
         if (res.status === 200) {
-          this.movies = [...res.data];
+          this.movies = [...res.data.data];
         }
       } catch (error) {
         console.error(error);
