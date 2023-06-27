@@ -82,6 +82,8 @@ defineProps({
   profileImageUrl: { type: String, required: true, default: "" },
 });
 
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
 const router = useRouter();
 
 const errorMessage = ref("");
@@ -94,10 +96,7 @@ const handleAddMovie = async (data) => {
       router.push({ name: "movies" });
     }
   } catch (error) {
-    const { status, message } = error.response.data;
-    if (!status) {
-      errorMessage.value = message;
-    }
+    console.error(error);
   }
 };
 

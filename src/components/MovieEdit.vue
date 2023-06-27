@@ -72,7 +72,7 @@ import MovieFileUpload from "@/components/ui/MovieFileUpload.vue";
 import MovieTextarea from "@/components/ui/MovieTextarea.vue";
 import MovieSubmit from "@/components/ui/MovieSubmit.vue";
 import GenresInput from "@/components/ui/GenresInput.vue";
-import { addMovie } from "@/services/movies";
+import { updateMovie } from "@/services/movies";
 import { onBeforeMount, ref } from "vue";
 import { getMovieGenres } from "@/services/movies";
 import { useRoute, useRouter } from "vue-router";
@@ -82,6 +82,8 @@ const props = defineProps({
   profileImageUrl: { type: String, required: true, default: "" },
   movie: { type: Object, required: true, default: () => {} },
 });
+
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const route = useRoute();
 const router = useRouter();
@@ -111,7 +113,7 @@ const submitForm = async () => {
   }
 
   try {
-    const res = await addMovie(data, id);
+    const res = await updateMovie(data, id);
     if (res.status === 200) {
       router.push({ name: "movies" });
     }

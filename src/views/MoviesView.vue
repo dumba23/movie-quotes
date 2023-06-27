@@ -10,7 +10,7 @@
     <div class="relative w-full">
       <div class="flex flex-row justify-between max-h-16 pt-4">
         <div class="flex items-center text-2xl font-medium">
-          My list of movies (Total 25)
+          My list of movies (Total {{ moviesStore.movies?.length }})
         </div>
         <div class="flex justify-center items-center text-lg">
           <div class="text-light-grey flex items-center">
