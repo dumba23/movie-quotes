@@ -31,6 +31,8 @@ export default {
           "linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 55.21%, rgba(0, 0, 0, 0) 100%)",
         header:
           "linear-gradient(0deg, rgba(34, 32, 48, 0.2), rgba(34, 32, 48, 0.2))",
+        "half-transparent":
+          "linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%)",
       },
       boxShadow: {
         input: "0px 0px 0px 4px rgba(13, 110, 253, 0.25)",
