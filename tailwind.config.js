@@ -21,6 +21,7 @@ export default {
         white: "#FFF",
         "secondary-black": "#24222F",
         "primary-white": "#fff",
+        "primary-orange": "#E33812",
       },
       backgroundImage: {
         "primary-home":
