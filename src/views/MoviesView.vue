@@ -1,7 +1,7 @@
 <template>
   <TheLoggedInHeader />
   <div class="flex justify-between text-xl text-white px-20">
-    <div class="translate-x-[-1rem] z-50 w-[30%]">
+    <div class="translate-x-[-1rem] w-[30%]">
       <ProfileSidebar
         :username="userStore.user.username"
         :imageUrl="userStore.user.avatar"

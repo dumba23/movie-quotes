@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="max-w-md py-6 flex flex-col justify-between space-y-8 relative z-50"
-  >
+  <div class="max-w-md py-6 flex flex-col justify-between space-y-8 relative">
     <div>
       <ProfileSidebarField>
         <template #icon>
@@ -29,10 +27,13 @@
     <div>
       <ProfileSidebarField>
         <template #icon>
-          <IconNewsFeed url="#" />
+          <IconNewsFeed
+            url="#"
+            :color="route.name === 'news' ? '#E31221' : '#FFF'"
+          />
         </template>
         <template #text>
-          <RouterLink to="#" class="text-white cursor-pointer">
+          <RouterLink to="/news-feed" class="text-white cursor-pointer">
             News feed
           </RouterLink>
         </template>
