@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
-import { getUserQuotesList } from "@/services/quotes";
+import { getUserQuotesList, getQuotesList } from "@/services/quotes";
 
 export const useQuotesStore = defineStore("quotes", {
   state: () => ({
     quotes: [],
+    allQuotes: [],
   }),
   actions: {
     async initializeQuotesData() {
@@ -11,6 +12,16 @@ export const useQuotesStore = defineStore("quotes", {
         const res = await getUserQuotesList();
         if (res.status === 200) {
           this.quotes = [...res.data];
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async initializeAllQuotesData() {
+      try {
+        const res = await getQuotesList();
+        if (res.status === 200) {
+          this.allQuotes = [...res.data];
         }
       } catch (error) {
         console.error(error);
