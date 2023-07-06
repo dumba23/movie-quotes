@@ -12,7 +12,7 @@
             v-bind="field"
             :type="type"
             :placeholder="placeholder"
-            class="placeholder:text-white bg-transparent h-12 rounded w-full focus:outline-none"
+            class="placeholder:text-white bg-primary-black h-12 rounded w-full focus:outline-none"
             :class="
               (!!errors.length && 'border-primary-red ',
               !errors.length &&
