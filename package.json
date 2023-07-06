@@ -14,7 +14,10 @@
     "@vee-validate/rules": "^4.9.4",
     "@vueuse/core": "^10.1.2",
     "axios": "^1.4.0",
+    "dayjs": "^1.11.9",
+    "laravel-echo": "^1.15.1",
     "pinia": "^2.0.36",
+    "pusher-js": "^8.2.0",
     "vee-validate": "^4.9.4",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
