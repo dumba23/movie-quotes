@@ -1,7 +1,7 @@
 <template>
   <TheLoggedInHeader />
   <div class="flex text-xl">
-    <div class="max-w-1/3 ml-16">
+    <div class="max-w-1/3 ml-16 z-10">
       <ProfileSidebar
         :username="userStore.user.username"
         :imageUrl="userStore.user.avatar"

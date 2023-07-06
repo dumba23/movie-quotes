@@ -1,12 +1,27 @@
 import { defineStore } from "pinia";
-import { getUserMoviesList, getUserMovie } from "@/services/movies";
+import {
+  getUserMoviesList,
+  getUserMovie,
+  getMoviesList,
+} from "@/services/movies";
 
 export const useMoviesStore = defineStore("movies", {
   state: () => ({
+    allMovies: [],
     movies: [],
     movie: {},
   }),
   actions: {
+    async initializeAllMoviesData() {
+      try {
+        const res = await getMoviesList();
+        if (res.status === 200) {
+          this.movies = [...res.data.data];
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async initializeMoviesData() {
       try {
         const res = await getUserMoviesList();

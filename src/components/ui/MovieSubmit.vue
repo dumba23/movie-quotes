@@ -1,7 +1,7 @@
 <template>
   <button
     type="submit"
-    class="w-full mt-8 h-10 bg-light-red rounded mt-2 text-white"
+    class="w-full mt-8 h-14 bg-light-red rounded mt-2 text-white"
   >
     {{ name }}
   </button>

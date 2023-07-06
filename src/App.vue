@@ -6,7 +6,7 @@ const router = useRoute();
 
 <template>
   <div
-    class="h-screen"
+    class="min-h-screen"
     :class="router.path === '/' ? 'bg-primary-home' : 'bg-primary-profile'"
   >
     <RouterView />
