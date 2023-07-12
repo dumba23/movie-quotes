@@ -1,29 +1,34 @@
 <template>
   <TheLoggedInHeader />
-  <div class="flex justify-between text-xl text-white px-20">
-    <div class="translate-x-[-1rem] w-[30%]">
+  <div
+    class="flex justify-between text-xl text-white px-20 sm:px-4 sm:py-6"
+    :key="$route.params.id"
+  >
+    <div class="translate-x-[-1rem] w-[30%] sm:hidden">
       <ProfileSidebar
         :username="userStore.user.username"
         :imageUrl="userStore.user.avatar"
       />
     </div>
     <div class="relative w-full">
-      <h1 class="text-2xl font-medium my-8">Movie description</h1>
-      <div class="flex flex-row justify-between">
+      <h1 class="text-2xl font-medium my-8 sm:hidden">
+        {{ $t("movie_description") }}
+      </h1>
+      <div class="flex flex-row justify-between sm:flex-col">
         <img
           alt="movie"
           :src="moviesStore.movie.image"
-          class="w-[50rem] h-[27.5rem] object-cover rounded-xl"
+          class="w-[50rem] h-[27.5rem] sm:w-full sm:h-60 object-cover rounded-xl"
         />
-        <div class="max-w-[36rem] space-y-4">
+        <div class="max-w-[36rem] space-y-4 sm:space-y-3 sm:mt-6">
           <div class="flex flex-row justify-between">
             <h2 class="text-primary-yellow text-2xl">
-              {{ moviesStore.movie.title?.en }} ({{
+              {{ moviesStore.movie.title?.[i18n.global.locale.value] }} ({{
                 moviesStore.movie.release_date
               }})
             </h2>
             <div
-              class="flex items-center py-1 bg-secondary-black text-secondary-grey rounded-lg"
+              class="flex items-center py-1 bg-secondary-black text-secondary-grey rounded-lg sm:hidden"
             >
               <button class="px-6" @click="handleModalToggle(true)">
                 <IconEdit /></button
@@ -40,17 +45,22 @@
             {{ genre.name }}
           </div>
           <div class="text-lg">
-            <span class="font-bold text-light-grey mr-3">Director:</span>
-            <span class="font-medium text-white">{{
-              moviesStore.movie.director?.en
+            <span class="font-bold text-light-grey mr-3 sm:text-base"
+              >{{ $t("director") }}:</span
+            >
+            <span class="font-medium text-white sm:text-base">{{
+              moviesStore.movie.director?.[i18n.global?.locale.value]
             }}</span>
           </div>
-          <div class="text-lg">{{ moviesStore.movie.description?.en }}</div>
+          <div class="text-lg">
+            {{ moviesStore.movie.description?.[i18n.global?.locale.value] }}
+          </div>
         </div>
       </div>
-      <div class="flex items-center mt-8">
+      <div class="flex items-center mt-8 sm:hidden">
         <div class="text-2xl border-r border-secondary-grey pr-4">
-          Quotes (total {{ moviesStore.movie.quotes?.length }})
+          {{ $t("quotes") }} ({{ $t("total") }}
+          {{ moviesStore.movie.quotes?.length }})
         </div>
         <button
           @click="true"
@@ -60,9 +70,28 @@
           <span
             class="ml-2"
             @click="paginationStore.updateModalName({ name: 'add-quote' })"
-            >Add quote</span
+            >{{ $t("add_quote") }}</span
           >
         </button>
+      </div>
+      <div class="hidden sm:flex flex-col items-start mt-8">
+        <button
+          @click="true"
+          class="flex items-center text-sm bg-primary-red py-2 px-4 mb-8 rounded"
+        >
+          <IconPlus />
+          <span
+            class="text-base ml-2"
+            @click="paginationStore.updateModalName({ name: 'add-quote' })"
+            >{{ $t("add_quote") }}</span
+          >
+        </button>
+        <div class="border-t border-secondary-grey w-full pt-12 flex flex-col">
+          <span class="text-md">{{ $t("all_quotes") }}</span>
+          <span class="text-base"
+            >({{ $t("total") }} {{ moviesStore.movie.quotes?.length }})</span
+          >
+        </div>
       </div>
       <QuoteCardList :quotes="moviesStore.movie.quotes" />
     </div>
@@ -76,7 +105,9 @@
           id="modal"
           class="border-b border-medium-gray flex items-center justify-center h-16 py-12"
         >
-          <h1 class="text-2xl text-white font-medium">Add Movie</h1>
+          <h1 class="text-2xl text-white font-medium">
+            {{ $t("edit_movie") }}
+          </h1>
           <span
             class="absolute top-10 right-4 cursor-pointer"
             @click="handleModalToggle(false)"
@@ -115,7 +146,8 @@ import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { deleteMovie } from "@/services/movies";
 import { useRouter } from "vue-router";
-import QuoteCardList from "../components/QuoteCardList.vue";
+import QuoteCardList from "@/components/QuoteCardList.vue";
+import i18n from "../plugins/i18";
 
 const props = defineProps(["id"]);
 
