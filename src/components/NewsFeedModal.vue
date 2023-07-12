@@ -5,7 +5,7 @@
         id="modal"
         class="border-b border-medium-gray flex items-center justify-center h-16 py-12"
       >
-        <h1 class="text-2xl text-white font-medium">Add Quote</h1>
+        <h1 class="text-2xl text-white font-medium">{{ $t("add_quote") }}</h1>
         <span
           class="absolute top-10 right-9 cursor-pointer"
           @click="handleCloseModal"
@@ -27,7 +27,7 @@
           />
           <div>{{ userStore.user.username }}</div>
         </div>
-        <Form @submit="(values) => handleAddQuote(values)">
+        <form @submit="(values) => handleAddQuote(values)">
           <MovieTextarea
             rules="required"
             placeholder="Start create new quote"
@@ -41,8 +41,8 @@
           />
           <MovieFileUpload class="mt-4" />
           <MovieSelect />
-          <MovieSubmit name="Add quote" />
-        </Form>
+          <MovieSubmit :name="$t('add_quote')" />
+        </form>
       </div>
     </template>
   </MovieModal>
@@ -51,7 +51,7 @@
 <script setup>
 import IconClose from "@/components/icons/IconClose.vue";
 import MovieModal from "@/components/MovieModal.vue";
-import { Form } from "vee-validate";
+import { useForm } from "vee-validate";
 import MovieTextarea from "@/components/ui/MovieTextarea.vue";
 import MovieFileUpload from "@/components/ui/MovieFileUpload.vue";
 import MovieSubmit from "@/components/ui/MovieSubmit.vue";
@@ -62,27 +62,42 @@ import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
+import i18n from "@/plugins/i18";
 
 defineProps({
   movie: { type: Object, required: true, default: () => {} },
+});
+
+const { setFieldError, values } = useForm({
+  initialValues: {
+    title_en: "",
+    title_ka: "",
+  },
 });
 
 const quotesStore = useQuotesStore();
 const paginationStore = usePaginationStore();
 const userStore = useUserStore();
 
-const handleAddQuote = async (data) => {
-  console.log(data);
-
+const handleAddQuote = async () => {
   try {
-    const res = await addQuote({ ...data, movie_id: data.movie_id });
+    const res = await addQuote({ ...values, movie_id: values.movie_id });
     if (res.status === 200) {
       quotesStore.initializeAllQuotesData();
       isModalOpen.value = false;
       paginationStore.updateModalName({ name: "" });
     }
   } catch (error) {
-    console.error(error);
+    if (!error.response.data.errors) {
+      setFieldError(
+        "login",
+        error.response.data.message?.[i18n.global.locale.value]
+      );
+    } else {
+      Object.keys(error.response.data.errors).forEach((key) => {
+        setFieldError(key, error.response.data.errors[key]);
+      });
+    }
   }
 };
 

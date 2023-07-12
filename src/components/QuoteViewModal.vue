@@ -13,7 +13,9 @@
           </span>
           <span @click="handleToggleModal('remove')"><IconTrash /></span>
         </div>
-        <h1 class="text-2xl text-white font-medium">View Quote</h1>
+        <h1 class="text-2xl text-white font-medium sm:hidden">
+          {{ $t("view_quote") }}
+        </h1>
         <span
           class="absolute top-10 right-9 cursor-pointer"
           @click="handleToggleModal('close')"
@@ -50,20 +52,56 @@
           </span>
         </div>
         <img :src="imageUrl" alt="quote" class="mt-8 rounded-lg" />
+        <div
+          class="border-b border-secondary-grey flex space-x-10 pb-4 mx-4 mt-4"
+        >
+          <div class="flex sm:items-center">
+            <span class="mr-2">{{ comments.length }}</span
+            ><IconComment class="sm:w-6 sm:h-6" />
+          </div>
+          <div class="flex sm:items-center">
+            <span class="mr-2">{{ likes.length }}</span
+            ><IconHeart
+              @click="handleLike"
+              class="cursor-pointer sm:w-6 sm:h-6"
+            />
+          </div>
+        </div>
+        <div v-for="comment in comments" :key="comment.id">
+          <QuoteCommentCard :comment="comment" />
+        </div>
+        <div class="flex mx-4 mt-6">
+          <img
+            :src="userStore.user.avatar"
+            class="h-10 w-10 rounded-full mr-4"
+          />
+          <Form @submit="(values) => handleAddComment(values)" class="w-full">
+            <CommentInput />
+          </Form>
+        </div>
       </div>
     </template>
   </MovieModal>
 </template>
 
 <script setup>
+import { Form } from "vee-validate";
+import CommentInput from "@/components/ui/CommentInput.vue";
 import IconClose from "@/components/icons/IconClose.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
+import IconHeart from "@/components/icons/IconHeart.vue";
+import IconComment from "@/components/icons/IconComment.vue";
 import MovieModal from "@/components/MovieModal.vue";
-import { deleteQuote } from "@/services/quotes";
+import QuoteCommentCard from "@/components/QuoteCommentCard.vue";
+import {
+  deleteQuote,
+  getUserQuote,
+  addCommentOnQuote,
+} from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
 import { useUserStore } from "@/store/user";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { onClickOutside } from "@vueuse/core";
 import { useMoviesStore } from "@/store/movies";
@@ -83,6 +121,41 @@ const moviesStore = useMoviesStore();
 const userStore = useUserStore();
 const isModalOpen = ref(true);
 const target = ref(null);
+const comments = ref([]);
+const likes = ref([]);
+
+const fetchUserQuoteInfo = async () => {
+  try {
+    const res = await getUserQuote(props.quoteId);
+    if (res.status === 200) {
+      console.log(res);
+      comments.value = res.data.comments;
+      likes.value = res.data.likes;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+onMounted(() => {
+  fetchUserQuoteInfo();
+});
+
+const handleAddComment = async (data) => {
+  const {
+    params: { id },
+  } = route;
+
+  try {
+    const res = await addCommentOnQuote(props.quoteId, data);
+    if (res.status === 201) {
+      fetchUserQuoteInfo();
+      moviesStore.initializeMovieData({ id });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const handleToggleModal = (action) => {
   switch (action) {

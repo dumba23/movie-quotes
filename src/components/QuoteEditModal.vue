@@ -7,9 +7,9 @@
       >
         <div class="flex absolute left-9 space-x-3 items-center">
           <span @click="handleToggleModal('remove')"><IconTrash /> </span>
-          <span class="text-light-grey">Delete</span>
+          <span class="text-light-grey sm:hidden">{{ $t("delete") }}</span>
         </div>
-        <h1 class="text-2xl text-white font-medium">Edit Quote</h1>
+        <h1 class="text-2xl text-white font-medium">{{ $t("edit_quote") }}</h1>
         <span
           class="absolute top-10 right-9 cursor-pointer"
           @click="handleToggleModal('close')"
@@ -27,7 +27,7 @@
                 : apiUrl + '/storage/' + userStore.user.avatar
             "
             alt="profile"
-            class="w-14 h-14 rounded-full mr-3"
+            class="w-14 h-14 rounded-full mr-3 sm:w-10 sm:h-10"
           />
           <div>{{ userStore.user.username }}</div>
         </div>
@@ -44,7 +44,7 @@
             name="title_ka"
           />
           <QuoteFileUpload :initialValue="imageUrl" />
-          <MovieSubmit name="Save changes" />
+          <MovieSubmit :name="$t('save_changes')" />
         </form>
       </div>
     </template>

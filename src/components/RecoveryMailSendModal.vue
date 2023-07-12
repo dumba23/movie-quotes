@@ -2,15 +2,17 @@
   <TheModal v-if="isModalOpen">
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
-        <h1 class="text-3xl text-white mt-6 mb-2">Forgot password?</h1>
+        <h1 class="text-3xl text-white mt-6 mb-2 sm:text-xl">
+          {{ $t("forgot_password") }}?
+        </h1>
         <div
-          class="flex flex-col justify-center items-center text-secondary-grey"
+          class="flex flex-col justify-center items-center text-secondary-grey sm:text-sm"
         >
-          <div>Enter the email and we'll send an email with</div>
-          <div>instructions to reset your password</div>
+          <div>{{ $t("enter_the_email_and_we_send_an_email_with") }}</div>
+          <div>{{ $t("instructions_to_reset_your_password") }}</div>
         </div>
       </div>
-      <Form @submit="(values) => handleSubmit(values)">
+      <form @submit.prevent="handleSubmit">
         <FormInputField
           name="email"
           labelName="Email"
@@ -20,20 +22,20 @@
           :errorMessage="errorMessage"
         />
         <FormSubmit name="Send instructions" />
-      </Form>
+      </form>
       <div
         @click="handleModalName('auth')"
         class="flex justify-center items-center mt-8 mb-2"
       >
         <IconArrowLeft />
-        <span class="text-secondary-grey ml-2">Back to log in</span>
+        <span class="text-secondary-grey ml-2">{{ $t("back_to_log_in") }}</span>
       </div>
     </div>
   </TheModal>
 </template>
 
 <script setup>
-import { Form } from "vee-validate";
+import { useForm } from "vee-validate";
 import FormInputField from "@/components/ui/FormInputField.vue";
 import FormSubmit from "@/components/ui/FormSubmit.vue";
 import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
@@ -42,6 +44,13 @@ import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { recoverByMail } from "@/services/recovery";
+import i18n from "@/plugins/i18";
+
+const { setFieldError, values } = useForm({
+  initialValues: {
+    email: "",
+  },
+});
 
 const paginationStore = usePaginationStore();
 const isModalOpen = ref(true);
@@ -54,19 +63,24 @@ const handleModalName = (name) => {
   document.documentElement.style.overflow = "auto";
 };
 
-const handleSubmit = async (data) => {
-  await recoverByMail(data)
-    .then((res) => {
-      if (res.status === 200) {
-        paginationStore.updateModalName({ name: "recovery_mail_sent" });
-      }
-    })
-    .catch((error) => {
-      const { status, message, errors } = error.response.data;
-      if (!status || errors) {
-        errorMessage.value = message;
-      }
-    });
+const handleSubmit = async () => {
+  try {
+    const res = await recoverByMail(values);
+    if (res.status === 200) {
+      paginationStore.updateModalName({ name: "recovery_mail_sent" });
+    }
+  } catch (error) {
+    if (!error.response.data.errors) {
+      setFieldError(
+        "login",
+        error.response.data.message?.[i18n.global.locale.value]
+      );
+    } else {
+      Object.keys(error.response.data.errors).forEach((key) => {
+        setFieldError(key, error.response.data.errors[key]);
+      });
+    }
+  }
 };
 
 onClickOutside(target, (event) =>
