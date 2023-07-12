@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
   theme: {
     extend: {
+      minHeight: {
+        "parallax-small": "300px",
+      },
+      screens: {
+        sm: { max: "375px" },
+      },
       colors: {
         "primary-yellow": "#DDCCAA",
         "primary-red": "#E31221",
@@ -24,6 +30,9 @@ export default {
         "primary-orange": "#E33812",
       },
       backgroundImage: {
+        para1: "url('@/assets/images/interstellar.png')",
+        para2: "url('@/assets/images/tenenbaums.png')",
+        para3: "url('@/assets/images/tenenbaums2.png')",
         "primary-home":
           "linear-gradient(180deg, #11101A 0%, #08080D 100%, rgba(0, 0, 0, 0) 100%)",
         "primary-profile":
