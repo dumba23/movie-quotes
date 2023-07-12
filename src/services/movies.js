@@ -21,6 +21,7 @@ export const addMovie = async (data) => {
   return axios.post(`/api/movies`, data, {
     headers: {
       "Content-Type": "multipart/form-data",
+      "Accept-Language": localStorage.getItem("locale"),
     },
   });
 };
@@ -43,6 +44,7 @@ export const updateMovie = async (data, movieId) => {
   return await axios.post("/api/movies/" + movieId, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
+      "Accept-Language": localStorage.getItem("locale"),
     },
   });
 };
