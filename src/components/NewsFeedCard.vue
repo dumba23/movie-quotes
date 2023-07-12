@@ -1,23 +1,29 @@
 <template>
-  <div class="bg-primary-black rounded-lg w-[70%] py-6">
+  <div class="bg-primary-black rounded-lg w-[70%] sm:w-full py-6">
     <div class="flex items-center space-x-3 mb-2 px-4">
       <img :src="user.avatar" class="w-10 h-10 rounded-full" />
-      <span>{{ user.username }}</span>
+      <span class="sm:text-base">{{ user.username }}</span>
     </div>
-    <div class="flex space-x-4 mb-8 px-4">
-      <p>"{{ data.title?.en }}"</p>
-      <h3 class="text-primary-yellow">{{ data.movie.director?.en }}.</h3>
+    <div class="flex space-x-4 mb-8 px-4 sm:text-base">
+      <p>"{{ data.title?.[i18n.global.locale.value] }}"</p>
+      <h3 class="text-primary-yellow">
+        {{ data.movie.director?.[i18n.global.locale.value] }}.
+      </h3>
       <span>({{ data.movie.release_date }})</span>
     </div>
-    <img alt="quote" :src="data.image" class="mb-5 rounded-xl px-4" />
+    <img
+      alt="quote"
+      :src="data.image"
+      class="mb-5 rounded-xl px-4 sm:px-0 w-[91%] mx-4"
+    />
     <div class="border-b border-secondary-grey flex space-x-10 pb-4 mx-4">
-      <div class="flex">
+      <div class="flex sm:items-center">
         <span class="mr-2">{{ data.comments.length }}</span
-        ><IconComment />
+        ><IconComment class="sm:w-6 sm:h-6" />
       </div>
-      <div class="flex">
+      <div class="flex sm:items-center">
         <span class="mr-2">{{ data.likes.length }}</span
-        ><IconHeart @click="handleLike" class="cursor-pointer" />
+        ><IconHeart @click="handleLike" class="cursor-pointer sm:w-6 sm:h-6" />
       </div>
     </div>
     <div v-for="comment in data.comments" :key="comment.id">
@@ -40,7 +46,8 @@ import CommentInput from "@/components/ui/CommentInput.vue";
 import { toggleLikeOnQuote, addCommentOnQuote } from "@/services/quotes";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
-import QuoteCommentCard from "./QuoteCommentCard.vue";
+import QuoteCommentCard from "@/components/QuoteCommentCard.vue";
+import i18n from "../plugins/i18";
 
 const props = defineProps({
   data: { type: Object, required: true, default: () => {} },
@@ -57,7 +64,6 @@ const handleAddComment = async (data) => {
 
   try {
     const res = await addCommentOnQuote(id, data);
-    console.log(res);
     if (res.status === 201) {
       quotesStore.initializeAllQuotesData();
     }
