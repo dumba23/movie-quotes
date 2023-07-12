@@ -28,7 +28,7 @@
           </span>
         </template>
       </div>
-      <span v-else>Select Genres</span>
+      <span v-else>{{ $t("select_genres") }}</span>
     </div>
     <FormError name="genre" />
     <div

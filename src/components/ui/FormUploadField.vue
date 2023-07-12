@@ -1,6 +1,6 @@
 <template>
   <label
-    class="absolute top-1 translate-x-[9rem] translate-y-[-6rem] text-center"
+    class="absolute top-1 translate-x-[9rem] sm:translate-x-0 sm:translate-y-5 sm:translate-x-[100%] translate-y-[-6rem] text-center"
   >
     <img
       :src="
@@ -11,7 +11,7 @@
           : selectedFile
       "
       alt="profile"
-      class="w-[12rem] min-h-[12rem] rounded-full mb-2"
+      class="w-[12rem] min-h-[12rem] sm:w-32 sm:min-h-[5rem] rounded-full mb-2"
     />
 
     <Field name="avatar" v-slot="{ handleChange, handleBlur }">
@@ -26,7 +26,7 @@
         class="hidden"
       />
     </Field>
-    <span class="relative mt-10">Upload new photo</span></label
+    <span class="relative mt-10">{{ $t("upload_new_photo") }}</span></label
   >
 </template>
 

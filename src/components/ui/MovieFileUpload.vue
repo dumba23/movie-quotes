@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border border-secondary-grey rounded flex px-2 py-8 pr-20"
+    class="border border-secondary-grey rounded flex px-2 py-6 pr-20"
     :class="selectedFile && 'justify-between'"
   >
     <img
@@ -11,15 +11,20 @@
     />
 
     <div
-      class="flex items-center"
+      class="flex items-center sm:w-full"
       :class="selectedFile && 'flex-col space-y-4'"
     >
-      <span v-if="selectedFile" class="text-primary-yellow font-bold"
-        >REPLACE PHOTO</span
-      >
+      <span v-if="selectedFile" class="text-primary-yellow font-bold">{{
+        $t("replace_photo")
+      }}</span>
       <div class="flex">
         <span class="mr-2"><IconImageUpload /></span>
-        <span>Drag & drop your image here or</span>
+        <span class="sm:hidden">{{
+          $t("drag_&_drop_your_image_here_or")
+        }}</span>
+        <span class="hidden sm:block text-base min-w-max">{{
+          $t("upload_image")
+        }}</span>
       </div>
       <label class="text-center" :class="selectedFile && 'translate-y-2'">
         <Field
@@ -38,7 +43,11 @@
             class="hidden"
           />
         </Field>
-        <span class="relative ml-2.5 bg-primary-purple p-2.5">Choose file</span>
+        <div
+          class="relative ml-2.5 bg-primary-purple p-2.5 sm:w-28 sm:text-sm sm:translate-x-10 sm:ml-0"
+        >
+          Choose file
+        </div>
       </label>
     </div>
   </div>
