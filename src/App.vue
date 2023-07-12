@@ -1,7 +1,16 @@
 <script setup>
+import { onBeforeMount } from "vue";
 import { RouterView, useRoute } from "vue-router";
+import { switchLanguage } from "@/services/lang";
+import i18n from "@/plugins/i18";
 
 const router = useRoute();
+
+onBeforeMount(async () => {
+  const locale = localStorage.getItem("locale");
+  i18n.global.locale.value = locale;
+  await switchLanguage(locale);
+});
 </script>
 
 <template>
