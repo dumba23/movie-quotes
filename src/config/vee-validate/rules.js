@@ -1,11 +1,19 @@
 import { defineRule } from "vee-validate";
-import { required, email, min, max, confirmed } from "@vee-validate/rules";
+import {
+  required,
+  email,
+  min,
+  max,
+  confirmed,
+  numeric,
+} from "@vee-validate/rules";
 
 defineRule("required", required);
 defineRule("email", email);
 defineRule("min", min);
 defineRule("max", max);
 defineRule("confirmed", confirmed);
+defineRule("numeric", numeric);
 defineRule("lowerCaseAndNum", (value) => {
   const lowerCaseRegex = /^[a-z0-9]*$/;
 

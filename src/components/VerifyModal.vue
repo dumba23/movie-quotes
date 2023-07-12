@@ -3,13 +3,17 @@
     <div class="flex flex-col pt-10 pb-6" ref="target">
       <div class="flex flex-col justify-center items-center mb-4 space-y-8">
         <IconVerify />
-        <div class="font-medium text-white text-3xl">Thank you!</div>
-        <div class="text-white">Your account has been activated</div>
+        <div class="font-medium text-white text-3xl sm:text-xl">
+          {{ $t("thank_you") }}!
+        </div>
+        <div class="text-white sm:text-sm">
+          {{ $t("your_account_has_been_activated") }}
+        </div>
         <button
-          class="bg-primary-red text-white w-96 h-10 rounded flex justify-center items-center"
+          class="bg-primary-red text-white w-96 sm:w-60 h-10 rounded flex justify-center items-center"
           @click="handleRedirectToLogin"
         >
-          Go to my news feed
+          {{ $t("go_to_my_news_feed") }}
         </button>
       </div>
     </div>

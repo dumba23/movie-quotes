@@ -5,7 +5,7 @@
       alt="avatar"
       class="w-10 h-10 rounded-full object-cover"
     />
-    <div class="border-b border-secondary-grey w-full ml-4 pb-4">
+    <div class="border-b border-secondary-grey w-full ml-4 pb-4 sm:text-base">
       <div>{{ comment.user.username }}</div>
       <div>{{ comment.content }}</div>
     </div>

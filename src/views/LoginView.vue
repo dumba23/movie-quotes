@@ -2,19 +2,21 @@
   <TheModal v-if="isModalOpen">
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
-        <h1 class="text-3xl text-white mt-6 mb-2">Log in to your account</h1>
-        <p class="text-secondary-grey">
-          Welcome back! Please enter your details.
+        <h1 class="text-3xl text-white mt-6 mb-2 sm:text-xl">
+          {{ $t("log_in_to_your_account") }}
+        </h1>
+        <p class="text-secondary-grey sm:text-sm">
+          {{ $t("welcome_back_please_enter_your_details") }}.
         </p>
       </div>
       <LoginForm />
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
-          Don't you have an account?<button
+          {{ $t("dont_have_an_account") }}?<button
             @click="handleModalName('register')"
             class="text-primary-blue underline ml-1"
           >
-            Sign up
+            {{ $t("sign_up") }}
           </button>
         </p>
       </div>

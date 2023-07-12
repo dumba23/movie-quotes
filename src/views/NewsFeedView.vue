@@ -1,39 +1,64 @@
 <template>
   <TheLoggedInHeader />
-  <div class="flex justify-between text-xl text-white px-20">
-    <div class="translate-x-[-1rem] w-[30%]">
+  <div class="flex justify-between text-xl text-white px-20 sm:px-0">
+    <div class="translate-x-[-1rem] w-[30%] sm:hidden">
       <ProfileSidebar
         :username="userStore.user.username"
         :imageUrl="userStore.user.avatar"
       />
     </div>
     <div class="relative w-full">
-      <div class="flex my-6 w-[70%]">
+      <div class="flex my-6 w-[70%] sm:w-full sm:my-0">
         <button
-          class="flex bg-secondary-black py-4 space-x-4 px-4 rounded-xl"
+          class="flex bg-primary-black sm:bg-primary-profile sm:rounded-[0px] py-4 space-x-4 px-4 rounded-xl"
           :class="!isSearchExpanded ? 'w-full' : 'min-w-[14rem]'"
           @click="handleOpenQuoteModal"
         >
-          <IconPencil /><span>Write new quote</span>
+          <IconPencil /><span>{{ $t("write_new_quote") }}</span>
         </button>
         <NewsFeedModal v-if="paginationStore.modalName === 'newsfeed'" />
         <div
           class="flex justify-center items-center space-x-4 ml-4"
           :class="isSearchExpanded && 'w-full '"
         >
-          <IconSearch />
+          <IconSearch
+            @click="toggleMobileSearchOpen"
+            class="hidden sm:inline sm:absolute translate-y-[-4.9rem] translate-x-[-4rem]"
+          />
+          <IconSearch class="sm:hidden" />
           <input
             :placeholder="
-              isSearchExpanded
-                ? 'Enter @ to search movies, Enter # to search quotes'
-                : 'Search by'
+              isSearchExpanded ? $t('search_by_expanded') : $t('search_by')
             "
-            class="bg-transparent focus:outline-none"
+            class="bg-transparent focus:outline-none sm:hidden"
             :class="isSearchExpanded ? 'w-full ' : 'max-w-[6rem]'"
             @input="handleSearchInput"
             @focus="toggleSearchExpand"
             @blur="toggleSearchExpand"
           />
+        </div>
+        <div
+          v-if="isMobileSearchOpen"
+          class="fixed top-0 p-4 bg-primary-black w-full h-60"
+        >
+          <div class="flex justify-center items-center space-x-3 text-base">
+            <IconArrowLeft class="w-5 h-5" @click="toggleMobileSearchOpen" />
+            <input
+              placeholder="Search"
+              class="bg-transparent placeholder:text-white focus:outline-none w-full font-normal font-base h-10"
+              @input="handleSearchInput"
+              @focus="toggleSearchExpand"
+              @blur="toggleSearchExpand"
+            />
+          </div>
+          <div class="text-secondary-grey text-base px-8">
+            {{ $t("enter") }} <span class="text-white">@</span>
+            {{ $t("to_search_movies") }}
+          </div>
+          <div class="text-secondary-grey text-base px-8">
+            {{ $t("enter") }} <span class="text-white">#</span>
+            {{ $t("to_search_movies") }}
+          </div>
         </div>
       </div>
       <div class="space-y-8" v-if="searchTerm.length === 0">
@@ -61,6 +86,7 @@ import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
 import ProfileSidebar from "@/components/ProfileSidebar.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconPencil from "@/components/icons/IconPencil.vue";
+import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
 import NewsFeedCard from "@/components/NewsFeedCard.vue";
 import { useMoviesStore } from "@/store/movies";
 import { useQuotesStore } from "@/store/quotes";
@@ -71,7 +97,7 @@ import { onMounted } from "vue";
 import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { addNotification } from "@/services/notification";
-import NewsFeedModal from "../components/NewsFeedModal.vue";
+import NewsFeedModal from "@/components/NewsFeedModal.vue";
 
 const userStore = useUserStore();
 const quotesStore = useQuotesStore();
@@ -84,6 +110,11 @@ const isSearchExpanded = ref(false);
 const target = ref(null);
 const searchTerm = ref("");
 const searchedQuotes = ref([]);
+const isMobileSearchOpen = ref(false);
+
+const toggleMobileSearchOpen = () => {
+  isMobileSearchOpen.value = !isMobileSearchOpen.value;
+};
 
 const toggleSearchExpand = () => {
   isSearchExpanded.value = !isSearchExpanded.value;

@@ -18,14 +18,14 @@
         labelName="Movie name:"
         name="title_en"
         :errorMessage="errorMessage"
-        rules="required"
+        rules="required|min:5"
       />
       <MovieInput
         type="text"
         labelName="ფილმის სახელი:"
         name="title_ka"
         :errorMessage="errorMessage"
-        rules="required"
+        rules="required|min:5"
       />
       <GenresInput :genres="genres" :initialValue="movie.genres" />
       <MovieInput
@@ -33,29 +33,29 @@
         labelName="წელი/Year:"
         name="release_date"
         :errorMessage="errorMessage"
-        rules="required"
+        rules="required|numeric|min:4|max:4"
       />
       <MovieInput
         type="text"
-        labelName="Director:"
+        :labelName="$t('Director') + ':'"
         name="director_en"
         :errorMessage="errorMessage"
-        rules="required"
+        rules="required|min:5"
       />
       <MovieInput
         type="text"
         labelName="რეჟისორი:"
         name="director_ka"
         :errorMessage="errorMessage"
-        rules="required"
+        rules="required|min:5"
       />
       <MovieTextarea
-        rules="required"
+        rules="required|min:30"
         labelName="Description:"
         name="description_en"
       />
       <MovieTextarea
-        rules="required"
+        rules="required|min:30"
         labelName="აღწერა:"
         name="description_ka"
       />

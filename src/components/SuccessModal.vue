@@ -3,15 +3,19 @@
     <div class="flex flex-col pt-10 pb-6" ref="target">
       <div class="flex flex-col justify-center items-center mb-4 space-y-8">
         <IconSuccessTick />
-        <div class="font-medium text-white text-3xl">Success!</div>
+        <div class="font-medium text-white text-3xl sm:text-xl">
+          {{ $t("success") }}!
+        </div>
         <div class="flex flex-col justify-center items-center text-white">
-          <span>Your Password changed successfully</span>
+          <span class="sm:text-sm">{{
+            $t("your_password_changed_successfully")
+          }}</span>
         </div>
         <button
-          class="bg-primary-red text-white w-96 h-10 rounded flex justify-center items-center"
+          class="bg-primary-red text-white w-96 sm:w-60 h-10 rounded flex justify-center items-center"
           @click="handleModalName('auth')"
         >
-          Log in
+          {{ $t("log_in") }}
         </button>
       </div>
     </div>

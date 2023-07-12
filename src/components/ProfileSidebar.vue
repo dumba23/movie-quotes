@@ -1,5 +1,7 @@
 <template>
-  <div class="max-w-md py-6 flex flex-col justify-between space-y-8 relative">
+  <div
+    class="max-w-md py-6 flex flex-col justify-between space-y-8 relative sm:text-sm"
+  >
     <div>
       <ProfileSidebarField>
         <template #icon>
@@ -10,7 +12,7 @@
                 : apiUrl + '/storage/' + imageUrl
             "
             alt="profile"
-            class="w-14 h-14 rounded-full"
+            class="w-14 h-14 rounded-full sm:w-8 sm:h-8"
             :class="
               route.name === 'profile' && 'border border-2 border-primary-red'
             "
@@ -19,7 +21,7 @@
         <template #text>
           <div class="text-white flex flex-col">
             <div class="">{{ username }}</div>
-            <a href="/profile" class="">Edit your profile</a>
+            <a href="/profile" class="">{{ $t("edit_your_profile") }}</a>
           </div>
         </template>
       </ProfileSidebarField>
@@ -28,13 +30,13 @@
       <ProfileSidebarField>
         <template #icon>
           <IconNewsFeed
-            url="#"
+            url="/news-feed"
             :color="route.name === 'news' ? '#E31221' : '#FFF'"
           />
         </template>
         <template #text>
           <RouterLink to="/news-feed" class="text-white cursor-pointer">
-            News feed
+            {{ $t("news_feed") }}
           </RouterLink>
         </template>
       </ProfileSidebarField>
@@ -52,7 +54,7 @@
             to="/movies"
             class="text-white flex flex-col cursor-pointer"
           >
-            List of movies
+            {{ $t("list_of_movies") }}
           </RouterLink>
         </template>
       </ProfileSidebarField>

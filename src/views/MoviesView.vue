@@ -1,7 +1,7 @@
 <template>
   <TheLoggedInHeader />
-  <div class="flex justify-between text-xl text-white px-20">
-    <div class="translate-x-[-1rem] w-[30%]">
+  <div class="flex justify-between text-xl text-white px-20 sm:px-4">
+    <div class="translate-x-[-1rem] w-[30%] sm:hidden">
       <ProfileSidebar
         :username="userStore.user.username"
         :imageUrl="userStore.user.avatar"
@@ -9,16 +9,21 @@
     </div>
     <div class="relative w-full">
       <div class="flex flex-row justify-between max-h-16 pt-4">
-        <div class="flex items-center text-2xl font-medium">
-          My list of movies (Total {{ moviesStore.movies?.length }})
+        <div
+          class="flex items-center text-2xl sm:text-lg font-medium sm:flex-col sm:items-start"
+        >
+          {{ $t("my_list_of_movies") }}
+          <span class="ml-1 sm:ml-0 sm:text-xs"
+            >({{ $t("total") }} {{ moviesStore.movies?.length }})</span
+          >
         </div>
         <div class="flex justify-center items-center text-lg">
-          <div class="text-light-grey flex items-center">
+          <div class="text-light-grey flex items-center sm:hidden">
             <button><IconSearch /></button>
             <input
               class="ml-2 bg-transparent w-16 outline-none"
               type="text"
-              placeholder="Search"
+              :placeholder="$t('search')"
             />
           </div>
           <button
@@ -26,7 +31,7 @@
             class="flex items-center ml-7 bg-primary-red py-2 px-4 rounded"
           >
             <IconPlus />
-            <span class="ml-2">Add movie</span>
+            <span class="ml-2 sm:text-sm">{{ $t("add_movie") }}</span>
           </button>
         </div>
       </div>

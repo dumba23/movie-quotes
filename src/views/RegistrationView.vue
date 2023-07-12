@@ -2,17 +2,21 @@
   <TheModal v-if="isModalOpen">
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
-        <h1 class="text-3xl text-white mt-6">Create an account</h1>
-        <p class="text-secondary-grey">Start your journey!</p>
+        <h1 class="text-3xl text-white mt-6 sm:text-xl">
+          {{ $t("create_an_account") }}
+        </h1>
+        <p class="text-secondary-grey sm:text-sm">
+          {{ $t("start_your_journey") }}!
+        </p>
       </div>
       <RegistrationForm />
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
-          Already have an account?<button
+          {{ $t("already_have_an_account") }}?<button
             @click="handleModalName('auth')"
             class="text-primary-blue underline ml-1"
           >
-            Log in
+            {{ $t("log_in") }}
           </button>
         </p>
       </div>

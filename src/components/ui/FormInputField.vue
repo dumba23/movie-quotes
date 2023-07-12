@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col mb-4">
-    <label :for="name" class="text-white mb-2"
+  <div class="flex flex-col mb-4 sm:mx-4">
+    <label :for="name" class="text-white mb-2 sm:mx-4"
       >{{ labelName
       }}<span class="text-secondary-red ml-1">{{
         requiredLabel ? "*" : ""
@@ -12,7 +12,7 @@
           v-bind="field"
           :type="type"
           :placeholder="placeholder"
-          class="border border-light-grey bg-light-grey w-96 h-10 rounded px-2 focus:shadow-input focus:outline-none"
+          class="border border-light-grey bg-light-grey w-96 h-10 rounded px-2 focus:shadow-input sm:w-80 focus:outline-none sm:mx-4"
           :class="
             (!!errors.length && 'border-primary-red ',
             !errors.length &&
@@ -24,17 +24,17 @@
         />
         <IconInputError
           v-if="errors.length || errorMessage.length > 0"
-          class="absolute top-3 right-3.5"
+          class="absolute top-3 right-3.5 sm:right-5"
         />
         <IconInputSuccess
           v-if="!errors.length && value?.length > 0 && errorMessage.length <= 0"
-          class="absolute top-3 right-3.5"
+          class="absolute top-3 right-3.5 sm:right-5"
         />
       </div>
     </Field>
-    <FormError :name="name" />
+    <FormError :name="name" class="sm:ml-4" />
     <FormCustomError v-if="type !== 'password'">{{
-      errorMessage
+      errorMessage?.[i18n?.global.locale.value]
     }}</FormCustomError>
   </div>
 </template>
@@ -45,6 +45,7 @@ import IconInputSuccess from "@/components/icons/IconInputSuccess.vue";
 import FormError from "@/components/ui/FormError.vue";
 import { Field } from "vee-validate";
 import FormCustomError from "@/components/ui/FormCustomError.vue";
+import i18n from "@/plugins/i18";
 defineProps({
   type: { type: String, required: true, default: "" },
   name: { type: String, required: true, default: "" },

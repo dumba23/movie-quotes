@@ -1,40 +1,43 @@
 <template>
-  <Form @submit="(values) => handleRegister(values)">
+  <form @submit.prevent="handleRegister">
     <FormInputField
       name="username"
-      labelName="Name"
+      :labelName="$t('name')"
       type="text"
-      placeholder="At least 3 & max.15 lower case characters"
+      :placeholder="$t('name_placeholder')"
       rules="required|min:3|max:15|lowerCaseAndNum"
     />
     <FormInputField
       name="email"
-      labelName="Email"
+      :labelName="$t('email')"
       type="email"
-      placeholder="Enter your email"
+      :placeholder="$t('email_placeholder')"
       rules="required|email"
     />
     <FormInputField
       name="password"
-      labelName="Password"
+      :labelName="$t('password')"
       type="password"
-      placeholder="At least 8 & max.15 lower case characters"
+      :placeholder="$t('password_placeholder')"
       rules="required|min:8|max:15|lowerCaseAndNum"
     />
     <FormInputField
       name="password_confirmation"
-      labelName="Confirm password"
+      :labelName="$t('confirm_password')"
       type="password"
-      placeholder="Confirm password"
+      :placeholder="$t('confirm_password')"
       rules="required|confirmed:@password"
     />
-    <FormSubmit name="Get started" />
-  </Form>
-  <GoogleSignButton name="Sign up with Google" @click="handleGoogleLogIn" />
+    <FormSubmit :name="$t('get_started')" />
+  </form>
+  <GoogleSignButton
+    :name="$t('sign_up_with_google')"
+    @click="handleGoogleLogIn"
+  />
 </template>
 
 <script setup>
-import { Form } from "vee-validate";
+import { useForm } from "vee-validate";
 import FormInputField from "@/components/ui/FormInputField.vue";
 import FormSubmit from "@/components/ui/FormSubmit.vue";
 import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
@@ -44,14 +47,26 @@ import { usePaginationStore } from "@/store/pagination";
 
 const paginationStore = usePaginationStore();
 
-const handleRegister = async (data) => {
-  const res = await registerUser(data);
+const { setFieldError, values } = useForm({
+  initialValues: {
+    username: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+  },
+});
+
+const handleRegister = async () => {
   try {
+    const res = await registerUser(values);
+
     if (res.status === 201) {
       paginationStore.updateModalName({ name: "confirm" });
     }
   } catch (error) {
-    console.log(error);
+    Object.keys(error.response.data.errors).forEach((key) => {
+      setFieldError(key, error.response.data.errors[key]);
+    });
   }
 };
 

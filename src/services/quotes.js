@@ -20,6 +20,7 @@ export const addQuote = async (data) => {
   return await axios.post("/api/quotes", data, {
     headers: {
       "Content-Type": "multipart/form-data",
+      "Accept-Language": localStorage.getItem("locale"),
     },
   });
 };
@@ -38,6 +39,7 @@ export const updateQuote = async (data, quoteId) => {
   return await axios.post("/api/quotes/" + quoteId, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
+      "Accept-Language": localStorage.getItem("locale"),
     },
   });
 };
@@ -49,7 +51,9 @@ export const deleteQuote = async (quoteId) => {
 
 export const addCommentOnQuote = async (quoteId, data) => {
   await axios.get("/sanctum/csrf-cookie");
-  return await axios.post("/api/quotes/" + quoteId + "/comments", data);
+  return await axios.post("/api/quotes/" + quoteId + "/comments", data, {
+    headers: { "Accept-Language": localStorage.getItem("locale") },
+  });
 };
 
 export const toggleLikeOnQuote = async (quoteId) => {

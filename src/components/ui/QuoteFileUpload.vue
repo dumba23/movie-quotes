@@ -3,7 +3,7 @@
     <img
       :src="selectedFile"
       alt="profile"
-      class="object-cover w-full max-h-[34rem]"
+      class="object-cover w-full max-h-[34rem] sm:h-72"
     />
 
     <div class="relative">
@@ -25,10 +25,10 @@
           />
         </Field>
         <div
-          class="absolute flex flex-col items-center space-y-2 right-1/2 px-10 translate-x-28 translate-y-[-3rem] py-8 text-base not-italic rounded-xl top-[-17rem] bg-half-transparent opacity-80 max-w-max"
+          class="absolute flex flex-col items-center space-y-2 right-1/2 px-10 translate-x-28 translate-y-[-3rem] sm:translate-y-10 sm:translate-x-20 py-8 text-base not-italic rounded-xl top-[-17rem] bg-half-transparent opacity-80 max-w-max"
         >
           <span><IconImageUpload /></span>
-          <span class="text-white">Change photo</span>
+          <span class="text-white">{{ $t("change_photo") }}</span>
         </div>
       </label>
     </div>

@@ -3,6 +3,7 @@
     <svg
       width="31"
       height="28"
+      class="sm:w-6 sm:h-6"
       viewBox="0 0 31 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
