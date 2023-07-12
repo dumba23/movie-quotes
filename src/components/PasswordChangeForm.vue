@@ -1,50 +1,61 @@
 <template>
-  <Form @submit="(values) => handlePasswordChange(values)">
+  <form @submit.prevent="handlePasswordChange">
     <FormInputField
       name="password"
-      labelName="Password"
+      :labelName="$t('password')"
       type="password"
-      placeholder="At least 8 & max.15 lower case characters"
+      :placeholder="$t('password_placeholder')"
       rules="required|min:8|max:15|lowerCaseAndNum"
-      :errorMessage="errorMessage"
     />
     <FormInputField
       name="password_confirmation"
-      labelName="Confirm password"
+      :labelName="$t('confirm_password')"
       type="password"
-      placeholder="Confirm password"
+      :placeholder="$t('confirm_password')"
       rules="required|confirmed:@password"
     />
-    <FormSubmit name="Reset password" />
-  </Form>
+    <FormSubmit :name="$t('reset_password')" />
+  </form>
 </template>
 
 <script setup>
-import { Form } from "vee-validate";
+import { useForm } from "vee-validate";
 import FormInputField from "@/components/ui/FormInputField.vue";
 import FormSubmit from "@/components/ui/FormSubmit.vue";
 import { usePaginationStore } from "@/store/pagination";
-import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { changePassword } from "@/services/recovery";
+import i18n from "@/plugins/i18";
+
+const { setFieldError, values } = useForm({
+  initialValues: {
+    password: "",
+    password_confirmation: "",
+  },
+});
 
 const route = useRoute();
 const router = useRouter();
 const paginationStore = usePaginationStore();
-const errorMessage = ref("");
 
-const handlePasswordChange = async (data) => {
+const handlePasswordChange = async () => {
   const { token } = route.query;
   try {
-    const res = await changePassword(data, token);
+    const res = await changePassword(values, token);
     if (res.status === 201) {
       paginationStore.updateModalName({ name: "success" });
       router.replace({ query: null });
     }
   } catch (error) {
-    const { status, message } = error.response.data;
-    if (!status) {
-      errorMessage.value = message;
+    if (!error.response.data.errors) {
+      setFieldError(
+        "login",
+        error.response.data.message?.[i18n.global.locale.value]
+      );
+    } else {
+      Object.keys(error.response.data.errors).forEach((key) => {
+        setFieldError(key, error.response.data.errors[key]);
+      });
     }
   }
 };

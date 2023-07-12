@@ -1,77 +1,88 @@
 <template>
-  <Form @submit="(values) => handleLogin(values)">
+  <form @submit.prevent="handleLogin">
     <FormInputField
       name="login"
-      labelName="Email"
+      :labelName="$t('email')"
       type="text"
-      placeholder="Enter your email"
+      :placeholder="$t('email_placeholder')"
       rules="required|min:3"
-      @input="handleCustomErrorMessageDisplay"
-      :errorMessage="errorMessage"
     />
     <FormInputField
       name="password"
-      labelName="Password"
+      :labelName="$t('password')"
       type="password"
-      placeholder="At least 8 & max.15 lower case characters"
+      :placeholder="$t('password_placeholder')"
       rules="required"
-      :errorMessage="errorMessage"
     />
-    <div class="flex justify-between mb-2">
+    <div class="flex justify-between mb-2 sm:mx-8">
       <label class="text-white"
-        ><input type="checkbox" name="remember_token" class="mr-2" />Remember
-        me</label
+        ><input type="checkbox" name="remember_token" class="mr-2" />{{
+          $t("remember_me")
+        }}</label
       >
       <div
         @click="handleModalName('recovery_mail_send')"
         class="text-blue-600 underline"
       >
-        Forgot password
+        {{ $t("forgot_password") }}
       </div>
     </div>
-    <FormSubmit name="Get started" />
-  </Form>
-  <GoogleSignButton name="Sign up with Google" @click="handleGoogleLogIn" />
+    <FormSubmit :name="$t('get_started')" />
+  </form>
+  <GoogleSignButton
+    :name="$t('sign_up_with_google')"
+    @click="handleGoogleLogIn"
+  />
 </template>
 
 <script setup>
-import { Form } from "vee-validate";
+import { useForm } from "vee-validate";
 import FormInputField from "@/components/ui/FormInputField.vue";
 import FormSubmit from "@/components/ui/FormSubmit.vue";
 import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
 import { authByDefault } from "@/services/auth";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";
-import { ref } from "vue";
 import { useRouter } from "vue-router";
+import i18n from "@/plugins/i18";
+
+const { setFieldError, values } = useForm({
+  initialValues: {
+    login: "",
+    password: "",
+  },
+  validationSchema: {
+    login: "required|min:3",
+    password: "required",
+  },
+});
 
 const router = useRouter();
 const paginationStore = usePaginationStore();
-const errorMessage = ref("");
 
 const handleModalName = (name) => {
   paginationStore.updateModalName({ name });
   document.documentElement.style.overflow = "auto";
 };
 
-const handleLogin = async (data) => {
+const handleLogin = async () => {
   try {
-    const res = await authByDefault(data);
+    const res = await authByDefault(values);
     if (res.status === 200) {
       paginationStore.updateModalName({ name: null });
       router.push({ name: "profile" });
     }
   } catch (error) {
-    const { status, message } = error.response.data;
-    if (!status) {
-      errorMessage.value = message;
+    if (!error.response.data.errors) {
+      setFieldError(
+        "login",
+        error.response.data.message?.[i18n.global.locale.value]
+      );
+    } else {
+      Object.keys(error.response.data.errors).forEach((key) => {
+        setFieldError(key, error.response.data.errors[key]);
+      });
     }
-  }
-};
-
-const handleCustomErrorMessageDisplay = (e) => {
-  if (e.target.value.length > 0) {
-    errorMessage.value = "";
   }
 };
 
