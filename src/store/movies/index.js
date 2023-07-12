@@ -35,7 +35,7 @@ export const useMoviesStore = defineStore("movies", {
     async initializeMovieData(payload) {
       try {
         const res = await getUserMovie(payload.id);
-        if (res.status === 200) this.movie = res.data;
+        if (res.status === 200) this.movie = res.data.data;
       } catch (error) {
         console.error(error);
       }
