@@ -105,5 +105,6 @@
   "write_a_comment": "დაწერე კომენტარი",
   "all_quotes": "ყველა ციტატა",
   "enter_new_username": "შეიყვანე ახალი მომხმარებლის სახელი",
-  "password_should_contain": "პაროლი უნდა შეიცავდეს"
+  "password_should_contain": "პაროლი უნდა შეიცავდეს",
+  "footer_message": "ფილმის ციტატები. ყველა უფლება დაცულია."
 }

@@ -59,10 +59,12 @@
       </div>
 
       <div
-        class="min-h-screen min-w-screen flex justify-center sm:bg-contain sm:min-h-max items-center bg-para2 bg-fixed bg-no-repeat bg-cover"
+        class="min-h-screen min-w-screen flex justify-center sm:bg-cover sm:min-h-parallax-small items-center bg-para2 bg-fixed bg-no-repeat bg-cover"
       >
-        <div class="flex translate-x-[-4rem] items-center">
-          <div class="w-[53px] bg-white h-[2px] mr-8 mb-40"></div>
+        <div class="flex translate-x-[-4rem] sm:-translate-x-5 items-center">
+          <div
+            class="w-[53px] bg-white h-[2px] mr-8 mb-40 sm:mb-20 sm:mr-2 sm:ml-14 sm:w-[10px]"
+          ></div>
           <div class="flex flex-col">
             <div class="w-[900px] sm:max-w-[330px] mb-6">
               <p class="text-5xl text-white sm:text-sm font-bold">
@@ -81,10 +83,12 @@
       </div>
 
       <div
-        class="min-h-screen min-w-screen flex justify-center sm:bg-contain sm:min-h-max items-center bg-para3 bg-fixed bg-no-repeat bg-cover"
+        class="min-h-screen min-w-screen flex justify-center sm:bg-cover sm:min-h-parallax-small items-center bg-para3 bg-fixed bg-no-repeat bg-cover"
       >
-        <div class="flex translate-x-[-4rem] items-center">
-          <div class="w-[53px] bg-white h-[2px] mr-8 mb-40"></div>
+        <div class="flex translate-x-[-4rem] sm:-translate-x-6 items-center">
+          <div
+            class="w-[53px] bg-white h-[2px] mr-8 mb-40 sm:mb-20 sm:mr-2 sm:ml-14 sm:w-[10px]"
+          ></div>
           <div class="flex flex-col">
             <div class="w-[900px] sm:max-w-[330px] mb-6">
               <p class="text-5xl text-white sm:text-sm font-bold">
@@ -102,6 +106,11 @@
         </div>
       </div>
     </div>
+    <footer class="w-full bg-gradient-to-t px-8 py-4">
+      <span class="text-primary-yellow font-medium text-lg sm:text-xs"
+        >© 2022 {{ $t("footer_message") }}</span
+      >
+    </footer>
   </div>
 </template>
 

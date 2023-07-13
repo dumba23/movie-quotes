@@ -104,5 +104,6 @@
   "write_a_comment": "Write a comment",
   "all_quotes": "All Quotes",
   "enter_new_username": "Enter new username",
-  "password_should_contain": "Password should contain"
+  "password_should_contain": "Password should contain",
+  "footer_message": "movie quotes. All rights reserverd."
 }
