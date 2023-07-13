@@ -27,7 +27,7 @@ import { useRoute, useRouter } from "vue-router";
 import { changePassword } from "@/services/recovery";
 import i18n from "@/plugins/i18";
 
-const { setFieldError, values } = useForm({
+const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     password: "",
     password_confirmation: "",
@@ -38,7 +38,7 @@ const route = useRoute();
 const router = useRouter();
 const paginationStore = usePaginationStore();
 
-const handlePasswordChange = async () => {
+const handlePasswordChange = handleSubmit(async () => {
   const { token } = route.query;
   try {
     const res = await changePassword(values, token);
@@ -58,5 +58,5 @@ const handlePasswordChange = async () => {
       });
     }
   }
-};
+});
 </script>

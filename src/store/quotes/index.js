@@ -11,7 +11,7 @@ export const useQuotesStore = defineStore("quotes", {
       try {
         const res = await getUserQuotesList();
         if (res.status === 200) {
-          this.quotes = [...res.data];
+          this.quotes = [...res.data.data];
         }
       } catch (error) {
         console.error(error);
@@ -21,7 +21,7 @@ export const useQuotesStore = defineStore("quotes", {
       try {
         const res = await getQuotesList();
         if (res.status === 200) {
-          this.allQuotes = [...res.data];
+          this.allQuotes = [...res.data.data];
         }
       } catch (error) {
         console.error(error);

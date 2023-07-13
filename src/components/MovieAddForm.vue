@@ -78,7 +78,7 @@ defineProps({
   profileImageUrl: { type: String, required: true, default: "" },
 });
 
-const { setFieldError, values } = useForm({
+const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     email: "",
     title_en: "",
@@ -99,7 +99,7 @@ const router = useRouter();
 
 const genres = ref([]);
 
-const handleAddMovie = async () => {
+const handleAddMovie = handleSubmit(async () => {
   try {
     const res = await addMovie(values);
     if (res.status === 200) {
@@ -117,7 +117,7 @@ const handleAddMovie = async () => {
       });
     }
   }
-};
+});
 
 onMounted(async () => {
   try {

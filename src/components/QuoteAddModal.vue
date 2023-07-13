@@ -106,7 +106,7 @@ const props = defineProps({
   movie: { type: Object, required: true, default: () => {} },
 });
 
-const { setFieldError, values } = useForm({
+const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     title_en: "",
     title_ka: "",
@@ -118,7 +118,7 @@ const route = useRoute();
 
 const moviesStore = useMoviesStore();
 
-const handleAddQuote = async () => {
+const handleAddQuote = handleSubmit(async () => {
   const {
     params: { id },
   } = route;
@@ -141,7 +141,7 @@ const handleAddQuote = async () => {
       });
     }
   }
-};
+});
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 

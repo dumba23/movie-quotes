@@ -12,7 +12,7 @@
           <div>{{ $t("instructions_to_reset_your_password") }}</div>
         </div>
       </div>
-      <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="handleSendMail">
         <FormInputField
           name="email"
           labelName="Email"
@@ -46,7 +46,7 @@ import { onClickOutside } from "@vueuse/core";
 import { recoverByMail } from "@/services/recovery";
 import i18n from "@/plugins/i18";
 
-const { setFieldError, values } = useForm({
+const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     email: "",
   },
@@ -63,7 +63,7 @@ const handleModalName = (name) => {
   document.documentElement.style.overflow = "auto";
 };
 
-const handleSubmit = async () => {
+const handleSendMail = handleSubmit(async () => {
   try {
     const res = await recoverByMail(values);
     if (res.status === 200) {
@@ -81,7 +81,7 @@ const handleSubmit = async () => {
       });
     }
   }
-};
+});
 
 onClickOutside(target, (event) =>
   event.target.id === "modal"

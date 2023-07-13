@@ -68,7 +68,7 @@ defineProps({
   movie: { type: Object, required: true, default: () => {} },
 });
 
-const { setFieldError, values } = useForm({
+const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     title_en: "",
     title_ka: "",
@@ -79,7 +79,7 @@ const quotesStore = useQuotesStore();
 const paginationStore = usePaginationStore();
 const userStore = useUserStore();
 
-const handleAddQuote = async () => {
+const handleAddQuote = handleSubmit(async () => {
   try {
     const res = await addQuote({ ...values, movie_id: values.movie_id });
     if (res.status === 200) {
@@ -99,7 +99,7 @@ const handleAddQuote = async () => {
       });
     }
   }
-};
+});
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
