@@ -79,9 +79,9 @@ const formValues = {
   title_ka: `"${props.title.ka}"`,
 };
 
-const { values } = useForm({ initialValues: formValues });
+const { values, handleSubmit } = useForm({ initialValues: formValues });
 
-const handleUpdateQuote = async () => {
+const handleUpdateQuote = handleSubmit(async () => {
   const data = values;
 
   if (data.image == undefined) {
@@ -97,7 +97,7 @@ const handleUpdateQuote = async () => {
   } catch (error) {
     console.error(error);
   }
-};
+});
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 

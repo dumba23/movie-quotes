@@ -47,7 +47,7 @@ import { usePaginationStore } from "@/store/pagination";
 
 const paginationStore = usePaginationStore();
 
-const { setFieldError, values } = useForm({
+const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     username: "",
     email: "",
@@ -56,7 +56,7 @@ const { setFieldError, values } = useForm({
   },
 });
 
-const handleRegister = async () => {
+const handleRegister = handleSubmit(async () => {
   try {
     const res = await registerUser(values);
 
@@ -68,7 +68,7 @@ const handleRegister = async () => {
       setFieldError(key, error.response.data.errors[key]);
     });
   }
-};
+});
 
 const handleGoogleLogIn = () => {
   authWithGoogle();

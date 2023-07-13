@@ -98,12 +98,12 @@ const formValues = {
   release_date: props.movie.release_date,
 };
 
-const { values } = useForm({ initialValues: formValues });
+const { values, handleSubmit } = useForm({ initialValues: formValues });
 
 const errorMessage = ref("");
 const genres = ref([]);
 
-const submitForm = async () => {
+const submitForm = handleSubmit(async () => {
   const {
     params: { id },
   } = route;
@@ -123,7 +123,7 @@ const submitForm = async () => {
       errorMessage.value = message;
     }
   }
-};
+});
 
 onBeforeMount(async () => {
   try {

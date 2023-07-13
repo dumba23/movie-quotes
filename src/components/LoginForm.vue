@@ -46,7 +46,7 @@ import { usePaginationStore } from "@/store/pagination";
 import { useRouter } from "vue-router";
 import i18n from "@/plugins/i18";
 
-const { setFieldError, values } = useForm({
+const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     login: "",
     password: "",
@@ -65,7 +65,7 @@ const handleModalName = (name) => {
   document.documentElement.style.overflow = "auto";
 };
 
-const handleLogin = async () => {
+const handleLogin = handleSubmit(async () => {
   try {
     const res = await authByDefault(values);
     if (res.status === 200) {
@@ -84,7 +84,7 @@ const handleLogin = async () => {
       });
     }
   }
-};
+});
 
 const handleGoogleLogIn = () => {
   authWithGoogle();
