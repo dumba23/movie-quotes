@@ -1,7 +1,14 @@
 <template>
   <div class="bg-primary-black rounded-lg w-[70%] sm:w-full py-6">
     <div class="flex items-center space-x-3 mb-2 px-4">
-      <img :src="user.avatar" class="w-10 h-10 rounded-full" />
+      <img
+        :src="
+          user.avatar.includes('http')
+            ? user.avatar
+            : apiUrl + '/storage/' + user.avatar
+        "
+        class="w-10 h-10 rounded-full"
+      />
       <span class="sm:text-base">{{ user.username }}</span>
     </div>
     <div class="flex space-x-4 mb-8 px-4 sm:text-base">
@@ -30,7 +37,14 @@
       <QuoteCommentCard :comment="comment" />
     </div>
     <div class="flex mx-4 mt-6">
-      <img :src="userStore.user.avatar" class="h-10 w-10 rounded-full mr-4" />
+      <img
+        :src="
+          userStore.user.avatar.includes('http')
+            ? userStore.user.avatar
+            : apiUrl + '/storage/' + userStore.user.avatar
+        "
+        class="h-10 w-10 rounded-full mr-4"
+      />
       <Form @submit="(values) => handleAddComment(values)" class="w-full">
         <CommentInput />
       </Form>
@@ -48,6 +62,8 @@ import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
 import QuoteCommentCard from "@/components/QuoteCommentCard.vue";
 import i18n from "../plugins/i18";
+
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const props = defineProps({
   data: { type: Object, required: true, default: () => {} },

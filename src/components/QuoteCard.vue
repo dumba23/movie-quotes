@@ -101,18 +101,12 @@ const totalComments = ref(0);
 const totalLikes = ref(0);
 
 onMounted(() => {
-  const { quote_id } = route.query;
-
   const quote = moviesStore.movie.quotes.find(
     (quote) => quote.id === props.quoteId
   );
 
   totalComments.value = quote.comments?.length;
   totalLikes.value = quote.likes?.length;
-
-  if (quote_id) {
-    handleOpenModal("view");
-  }
 });
 
 const handleToggleDropdown = () => {

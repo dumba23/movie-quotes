@@ -32,10 +32,16 @@
     <SuccessModal v-else-if="paginationStore.modalName == 'success'" />
     <div class="h-full w-full">
       <div
-        class="min-h-screen min-w-screen sm:max-h-96 sm:bg-cover sm:bg-top sm:min-h-parallax-small justify-center items-center bg-para1 bg-fixed bg-no-repeat bg-cover"
+        class="min-h-screen interstellar min-w-screen sm:max-h-96 sm:bg-cover sm:bg-top sm:min-h-parallax-small justify-center items-center bg-para1 bg-fixed bg-no-repeat bg-cover"
       >
         <div
-          class="flex justify-center translate-x-[-10rem] translate-y-[10rem] sm:translate-x-0 sm:translate-y-4 items-center"
+          class="bg-top-gradient absolute right-0 w-screen min-h-screen"
+        ></div>
+        <div
+          class="bg-left-gradient absolute right-0 w-screen min-h-screen"
+        ></div>
+        <div
+          class="flex justify-center translate-x-[-15rem] translate-y-[30rem] sm:translate-x-0 sm:translate-y-4 items-center"
         >
           <div
             class="w-[53px] bg-white h-[2px] mr-8 mb-28 sm:mr-2 sm:ml-7 sm:mb-0 sm:translate-y-[-2.3rem]"
@@ -61,7 +67,13 @@
       <div
         class="min-h-screen min-w-screen flex justify-center sm:bg-cover sm:min-h-parallax-small items-center bg-para2 bg-fixed bg-no-repeat bg-cover"
       >
-        <div class="flex translate-x-[-4rem] sm:-translate-x-5 items-center">
+        <div
+          class="bg-top-gradient absolute right-0 w-screen min-h-screen"
+        ></div>
+        <div
+          class="bg-left-gradient absolute right-0 w-screen min-h-screen"
+        ></div>
+        <div class="flex translate-x-[-8rem] sm:-translate-x-5 items-center">
           <div
             class="w-[53px] bg-white h-[2px] mr-8 mb-40 sm:mb-20 sm:mr-2 sm:ml-14 sm:w-[10px]"
           ></div>
@@ -85,7 +97,13 @@
       <div
         class="min-h-screen min-w-screen flex justify-center sm:bg-cover sm:min-h-parallax-small items-center bg-para3 bg-fixed bg-no-repeat bg-cover"
       >
-        <div class="flex translate-x-[-4rem] sm:-translate-x-6 items-center">
+        <div
+          class="bg-top-gradient absolute right-0 w-screen min-h-screen"
+        ></div>
+        <div
+          class="bg-left-gradient absolute right-0 w-screen min-h-screen"
+        ></div>
+        <div class="flex translate-x-[-8rem] sm:-translate-x-6 items-center">
           <div
             class="w-[53px] bg-white h-[2px] mr-8 mb-40 sm:mb-20 sm:mr-2 sm:ml-14 sm:w-[10px]"
           ></div>

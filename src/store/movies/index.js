@@ -37,7 +37,9 @@ export const useMoviesStore = defineStore("movies", {
         const res = await getUserMovie(payload.id);
         if (res.status === 200) this.movie = res.data.data;
       } catch (error) {
-        console.error(error);
+        if (error.response.status) {
+          window.location.replace("/403");
+        }
       }
     },
     clearMovieData() {

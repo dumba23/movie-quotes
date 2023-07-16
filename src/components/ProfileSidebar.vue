@@ -7,7 +7,9 @@
         <template #icon>
           <img
             :src="
-              imageUrl.includes('http') ? imageUrl : apiUrl + '/' + imageUrl
+              imageUrl.includes('http')
+                ? imageUrl
+                : apiUrl + '/storage/' + imageUrl
             "
             alt="profile"
             class="w-14 h-14 rounded-full sm:w-8 sm:h-8"
