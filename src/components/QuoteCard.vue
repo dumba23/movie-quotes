@@ -107,8 +107,8 @@ onMounted(() => {
     (quote) => quote.id === props.quoteId
   );
 
-  totalComments.value = quote.comments.length;
-  totalLikes.value = quote.likes.length;
+  totalComments.value = quote.comments?.length;
+  totalLikes.value = quote.likes?.length;
 
   if (quote_id) {
     handleOpenModal("view");
