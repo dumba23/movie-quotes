@@ -35,7 +35,7 @@
             class="italic"
           />
           <MovieTextarea
-            rules="required"
+            rules="required|georgian"
             placeholder="ახალი ციტატა"
             name="title_ka"
           />

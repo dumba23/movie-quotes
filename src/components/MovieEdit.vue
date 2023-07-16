@@ -25,7 +25,7 @@
         labelName="ფილმის სახელი:"
         name="title_ka"
         :errorMessage="errorMessage"
-        rules="required|min:5"
+        rules="required|min:5|georgian"
       />
       <GenresInput :genres="genres" :initialValue="movie.genres" />
       <MovieInput
@@ -47,7 +47,7 @@
         labelName="რეჟისორი:"
         name="director_ka"
         :errorMessage="errorMessage"
-        rules="required|min:5"
+        rules="required|min:5|georgian"
       />
       <MovieTextarea
         rules="required|min:30"
@@ -55,7 +55,7 @@
         name="description_en"
       />
       <MovieTextarea
-        rules="required|min:30"
+        rules="required|min:30|georgian"
         labelName="აღწერა:"
         name="description_ka"
       />

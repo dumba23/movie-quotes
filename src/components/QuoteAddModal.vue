@@ -74,7 +74,7 @@
             class="italic"
           />
           <MovieTextarea
-            rules="required"
+            rules="required|georgian"
             placeholder="ციტატა ქართულ ენაზე"
             name="title_ka"
           />
@@ -124,7 +124,7 @@ const handleAddQuote = handleSubmit(async () => {
   } = route;
   try {
     const res = await addQuote({ ...values, movie_id: props.movie.id });
-    if (res.status === 200) {
+    if (res.status === 201) {
       moviesStore.initializeMovieData({ id });
       isModalOpen.value = false;
       paginationStore.updateModalName({ name: "" });
