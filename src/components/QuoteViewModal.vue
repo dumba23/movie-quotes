@@ -56,18 +56,18 @@
           class="border-b border-secondary-grey flex space-x-10 pb-4 mx-4 mt-4"
         >
           <div class="flex sm:items-center">
-            <span class="mr-2">{{ comments?.length }}</span
+            <span class="mr-2">{{ comments?.length || 0 }}</span
             ><IconComment class="sm:w-6 sm:h-6" />
           </div>
           <div class="flex sm:items-center">
-            <span class="mr-2">{{ likes?.length }}</span
+            <span class="mr-2">{{ likes?.length || 0 }}</span
             ><IconHeart
               @click="handleLike"
               class="cursor-pointer sm:w-6 sm:h-6"
             />
           </div>
         </div>
-        <div v-if="comments.length > 0">
+        <div v-if="comments?.length > 0">
           <div v-for="comment in comments" :key="comment.id">
             <QuoteCommentCard :comment="comment" />
           </div>
@@ -130,8 +130,8 @@ const fetchUserQuoteInfo = async () => {
   try {
     const res = await getUserQuote(props.quoteId);
     if (res.status === 200) {
-      comments.value = res?.data?.comments;
-      likes.value = res?.data?.likes;
+      comments.value = res?.data?.data.comments;
+      likes.value = res?.data?.data.likes;
     }
   } catch (error) {
     console.error(error);
