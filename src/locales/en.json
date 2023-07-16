@@ -69,7 +69,7 @@
   "save_changes": "Save changes",
   "write_new_quote": "Write new quote",
   "search_by": "Search by",
-  "search_by_expanded": "Enter @ to search movies, Enter # to search quotes",
+  "search_by_expanded": "Enter {searchKeyword} to search movies, Enter {quoteKeyword} to search quotes",
   "notifications": "Notifications",
   "mark_all_as_read": "Mark all as read",
   "new": "New",
