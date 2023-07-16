@@ -23,7 +23,7 @@ defineRule("lowerCaseAndNum", (value) => {
   return true;
 });
 defineRule("georgian", (value) => {
-  const GeorgianRegex = /^[\u10A0-\u10FF]*$/;
+  const GeorgianRegex = /^[\u10A0-\u10FF\s\p{P}]*$/u;
 
   if (!GeorgianRegex.test(value)) {
     return false;
