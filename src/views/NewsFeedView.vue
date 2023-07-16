@@ -28,7 +28,12 @@
           <IconSearch class="sm:hidden" />
           <input
             :placeholder="
-              isSearchExpanded ? $t('search_by_expanded') : $t('search_by')
+              isSearchExpanded
+                ? $t('search_by_expanded', {
+                    searchKeyword: '@',
+                    quoteKeyword: '#',
+                  })
+                : $t('search_by')
             "
             class="bg-transparent focus:outline-none sm:hidden"
             :class="isSearchExpanded ? 'w-full ' : 'max-w-[6rem]'"
@@ -222,5 +227,10 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
   moviesStore.clearMovieData();
+
+  const channel = window.Echo.private(`post.${userStore.user.id}`);
+
+  channel.stopListening("NewLikeEvent");
+  channel.stopListening("NewCommentEvent");
 });
 </script>
