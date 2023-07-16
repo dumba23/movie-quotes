@@ -67,8 +67,10 @@
             />
           </div>
         </div>
-        <div v-for="comment in comments" :key="comment.id">
-          <QuoteCommentCard :comment="comment" />
+        <div v-if="comments.length > 0">
+          <div v-for="comment in comments" :key="comment.id">
+            <QuoteCommentCard :comment="comment" />
+          </div>
         </div>
         <div class="flex mx-4 mt-6">
           <img
