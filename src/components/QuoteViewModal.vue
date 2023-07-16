@@ -128,8 +128,8 @@ const fetchUserQuoteInfo = async () => {
   try {
     const res = await getUserQuote(props.quoteId);
     if (res.status === 200) {
-      comments.value = res.data.comments;
-      likes.value = res.data.likes;
+      comments.value = res?.data?.comments;
+      likes.value = res?.data?.likes;
     }
   } catch (error) {
     console.error(error);
