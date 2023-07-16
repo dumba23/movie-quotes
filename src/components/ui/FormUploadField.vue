@@ -11,7 +11,7 @@
           : selectedFile
       "
       alt="profile"
-      class="w-[12rem] min-h-[12rem] sm:w-32 sm:min-h-[5rem] rounded-full mb-2"
+      class="w-[12rem] max-h-[12rem] sm:w-32 sm:min-h-[5rem] rounded-full mb-2"
     />
 
     <Field name="avatar" v-slot="{ handleChange, handleBlur }">
