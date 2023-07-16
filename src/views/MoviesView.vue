@@ -59,6 +59,7 @@
           <MovieAddForm
             :username="userStore.user.username"
             :profileImageUrl="userStore.user.avatar"
+            @closeModal="isModalOpen = false"
           />
         </div>
       </template>
