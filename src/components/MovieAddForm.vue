@@ -23,7 +23,7 @@
         type="text"
         placeholder="ფილმის სახელი"
         name="title_ka"
-        rules="required|min:5"
+        rules="required|min:5|georgian"
       />
       <GenresInput :genres="genres" />
       <MovieInput
@@ -42,7 +42,7 @@
         type="text"
         placeholder="რეჟისორი"
         name="director_ka"
-        rules="required|min:5"
+        rules="required|min:5|georgian"
       />
       <MovieTextarea
         rules="required|min:30"
@@ -50,7 +50,7 @@
         name="description_en"
       />
       <MovieTextarea
-        rules="required|min:30"
+        rules="required|min:30|georgian"
         placeholder="აღწერა"
         name="description_ka"
       />
@@ -71,12 +71,15 @@ import { addMovie } from "@/services/movies";
 import { onMounted, ref } from "vue";
 import { getMovieGenres } from "@/services/movies";
 import { useRouter } from "vue-router";
+import { useMoviesStore } from "@/store/movies";
 import i18n from "@/plugins/i18";
 
 defineProps({
   username: { type: String, required: true, default: "" },
   profileImageUrl: { type: String, required: true, default: "" },
 });
+
+const emit = defineEmits(["closeModal"]);
 
 const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
@@ -93,6 +96,8 @@ const { setFieldError, values, handleSubmit } = useForm({
   },
 });
 
+const moviesStore = useMoviesStore();
+
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const router = useRouter();
@@ -102,8 +107,10 @@ const genres = ref([]);
 const handleAddMovie = handleSubmit(async () => {
   try {
     const res = await addMovie(values);
-    if (res.status === 200) {
+    if (res.status === 201) {
       router.push({ name: "movies" });
+      emit("closeModal");
+      moviesStore.initializeMoviesData();
     }
   } catch (error) {
     if (!error.response.data.errors) {

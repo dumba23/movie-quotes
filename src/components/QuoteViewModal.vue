@@ -56,11 +56,11 @@
           class="border-b border-secondary-grey flex space-x-10 pb-4 mx-4 mt-4"
         >
           <div class="flex sm:items-center">
-            <span class="mr-2">{{ comments.length }}</span
+            <span class="mr-2">{{ comments?.length }}</span
             ><IconComment class="sm:w-6 sm:h-6" />
           </div>
           <div class="flex sm:items-center">
-            <span class="mr-2">{{ likes.length }}</span
+            <span class="mr-2">{{ likes?.length }}</span
             ><IconHeart
               @click="handleLike"
               class="cursor-pointer sm:w-6 sm:h-6"
@@ -128,7 +128,6 @@ const fetchUserQuoteInfo = async () => {
   try {
     const res = await getUserQuote(props.quoteId);
     if (res.status === 200) {
-      console.log(res);
       comments.value = res.data.comments;
       likes.value = res.data.likes;
     }
