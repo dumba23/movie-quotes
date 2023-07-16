@@ -5,7 +5,11 @@
     <div class="flex flex-col">
       <div class="flex">
         <img
-          :src="notification.sender.avatar"
+          :src="
+            notification.sender.avatar.includes('http')
+              ? notification.sender.avatar
+              : apiUrl + '/storage/' + notification.sender.avatar
+          "
           alt="avatar"
           class="h-10 w-10 rounded-full mr-4"
           :class="notification.read === 0 && 'border-2 border-primary-success'"
@@ -47,6 +51,8 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/en";
 import i18n from "@/plugins/i18";
+
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 defineProps({
   notification: { required: true, type: Object, default: () => {} },
