@@ -227,6 +227,7 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
   moviesStore.clearMovieData();
+  moviesStore.clearMoviesData();
 
   const channel = window.Echo.private(`post.${userStore.user.id}`);
 

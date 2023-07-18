@@ -45,5 +45,8 @@ export const useMoviesStore = defineStore("movies", {
     clearMovieData() {
       this.movie = {};
     },
+    clearMoviesData() {
+      this.movies = [];
+    },
   },
 });
