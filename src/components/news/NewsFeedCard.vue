@@ -29,8 +29,17 @@
         ><IconComment class="sm:w-6 sm:h-6" />
       </div>
       <div class="flex sm:items-center">
-        <span class="mr-2">{{ data.likes.length }}</span
-        ><IconHeart @click="handleLike" class="cursor-pointer sm:w-6 sm:h-6" />
+        <span class="mr-2">{{ data.likes.length }}</span>
+        <IconHeart
+          v-if="userStore.user.id !== data.likes[index]?.id"
+          @click="handleLike"
+          class="cursor-pointer sm:w-6 sm:h-6"
+        />
+        <IconPinkHeart
+          v-else
+          @click="handleLike"
+          class="cursor-pointer w-8 h-8 sm:w-6 sm:h-6"
+        />
       </div>
     </div>
     <div v-for="comment in data.comments" :key="comment.id">
@@ -56,6 +65,7 @@
 import { useForm } from "vee-validate";
 import IconComment from "@/components/icons/IconComment.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
+import IconPinkHeart from "@/components/icons/IconPinkHeart.vue";
 import InputComment from "@/components/ui/InputComment.vue";
 import { toggleLikeOnQuote, addCommentOnQuote } from "@/services/quotes";
 import { useQuotesStore } from "@/store/quotes";
@@ -68,8 +78,8 @@ const apiUrl = import.meta.env.VITE_API_BASE_URL;
 const props = defineProps({
   data: { type: Object, required: true, default: () => {} },
   user: { type: Object, required: true, defult: () => {} },
+  index: { type: Number, required: true, default: 0 },
 });
-
 const { resetField, values } = useForm();
 
 const quotesStore = useQuotesStore();

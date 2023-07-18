@@ -68,8 +68,9 @@
       </div>
       <div class="space-y-8" v-if="searchTerm.length === 0">
         <NewsFeedCard
-          v-for="quote in quotesStore.allQuotes"
+          v-for="(quote, index) in quotesStore.allQuotes"
           :key="quote.id"
+          :index="index"
           :data="quote"
           :user="quote.movie.user"
         />
