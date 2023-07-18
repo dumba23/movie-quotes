@@ -43,7 +43,7 @@
           class="bg-left-gradient absolute right-0 w-screen min-h-screen"
         ></div>
         <div
-          class="flex justify-center translate-x-[-15rem] translate-y-[30rem] sm:translate-x-0 sm:translate-y-4 items-center"
+          class="flex justify-center translate-x-[-25rem] translate-y-[30rem] sm:translate-x-0 sm:translate-y-4 items-center"
         >
           <div
             class="w-[53px] bg-white h-[2px] mr-8 mb-28 sm:mr-2 sm:ml-7 sm:mb-0 sm:translate-y-[-2.3rem]"
@@ -52,7 +52,7 @@
             <div
               class="text-5xl text-white w-[700px] sm:text-sm sm:max-w-[330px] mb-8"
             >
-              <p class="font-bold">
+              <p class="font-bold tracking-wider">
                 “{{ $t("landing.you_have_to_leave_something") }} <br />
                 {{ $t("landing.behind_to_go_forward") }}”
               </p>
@@ -75,17 +75,19 @@
         <div
           class="bg-left-gradient absolute right-0 w-screen min-h-screen"
         ></div>
-        <div class="flex translate-x-[-8rem] sm:-translate-x-5 items-center">
+        <div class="flex translate-x-[-18rem] sm:-translate-x-5 items-center">
           <div
             class="w-[53px] bg-white h-[2px] mr-8 mb-40 sm:mb-20 sm:mr-2 sm:ml-14 sm:w-[10px]"
           ></div>
           <div class="flex flex-col">
             <div class="w-[900px] sm:max-w-[330px] mb-6">
-              <p class="text-5xl text-white sm:text-sm font-bold">
-                {{ $t("landing.i_think_we_just_gonna_have") }} <br />
+              <p
+                class="text-5xl text-white sm:text-sm font-bold tracking-wider"
+              >
+                "{{ $t("landing.i_think_we_just_gonna_have") }} <br />
                 {{ $t("landing.to_be_secretly_in_love_with_each_other") }}
                 <br />
-                {{ $t("landing.and_leave_it_that") }}
+                {{ $t("landing.and_leave_it_that") }}"
               </p>
             </div>
             <div
@@ -106,17 +108,19 @@
         <div
           class="bg-left-gradient absolute right-0 w-screen min-h-screen"
         ></div>
-        <div class="flex translate-x-[-8rem] sm:-translate-x-6 items-center">
+        <div class="flex translate-x-[-18rem] sm:-translate-x-6 items-center">
           <div
             class="w-[53px] bg-white h-[2px] mr-8 mb-40 sm:mb-20 sm:mr-2 sm:ml-14 sm:w-[10px]"
           ></div>
           <div class="flex flex-col">
             <div class="w-[900px] sm:max-w-[330px] mb-6">
-              <p class="text-5xl text-white sm:text-sm font-bold">
-                {{ $t("landing.i_think_we_just_gonna_have") }} <br />
+              <p
+                class="text-5xl text-white sm:text-sm font-bold tracking-wider"
+              >
+                "{{ $t("landing.i_think_we_just_gonna_have") }} <br />
                 {{ $t("landing.to_be_secretly_in_love_with_each_other") }}
                 <br />
-                {{ $t("landing.and_leave_it_that") }}
+                {{ $t("landing.and_leave_it_that") }}"
               </p>
             </div>
             <div
