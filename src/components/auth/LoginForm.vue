@@ -40,7 +40,7 @@ import { useForm } from "vee-validate";
 import InputAuth from "@/components/ui/InputAuth.vue";
 import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
-import { authByDefault } from "@/services/auth";
+import { login } from "@/services/auth";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";
 import { useRouter } from "vue-router";
@@ -66,7 +66,7 @@ const handleModalName = (name) => {
 
 const handleLogin = handleSubmit(async () => {
   try {
-    const res = await authByDefault(values);
+    const res = await login(values);
     if (res.status === 200) {
       paginationStore.updateModalName({ name: null });
       router.push({ name: "profile" });
