@@ -2,12 +2,12 @@ import axios from "@/plugins/axios/axios.js";
 
 export const getQuotesList = async () => {
   await axios.get("/sanctum/csrf-cookie");
-  return await axios.get("/api/all/quotes");
+  return await axios.get("/api/quotes");
 };
 
 export const getUserQuotesList = async () => {
   await axios.get("/sanctum/csrf-cookie");
-  return await axios.get("/api/quotes");
+  return await axios.get("/api/quotes/authorized");
 };
 
 export const getUserQuote = async (quoteId) => {

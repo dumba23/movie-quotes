@@ -2,12 +2,12 @@ import axios from "@/plugins/axios/axios.js";
 
 export const getMoviesList = async () => {
   await axios.get("/sanctum/csrf-cookie");
-  return await axios.get("/api/all/movies");
+  return await axios.get("/api/movies");
 };
 
 export const getUserMoviesList = async () => {
   await axios.get("/sanctum/csrf-cookie");
-  return await axios.get("/api/movies");
+  return await axios.get("/api/movies/authorized");
 };
 
 export const getUserMovie = async (movieId) => {
