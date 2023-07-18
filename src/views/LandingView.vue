@@ -17,10 +17,10 @@
         {{ $t("landing.get_started") }}
       </button>
     </div>
-    <RegistrationView v-if="paginationStore.modalName == 'register'" />
+    <RegistrationModal v-if="paginationStore.modalName == 'register'" />
     <MailConfirmModal v-else-if="paginationStore.modalName == 'confirm'" />
     <VerifyModal v-else-if="paginationStore.modalName == 'verify'" />
-    <LoginView v-else-if="paginationStore.modalName == 'auth'" />
+    <LoginModal v-else-if="paginationStore.modalName == 'auth'" />
     <RecoveryMailSendModal
       v-else-if="paginationStore.modalName == 'recovery_mail_send'"
     />
@@ -139,9 +139,9 @@
 <script setup>
 import TheHeader from "@/components/shared/TheHeader.vue";
 import MailConfirmModal from "@/components/auth/MailConfirmModal.vue";
-import RegistrationView from "@/views/RegistrationView.vue";
+import RegistrationModal from "@/components/auth/RegistrationModal.vue";
 import VerifyModal from "@/components/auth/VerifyModal.vue";
-import LoginView from "@/views/LoginView.vue";
+import LoginModal from "@/components/auth/LoginModal.vue";
 import RecoveryMailSendModal from "@/components/auth/RecoveryMailSendModal.vue";
 import PasswordChangeView from "@/views/PasswordChangeView.vue";
 import RecoverySentModal from "@/components/auth/RecoverySentModal.vue";
