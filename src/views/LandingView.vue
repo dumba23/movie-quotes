@@ -37,10 +37,10 @@
         class="min-h-screen interstellar min-w-screen sm:max-h-96 sm:bg-cover sm:bg-top sm:min-h-parallax-small justify-center items-center bg-para1 bg-fixed bg-no-repeat bg-cover"
       >
         <div
-          class="bg-top-gradient absolute right-0 w-screen min-h-screen"
+          class="bg-top-gradient absolute right-0 w-screen sm:min-h-[300px]"
         ></div>
         <div
-          class="bg-left-gradient absolute right-0 w-screen min-h-screen"
+          class="bg-left-gradient absolute right-0 w-screen min-h-screen sm:min-h-[300px]"
         ></div>
         <div
           class="flex justify-center translate-x-[-25rem] translate-y-[30rem] sm:translate-x-0 sm:translate-y-4 items-center"
@@ -70,10 +70,10 @@
         class="min-h-screen min-w-screen flex justify-center sm:bg-cover sm:min-h-parallax-small items-center bg-para2 bg-fixed bg-no-repeat bg-cover"
       >
         <div
-          class="bg-top-gradient absolute right-0 w-screen min-h-screen"
+          class="bg-top-gradient absolute right-0 w-screen min-h-screen sm:min-h-[300px]"
         ></div>
         <div
-          class="bg-left-gradient absolute right-0 w-screen min-h-screen"
+          class="bg-left-gradient absolute right-0 w-screen min-h-screen sm:min-h-[300px]"
         ></div>
         <div class="flex translate-x-[-18rem] sm:-translate-x-5 items-center">
           <div
@@ -103,10 +103,10 @@
         class="min-h-screen min-w-screen flex justify-center sm:bg-cover sm:min-h-parallax-small items-center bg-para3 bg-fixed bg-no-repeat bg-cover"
       >
         <div
-          class="bg-top-gradient absolute right-0 w-screen min-h-screen"
+          class="bg-top-gradient absolute right-0 w-screen min-h-screen sm:min-h-[300px]"
         ></div>
         <div
-          class="bg-left-gradient absolute right-0 w-screen min-h-screen"
+          class="bg-left-gradient absolute right-0 w-screen min-h-screen sm:min-h-[300px]"
         ></div>
         <div class="flex translate-x-[-18rem] sm:-translate-x-6 items-center">
           <div
