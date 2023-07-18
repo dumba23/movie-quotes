@@ -1,6 +1,6 @@
 import defaultInstance from "@/plugins/axios/axios.js";
 
-export const registerUser = async (data) => {
+export const register = async (data) => {
   return defaultInstance.post("/api/register", data, {
     headers: { "Accept-Language": localStorage.getItem("locale") },
   });

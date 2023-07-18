@@ -41,7 +41,7 @@ import { useForm } from "vee-validate";
 import InputAuth from "@/components/ui/InputAuth.vue";
 import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
-import { registerUser } from "@/services/register";
+import { register } from "@/services/register";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";
 
@@ -58,7 +58,7 @@ const { setFieldError, values, handleSubmit } = useForm({
 
 const handleRegister = handleSubmit(async () => {
   try {
-    const res = await registerUser(values);
+    const res = await register(values);
 
     if (res.status === 201) {
       paginationStore.updateModalName({ name: "confirm" });
