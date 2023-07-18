@@ -69,7 +69,7 @@ const handleLogin = handleSubmit(async () => {
     const res = await login(values);
     if (res.status === 200) {
       paginationStore.updateModalName({ name: null });
-      router.push({ name: "profile" });
+      router.push({ name: "news" });
     }
   } catch (error) {
     if (!error.response.data.errors) {

@@ -34,7 +34,9 @@
         :value="userStore.user.username"
         :requiredLabel="false"
       />
-      <div class="flex items-center justify-center">
+      <div
+        :class="!userStore.user.google_id && 'flex items-center justify-center'"
+      >
         <InputAuth
           name="dummy_email"
           :labelName="$t('auth.email')"
