@@ -25,13 +25,8 @@ defineProps({
 });
 
 const countQuotes = (movieId, quotes) => {
-  let count = 0;
-  for (let i = 0; i <= quotes.length; i++) {
-    if (movieId === quotes[i]?.movie_id) {
-      count++;
-    }
-  }
-
-  return count;
+  return quotes.reduce((count, quote) => {
+    return count + (quote?.movie_id === movieId ? 1 : 0);
+  }, 0);
 };
 </script>
