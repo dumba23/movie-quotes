@@ -30,7 +30,7 @@
       </div>
       <span v-else>{{ $t("select_genres") }}</span>
     </div>
-    <FormError name="genre" />
+    <ErrorMessage name="genre" />
     <div
       :class="isOpen ? '' : 'hidden'"
       class="absolute z-10 mt-1 w-full px-4 py-2 bg-light-grey text-black rounded-md shadow-lg overflow-y-auto h-36"
@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import FormError from "@/components/ui/FormError.vue";
+import ErrorMessage from "@/components/ui/ErrorMessage.vue";
 import IconClose from "@/components/icons/IconClose.vue";
 import { Field } from "vee-validate";
 import { onClickOutside } from "@vueuse/core";

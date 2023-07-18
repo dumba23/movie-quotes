@@ -78,7 +78,7 @@
             class="h-10 w-10 rounded-full mr-4"
           />
           <Form @submit="(values) => handleAddComment(values)" class="w-full">
-            <CommentInput />
+            <InputComment />
           </Form>
         </div>
       </div>
@@ -88,7 +88,7 @@
 
 <script setup>
 import { Form } from "vee-validate";
-import CommentInput from "@/components/ui/CommentInput.vue";
+import InputComment from "@/components/ui/InputComment.vue";
 import IconClose from "@/components/icons/IconClose.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";

@@ -32,19 +32,19 @@
         />
       </div>
     </Field>
-    <FormError :name="name" class="sm:ml-4" />
-    <FormCustomError v-if="type !== 'password'">{{
+    <ErrorMessage :name="name" class="sm:ml-4" />
+    <ErrorMessageApi v-if="type !== 'password'">{{
       errorMessage?.[i18n?.global.locale.value]
-    }}</FormCustomError>
+    }}</ErrorMessageApi>
   </div>
 </template>
 
 <script setup>
 import IconInputError from "@/components/icons/IconInputError.vue";
 import IconInputSuccess from "@/components/icons/IconInputSuccess.vue";
-import FormError from "@/components/ui/FormError.vue";
+import ErrorMessage from "@/components/ui/ErrorMessage.vue";
 import { Field } from "vee-validate";
-import FormCustomError from "@/components/ui/FormCustomError.vue";
+import ErrorMessageApi from "@/components/ui/ErrorMessageApi.vue";
 import i18n from "@/plugins/i18";
 defineProps({
   type: { type: String, required: true, default: "" },

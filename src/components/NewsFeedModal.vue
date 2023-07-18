@@ -28,20 +28,20 @@
           <div>{{ userStore.user.username }}</div>
         </div>
         <form @submit="(values) => handleAddQuote(values)">
-          <MovieTextarea
+          <TextareaMovie
             rules="required"
             placeholder="Start create new quote"
             name="title_en"
             class="italic"
           />
-          <MovieTextarea
+          <TextareaMovie
             rules="required|georgian"
             placeholder="ახალი ციტატა"
             name="title_ka"
           />
-          <MovieFileUpload class="mt-4" />
-          <MovieSelect />
-          <MovieSubmit :name="$t('add_quote')" />
+          <FileUploadMovie class="mt-4" />
+          <SelectMovie />
+          <SubmitMovie :name="$t('add_quote')" />
         </form>
       </div>
     </template>
@@ -52,10 +52,10 @@
 import IconClose from "@/components/icons/IconClose.vue";
 import MovieModal from "@/components/MovieModal.vue";
 import { useForm } from "vee-validate";
-import MovieTextarea from "@/components/ui/MovieTextarea.vue";
-import MovieFileUpload from "@/components/ui/MovieFileUpload.vue";
-import MovieSubmit from "@/components/ui/MovieSubmit.vue";
-import MovieSelect from "@/components/ui/MovieSelect.vue";
+import TextareaMovie from "@/components/ui/TextareaMovie.vue";
+import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
+import SubmitMovie from "@/components/ui/SubmitMovie.vue";
+import SelectMovie from "@/components/ui/SelectMovie.vue";
 import { addQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
 import { useQuotesStore } from "@/store/quotes";

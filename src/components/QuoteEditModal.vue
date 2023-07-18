@@ -32,19 +32,19 @@
           <div>{{ userStore.user.username }}</div>
         </div>
         <form @submit.prevent="handleUpdateQuote">
-          <MovieTextarea
+          <TextareaMovie
             rules="required"
             placeholder="Title in English"
             name="title_en"
             class="italic"
           />
-          <MovieTextarea
+          <TextareaMovie
             rules="required|georgian"
             placeholder="ციტატა ქართულად"
             name="title_ka"
           />
-          <QuoteFileUpload :initialValue="imageUrl" />
-          <MovieSubmit :name="$t('save_changes')" />
+          <FileUploadQuote :initialValue="imageUrl" />
+          <SubmitMovie :name="$t('save_changes')" />
         </form>
       </div>
     </template>
@@ -56,9 +56,9 @@ import IconClose from "@/components/icons/IconClose.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
 import MovieModal from "@/components/MovieModal.vue";
 import { useForm } from "vee-validate";
-import MovieTextarea from "@/components/ui/MovieTextarea.vue";
-import QuoteFileUpload from "@/components/ui/QuoteFileUpload.vue";
-import MovieSubmit from "@/components/ui/MovieSubmit.vue";
+import TextareaMovie from "@/components/ui/TextareaMovie.vue";
+import FileUploadQuote from "@/components/ui/FileUploadQuote.vue";
+import SubmitMovie from "@/components/ui/SubmitMovie.vue";
 import { deleteQuote, updateQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
 import { useUserStore } from "@/store/user";

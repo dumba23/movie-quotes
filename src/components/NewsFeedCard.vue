@@ -46,7 +46,7 @@
         class="h-10 w-10 rounded-full mr-4"
       />
       <Form @submit="(values) => handleAddComment(values)" class="w-full">
-        <CommentInput />
+        <InputComment />
       </Form>
     </div>
   </div>
@@ -56,7 +56,7 @@
 import { Form } from "vee-validate";
 import IconComment from "@/components/icons/IconComment.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
-import CommentInput from "@/components/ui/CommentInput.vue";
+import InputComment from "@/components/ui/InputComment.vue";
 import { toggleLikeOnQuote, addCommentOnQuote } from "@/services/quotes";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";

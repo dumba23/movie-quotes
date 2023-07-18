@@ -66,20 +66,20 @@
           </div>
         </div>
         <form @submit.prevent="handleAddQuote">
-          <MovieFileUpload class="hidden mb-4 sm:block" />
-          <MovieTextarea
+          <FileUploadMovie class="hidden mb-4 sm:block" />
+          <TextareaMovie
             rules="required"
             placeholder="Quote in English."
             name="title_en"
             class="italic"
           />
-          <MovieTextarea
+          <TextareaMovie
             rules="required|georgian"
             placeholder="ციტატა ქართულ ენაზე"
             name="title_ka"
           />
-          <MovieFileUpload class="mt-10 mb-8 sm:hidden" />
-          <MovieSubmit :name="$t('add_quote')" />
+          <FileUploadMovie class="mt-10 mb-8 sm:hidden" />
+          <SubmitMovie :name="$t('add_quote')" />
         </form>
       </div>
     </template>
@@ -90,9 +90,9 @@
 import IconClose from "@/components/icons/IconClose.vue";
 import MovieModal from "@/components/MovieModal.vue";
 import { useForm } from "vee-validate";
-import MovieTextarea from "@/components/ui/MovieTextarea.vue";
-import MovieFileUpload from "@/components/ui/MovieFileUpload.vue";
-import MovieSubmit from "@/components/ui/MovieSubmit.vue";
+import TextareaMovie from "@/components/ui/TextareaMovie.vue";
+import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
+import SubmitMovie from "@/components/ui/SubmitMovie.vue";
 import { addQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
 import { useMoviesStore } from "@/store/movies";

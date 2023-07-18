@@ -13,65 +13,65 @@
       <div>{{ username }}</div>
     </div>
     <form @submit.prevent="submitForm">
-      <MovieInput
+      <InputMovie
         type="text"
         labelName="Movie name:"
         name="title_en"
         :errorMessage="errorMessage"
         rules="required|min:5"
       />
-      <MovieInput
+      <InputMovie
         type="text"
         labelName="ფილმის სახელი:"
         name="title_ka"
         :errorMessage="errorMessage"
         rules="required|min:5|georgian"
       />
-      <GenresInput :genres="genres" :initialValue="movie.genres" />
-      <MovieInput
+      <InputGenres :genres="genres" :initialValue="movie.genres" />
+      <InputMovie
         type="text"
         labelName="წელი/Year:"
         name="release_date"
         :errorMessage="errorMessage"
         rules="required|numeric|min:4|max:4"
       />
-      <MovieInput
+      <InputMovie
         type="text"
         :labelName="$t('Director') + ':'"
         name="director_en"
         :errorMessage="errorMessage"
         rules="required|min:5"
       />
-      <MovieInput
+      <InputMovie
         type="text"
         labelName="რეჟისორი:"
         name="director_ka"
         :errorMessage="errorMessage"
         rules="required|min:5|georgian"
       />
-      <MovieTextarea
+      <TextareaMovie
         rules="required|min:30"
         labelName="Description:"
         name="description_en"
       />
-      <MovieTextarea
+      <TextareaMovie
         rules="required|min:30|georgian"
         labelName="აღწერა:"
         name="description_ka"
       />
-      <MovieFileUpload :initialValue="movie.image" />
-      <MovieSubmit name="Update movie" />
+      <FileUploadMovie :initialValue="movie.image" />
+      <SubmitMovie name="Update movie" />
     </form>
   </div>
 </template>
 
 <script setup>
 import { useForm } from "vee-validate";
-import MovieInput from "@/components/ui/MovieInput.vue";
-import MovieFileUpload from "@/components/ui/MovieFileUpload.vue";
-import MovieTextarea from "@/components/ui/MovieTextarea.vue";
-import MovieSubmit from "@/components/ui/MovieSubmit.vue";
-import GenresInput from "@/components/ui/GenresInput.vue";
+import InputMovie from "@/components/ui/InputMovie.vue";
+import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
+import TextareaMovie from "@/components/ui/TextareaMovie.vue";
+import SubmitMovie from "@/components/ui/SubmitMovie.vue";
+import InputGenres from "@/components/ui/InputGenres.vue";
 import { updateMovie } from "@/services/movies";
 import { onBeforeMount, ref } from "vue";
 import { getMovieGenres } from "@/services/movies";

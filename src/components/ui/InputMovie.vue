@@ -40,19 +40,19 @@
         </span>
       </div>
     </Field>
-    <FormError :name="name" />
-    <FormCustomError v-if="type !== 'password'">{{
+    <ErrorMessage :name="name" />
+    <ErrorMessageApi v-if="type !== 'password'">{{
       errorMessage
-    }}</FormCustomError>
+    }}</ErrorMessageApi>
   </div>
 </template>
 
 <script setup>
 import IconInputError from "@/components/icons/IconInputError.vue";
 import IconInputSuccess from "@/components/icons/IconInputSuccess.vue";
-import FormError from "@/components/ui/FormError.vue";
+import ErrorMessage from "@/components/ui/ErrorMessage.vue";
 import { Field } from "vee-validate";
-import FormCustomError from "@/components/ui/FormCustomError.vue";
+import ErrorMessageApi from "@/components/ui/ErrorMessageApi.vue";
 defineProps({
   type: { type: String, required: true, default: "" },
   name: { type: String, required: true, default: "" },

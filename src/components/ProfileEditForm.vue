@@ -5,9 +5,9 @@
     v-slot="{ values, errors, resetField }"
   >
     <div class="sm:hidden">
-      <FormUploadField :profileUrl="userStore.user.avatar" />
+      <FileUpload :profileUrl="userStore.user.avatar" />
       <div class="flex items-center justify-center sm:w-full">
-        <FormInputField
+        <InputAuth
           name="dummy_name"
           :labelName="$t('username')"
           type="text"
@@ -23,7 +23,7 @@
           {{ $t("edit") }}
         </div>
       </div>
-      <FormInputField
+      <InputAuth
         v-if="isUsernameOpen"
         name="username"
         :labelName="$t('new_username')"
@@ -35,7 +35,7 @@
         :requiredLabel="false"
       />
       <div class="flex items-center justify-center">
-        <FormInputField
+        <InputAuth
           name="dummy_email"
           :labelName="$t('email')"
           type="email"
@@ -52,7 +52,7 @@
         </div>
         <div v-if="userStore.user.google_id" class="w-12"></div>
       </div>
-      <FormInputField
+      <InputAuth
         v-if="isEmailOpen"
         name="email"
         :labelName="$t('email')"
@@ -63,7 +63,7 @@
         :requiredLabel="false"
       />
       <div class="flex items-center justify-center sm:w-full">
-        <FormInputField
+        <InputAuth
           name="dummy_password"
           :labelName="$t('password')"
           type="text"
@@ -107,7 +107,7 @@
           </div>
         </div>
       </div>
-      <FormInputField
+      <InputAuth
         v-if="isPasswordOpen"
         name="password"
         :labelName="$t('new_password')"
@@ -116,7 +116,7 @@
         rules="required|min:8|max:15|lowerCaseAndNum"
         :requiredLabel="false"
       />
-      <FormInputField
+      <InputAuth
         v-if="isPasswordOpen"
         name="password_confirmation"
         :labelName="$t('confirm_new_password')"
@@ -132,11 +132,11 @@
         <div class="h-10 flex items-center mt-2" @click="handleCancelEdit">
           {{ $t("cancell") }}
         </div>
-        <FormSubmit :name="$t('save_changes')" class="w-48" />
+        <ButtonSubmit :name="$t('save_changes')" class="w-48" />
       </div>
     </div>
     <div class="hidden sm:block bg-secondary-black h-screen relative">
-      <FormUploadField :profileUrl="userStore.user.avatar" />
+      <FileUpload :profileUrl="userStore.user.avatar" />
       <div class="pt-60 mx-4 space-y-6">
         <div
           class="flex flex-col border-b border-secondary-grey pb-2 space-y-2"
@@ -179,7 +179,7 @@
         <div
           class="bg-secondary-black h-52 rounded-2xl flex sm:w-full justify-center items-center text-xs"
         >
-          <FormInputField
+          <InputAuth
             name="username"
             :labelName="$t('enter_new_username')"
             type="text"
@@ -218,7 +218,7 @@
         <div
           class="bg-secondary-black h-52 rounded-2xl flex sm:w-full justify-center items-center text-xs"
         >
-          <FormInputField
+          <InputAuth
             v-if="isEmailOpen"
             name="email"
             :labelName="$t('email')"
@@ -251,7 +251,7 @@
         <div
           class="bg-secondary-black h-52 rounded-2xl flex sm:w-full flex-col justify-center items-center text-xs"
         >
-          <FormInputField
+          <InputAuth
             v-if="isPasswordOpen"
             name="password"
             :labelName="$t('new_password')"
@@ -260,7 +260,7 @@
             rules="required|min:8|max:15|lowerCaseAndNum"
             :requiredLabel="false"
           />
-          <FormInputField
+          <InputAuth
             v-if="isPasswordOpen"
             name="password_confirmation"
             :labelName="$t('confirm_new_password')"
@@ -328,7 +328,7 @@
           >
             {{ $t("cancell") }}
           </div>
-          <FormSubmit
+          <ButtonSubmit
             @click="
               () => {
                 handleUpdateUser(values);
@@ -350,9 +350,9 @@
 <script setup>
 import IconInputError from "@/components/icons/IconInputError.vue";
 import { Form } from "vee-validate";
-import FormInputField from "@/components/ui/FormInputField.vue";
-import FormUploadField from "@/components/ui/FormUploadField.vue";
-import FormSubmit from "@/components/ui/FormSubmit.vue";
+import InputAuth from "@/components/ui/InputAuth.vue";
+import FileUpload from "@/components/ui/FileUpload.vue";
+import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import { watch, ref } from "vue";
 import { editUserData } from "@/services/user";
 import { useUserStore } from "@/store/user";

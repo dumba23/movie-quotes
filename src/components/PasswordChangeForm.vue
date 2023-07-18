@@ -1,27 +1,27 @@
 <template>
   <form @submit.prevent="handlePasswordChange">
-    <FormInputField
+    <InputAuth
       name="password"
       :labelName="$t('password')"
       type="password"
       :placeholder="$t('password_placeholder')"
       rules="required|min:8|max:15|lowerCaseAndNum"
     />
-    <FormInputField
+    <InputAuth
       name="password_confirmation"
       :labelName="$t('confirm_password')"
       type="password"
       :placeholder="$t('confirm_password')"
       rules="required|confirmed:@password"
     />
-    <FormSubmit :name="$t('reset_password')" />
+    <ButtonSubmit :name="$t('reset_password')" />
   </form>
 </template>
 
 <script setup>
 import { useForm } from "vee-validate";
-import FormInputField from "@/components/ui/FormInputField.vue";
-import FormSubmit from "@/components/ui/FormSubmit.vue";
+import InputAuth from "@/components/ui/InputAuth.vue";
+import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { useRoute, useRouter } from "vue-router";
 import { changePassword } from "@/services/recovery";

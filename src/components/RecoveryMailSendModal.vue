@@ -13,15 +13,15 @@
         </div>
       </div>
       <form @submit.prevent="handleSendMail">
-        <FormInputField
+        <InputAuth
           name="email"
-          labelName="Email"
+          :labelName="$t('email')"
           type="email"
-          placeholder="Enter your email"
+          :placeholder="$t('enter_your_email')"
           rules="required|email"
           :errorMessage="errorMessage"
         />
-        <FormSubmit name="Send instructions" />
+        <ButtonSubmit name="Send instructions" />
       </form>
       <div
         @click="handleModalName('auth')"
@@ -36,8 +36,8 @@
 
 <script setup>
 import { useForm } from "vee-validate";
-import FormInputField from "@/components/ui/FormInputField.vue";
-import FormSubmit from "@/components/ui/FormSubmit.vue";
+import InputAuth from "@/components/ui/InputAuth.vue";
+import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
 import TheModal from "@/components/shared/TheModal.vue";
 import { usePaginationStore } from "@/store/pagination";

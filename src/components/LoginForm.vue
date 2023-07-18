@@ -1,13 +1,13 @@
 <template>
   <form @submit.prevent="handleLogin">
-    <FormInputField
+    <InputAuth
       name="login"
       :labelName="$t('email')"
       type="text"
       :placeholder="$t('email_placeholder')"
       rules="required|min:3"
     />
-    <FormInputField
+    <InputAuth
       name="password"
       :labelName="$t('password')"
       type="password"
@@ -27,7 +27,7 @@
         {{ $t("forgot_password") }}
       </div>
     </div>
-    <FormSubmit :name="$t('get_started')" />
+    <ButtonSubmit :name="$t('get_started')" />
   </form>
   <GoogleSignButton
     :name="$t('sign_up_with_google')"
@@ -37,14 +37,13 @@
 
 <script setup>
 import { useForm } from "vee-validate";
-import FormInputField from "@/components/ui/FormInputField.vue";
-import FormSubmit from "@/components/ui/FormSubmit.vue";
+import InputAuth from "@/components/ui/InputAuth.vue";
+import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
 import { authByDefault } from "@/services/auth";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";
 import { useRouter } from "vue-router";
-import i18n from "@/plugins/i18";
 
 const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
@@ -74,10 +73,7 @@ const handleLogin = handleSubmit(async () => {
     }
   } catch (error) {
     if (!error.response.data.errors) {
-      setFieldError(
-        "login",
-        error.response.data.message?.[i18n.global.locale.value]
-      );
+      setFieldError("login", error.response.data.message);
     } else {
       Object.keys(error.response.data.errors).forEach((key) => {
         setFieldError(key, error.response.data.errors[key]);

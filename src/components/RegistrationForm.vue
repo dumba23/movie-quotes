@@ -1,34 +1,34 @@
 <template>
   <form @submit.prevent="handleRegister">
-    <FormInputField
+    <InputAuth
       name="username"
       :labelName="$t('name')"
       type="text"
       :placeholder="$t('name_placeholder')"
       rules="required|min:3|max:15|lowerCaseAndNum"
     />
-    <FormInputField
+    <InputAuth
       name="email"
       :labelName="$t('email')"
       type="email"
       :placeholder="$t('email_placeholder')"
       rules="required|email"
     />
-    <FormInputField
+    <InputAuth
       name="password"
       :labelName="$t('password')"
       type="password"
       :placeholder="$t('password_placeholder')"
       rules="required|min:8|max:15|lowerCaseAndNum"
     />
-    <FormInputField
+    <InputAuth
       name="password_confirmation"
       :labelName="$t('confirm_password')"
       type="password"
       :placeholder="$t('confirm_password')"
       rules="required|confirmed:@password"
     />
-    <FormSubmit :name="$t('get_started')" />
+    <ButtonSubmit :name="$t('get_started')" />
   </form>
   <GoogleSignButton
     :name="$t('sign_up_with_google')"
@@ -38,8 +38,8 @@
 
 <script setup>
 import { useForm } from "vee-validate";
-import FormInputField from "@/components/ui/FormInputField.vue";
-import FormSubmit from "@/components/ui/FormSubmit.vue";
+import InputAuth from "@/components/ui/InputAuth.vue";
+import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
 import { registerUser } from "@/services/register";
 import { authWithGoogle } from "@/services/oauth";
