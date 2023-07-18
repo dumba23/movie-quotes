@@ -37,7 +37,7 @@
       <div class="flex items-center justify-center">
         <InputAuth
           name="dummy_email"
-          :labelName="$t('profile.email')"
+          :labelName="$t('auth.email')"
           type="email"
           :placeholder="userStore.user.email"
           :requiredLabel="false"
@@ -55,7 +55,7 @@
       <InputAuth
         v-if="isEmailOpen"
         name="email"
-        :labelName="$t('profile.email')"
+        :labelName="$t('auth.email')"
         disabled
         type="email"
         :placeholder="userStore.user.email"
@@ -65,7 +65,7 @@
       <div class="flex items-center justify-center sm:w-full">
         <InputAuth
           name="dummy_password"
-          :labelName="$t('profile.password')"
+          :labelName="$t('auth.password')"
           type="text"
           placeholder="••••••••••••"
           class="sm:mx-0"
@@ -153,7 +153,7 @@
         <div
           class="flex flex-col border-b border-secondary-grey pb-2 space-y-2"
         >
-          <div>{{ $t("profile.email") }}</div>
+          <div>{{ $t("auth.email") }}</div>
           <div class="flex justify-between w-full">
             <div>{{ userStore.user.email }}</div>
             <div v-if="!userStore.user.google_id" class="cursor-pointer">
@@ -164,7 +164,7 @@
         <div
           class="flex flex-col border-b border-secondary-grey pb-2 space-y-2"
         >
-          <div>{{ $t("profile.password") }}</div>
+          <div>{{ $t("auth.password") }}</div>
           <div class="flex justify-between w-full">
             <div class="text-light-grey text-xl">••••••••••••</div>
             <div class="cursor-pointer" @click="handleToggleInputs('password')">
