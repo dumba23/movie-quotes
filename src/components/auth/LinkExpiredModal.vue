@@ -4,16 +4,16 @@
       <div class="flex flex-col justify-center items-center mb-4 space-y-8">
         <IconExpired />
         <div class="font-medium text-white text-3xl sm:text-xl">
-          {{ $t("link_expired") }}!
+          {{ $t("auth.link_expired") }}!
         </div>
         <div class="text-white sm:text-sm">
-          {{ $t("login_link_has_expired_because_you_have_not_used_it") }}
+          {{ $t("auth.login_link_has_expired_because_you_have_not_used_it") }}
         </div>
         <button
           class="bg-primary-red text-white w-96 sm:w-60 h-10 rounded flex justify-center items-center"
           @click="handleModalName('recovery_mail_send')"
         >
-          {{ $t("request_another_link") }}
+          {{ $t("auth.request_another_link") }}
         </button>
       </div>
     </div>

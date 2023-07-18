@@ -12,9 +12,9 @@
         <div
           class="flex items-center text-2xl sm:text-lg font-medium sm:flex-col sm:items-start"
         >
-          {{ $t("my_list_of_movies") }}
+          {{ $t("movies.my_list_of_movies") }}
           <span class="ml-1 sm:ml-0 sm:text-xs"
-            >({{ $t("total") }} {{ moviesStore.movies?.length }})</span
+            >({{ $t("movies.total") }} {{ moviesStore.movies?.length }})</span
           >
         </div>
         <div class="flex justify-center items-center text-lg">
@@ -23,7 +23,7 @@
             <input
               class="ml-2 bg-transparent w-16 outline-none"
               type="text"
-              :placeholder="$t('search')"
+              :placeholder="$t('movies.search')"
             />
           </div>
           <button
@@ -31,7 +31,7 @@
             class="flex items-center ml-7 bg-primary-red py-2 px-4 rounded"
           >
             <IconPlus />
-            <span class="ml-2 sm:text-sm">{{ $t("add_movie") }}</span>
+            <span class="ml-2 sm:text-sm">{{ $t("movies.add_movie") }}</span>
           </button>
         </div>
       </div>

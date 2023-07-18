@@ -7,9 +7,13 @@
       >
         <div class="flex absolute left-9 space-x-3 items-center">
           <span @click="handleToggleModal('remove')"><IconTrash /> </span>
-          <span class="text-light-grey sm:hidden">{{ $t("delete") }}</span>
+          <span class="text-light-grey sm:hidden">{{
+            $t("movies.delete")
+          }}</span>
         </div>
-        <h1 class="text-2xl text-white font-medium">{{ $t("edit_quote") }}</h1>
+        <h1 class="text-2xl text-white font-medium">
+          {{ $t("quotes.edit_quote") }}
+        </h1>
         <span
           class="absolute top-10 right-9 cursor-pointer"
           @click="handleToggleModal('close')"
@@ -44,7 +48,7 @@
             name="title_ka"
           />
           <FileUploadQuote :initialValue="imageUrl" />
-          <SubmitMovie :name="$t('save_changes')" />
+          <SubmitMovie :name="$t('profile.save_changes')" />
         </form>
       </div>
     </template>

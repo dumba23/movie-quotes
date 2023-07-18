@@ -28,7 +28,7 @@
           class="absolute flex flex-col items-center space-y-2 right-1/2 px-10 translate-x-28 translate-y-[-3rem] sm:translate-y-10 sm:translate-x-20 py-8 text-base not-italic rounded-xl top-[-17rem] bg-half-transparent opacity-80 max-w-max"
         >
           <span><IconImageUpload /></span>
-          <span class="text-white">{{ $t("change_photo") }}</span>
+          <span class="text-white">{{ $t("movies.change_photo") }}</span>
         </div>
       </label>
     </div>

@@ -29,7 +29,7 @@
       </div>
       <div class="hidden sm:flex space-x-6 ml-1 mt-1 flex-row">
         <div v-if="notification.read === 0" class="text-primary-success">
-          {{ $t("new") }}
+          {{ $t("news.new") }}
         </div>
         <div v-else class="w-8"></div>
         <div>{{ dayjs(String(notification.created_at)).fromNow() }}</div>
@@ -38,7 +38,7 @@
     <div class="sm:hidden flex flex-col items-end">
       <div>{{ dayjs(String(notification.created_at)).fromNow() }}</div>
       <div v-if="notification.read === 0" class="text-primary-success">
-        {{ $t("new") }}
+        {{ $t("news.new") }}
       </div>
     </div>
   </div>

@@ -4,26 +4,26 @@
       <div class="flex flex-col justify-center items-center mb-4 space-y-8">
         <IconMailConfirm />
         <div class="font-medium text-white text-3xl sm:text-xl">
-          {{ $t("check_your_email") }}!
+          {{ $t("auth.check_your_email") }}!
         </div>
         <div
           class="flex flex-col justify-center items-center text-white sm:text-sm"
         >
           <span class="sm:w-80 sm:text-center"
-            >{{ $t("we_have_sent_a_password_recover_instructions") }}
-            <span class="hidden sm:inline">{{ $t("to_your_email") }}</span>
+            >{{ $t("auth.we_have_sent_a_password_recover_instructions") }}
+            <span class="hidden sm:inline">{{ $t("auth.to_your_email") }}</span>
           </span>
-          <span class="sm:hidden">{{ $t("to_your_email") }}</span>
+          <span class="sm:hidden">{{ $t("auth.to_your_email") }}</span>
         </div>
         <a
           class="bg-primary-red text-white w-96 sm:w-60 h-10 rounded flex justify-center items-center"
           href="https://www.google.com/gmail/about/"
           target="_blank"
         >
-          {{ $t("go_to_my_email") }}
+          {{ $t("auth.go_to_my_email") }}
         </a>
         <button @click="handleModalName(null)" class="grey-secondary pointer">
-          {{ $t("skip_i_will_confirm_later") }}
+          {{ $t("auth.skip_i_will_confirm_later") }}
         </button>
       </div>
     </div>

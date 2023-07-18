@@ -4,16 +4,16 @@
       <div class="flex flex-col justify-center items-center mb-4 space-y-8">
         <IconVerify />
         <div class="font-medium text-white text-3xl sm:text-xl">
-          {{ $t("thank_you") }}!
+          {{ $t("auth.thank_you") }}!
         </div>
         <div class="text-white sm:text-sm">
-          {{ $t("your_account_has_been_activated") }}
+          {{ $t("auth.your_account_has_been_activated") }}
         </div>
         <button
           class="bg-primary-red text-white w-96 sm:w-60 h-10 rounded flex justify-center items-center"
           @click="handleRedirectToLogin"
         >
-          {{ $t("go_to_my_news_feed") }}
+          {{ $t("auth.go_to_my_news_feed") }}
         </button>
       </div>
     </div>

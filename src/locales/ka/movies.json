@@ -1,0 +1,16 @@
+{
+  "list_of_movies": "ფილმების სია",
+  "my_list_of_movies": "ჩემი ფილმების სია",
+  "total": "ჯამი",
+  "search": "ძებნა",
+  "add_movie": "დაამატე ფილმი",
+  "edit_movie": "შეცვალე ფილმი",
+  "delete": "წაშალე",
+  "movie_description": "ფილმის აღწერა",
+  "director": "რეჟისორი",
+  "select_genres": "აირჩიე ჟანრები",
+  "replace_photo": "შეცვალე ფოტო",
+  "drag_&_drop_your_image_here_or": "Drag & drop your image here or",
+  "upload_image": "ატვირთე ფოტო",
+  "change_photo": "შეცვალე ფოტო"
+}

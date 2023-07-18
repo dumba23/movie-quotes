@@ -37,7 +37,7 @@
       />
       <InputMovie
         type="text"
-        :labelName="$t('Director') + ':'"
+        labelName="Director:"
         name="director_en"
         :errorMessage="errorMessage"
         rules="required|min:5"

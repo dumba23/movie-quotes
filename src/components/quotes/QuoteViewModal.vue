@@ -14,7 +14,7 @@
           <span @click="handleToggleModal('remove')"><IconTrash /></span>
         </div>
         <h1 class="text-2xl text-white font-medium sm:hidden">
-          {{ $t("view_quote") }}
+          {{ $t("quotes.view_quote") }}
         </h1>
         <span
           class="absolute top-10 right-9 cursor-pointer"

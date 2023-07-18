@@ -12,7 +12,7 @@
     </div>
     <div class="relative w-full">
       <h1 class="text-2xl font-medium my-8 sm:hidden">
-        {{ $t("movie_description") }}
+        {{ $t("movies.movie_description") }}
       </h1>
       <div class="flex flex-row justify-between sm:flex-col">
         <img
@@ -46,7 +46,7 @@
           </div>
           <div class="text-lg">
             <span class="font-bold text-light-grey mr-3 sm:text-base"
-              >{{ $t("director") }}:</span
+              >{{ $t("movies.director") }}:</span
             >
             <span class="font-medium text-white sm:text-base">{{
               moviesStore.movie.director?.[i18n.global?.locale.value]
@@ -59,7 +59,7 @@
       </div>
       <div class="flex items-center mt-8 sm:hidden">
         <div class="text-2xl border-r border-secondary-grey pr-4">
-          {{ $t("quotes") }} ({{ $t("total") }}
+          {{ $t("quotes.quotes") }} ({{ $t("movies.total") }}
           {{ moviesStore.movie.quotes?.length }})
         </div>
         <button
@@ -70,7 +70,7 @@
           <span
             class="ml-2"
             @click="paginationStore.updateModalName({ name: 'add-quote' })"
-            >{{ $t("add_quote") }}</span
+            >{{ $t("quotes.add_quote") }}</span
           >
         </button>
       </div>
@@ -83,13 +83,14 @@
           <span
             class="text-base ml-2"
             @click="paginationStore.updateModalName({ name: 'add-quote' })"
-            >{{ $t("add_quote") }}</span
+            >{{ $t("quotes.add_quote") }}</span
           >
         </button>
         <div class="border-t border-secondary-grey w-full pt-12 flex flex-col">
-          <span class="text-md">{{ $t("all_quotes") }}</span>
+          <span class="text-md">{{ $t("quotes.all_quotes") }}</span>
           <span class="text-base"
-            >({{ $t("total") }} {{ moviesStore.movie.quotes?.length }})</span
+            >({{ $t("movies.total") }}
+            {{ moviesStore.movie.quotes?.length }})</span
           >
         </div>
       </div>
@@ -106,7 +107,7 @@
           class="border-b border-medium-gray flex items-center justify-center h-16 py-12"
         >
           <h1 class="text-2xl text-white font-medium">
-            {{ $t("edit_movie") }}
+            {{ $t("movies.edit_movie") }}
           </h1>
           <span
             class="absolute top-10 right-4 cursor-pointer"

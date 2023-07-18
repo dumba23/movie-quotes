@@ -11,7 +11,7 @@
       class="min-w-full absolute overflow-y-auto min-h-screen bg-primary-profile sm:w-full sm:min-w-full flex items-center justify-start flex-col"
     >
       <div class="space-y-12 mt-6 sm:mt-0 sm:space-y-0 text-white sm:w-full">
-        <h2 class="font-medium sm:hidden">{{ $t("my_profile") }}</h2>
+        <h2 class="font-medium sm:hidden">{{ $t("profile.my_profile") }}</h2>
         <div class="hidden sm:block py-1">
           <IconArrowLeft
             class="w-5 h-10 ml-4"

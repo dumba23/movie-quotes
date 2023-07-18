@@ -3,13 +3,13 @@
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
         <h1 class="text-3xl text-white mt-6 mb-2 sm:text-xl">
-          {{ $t("create_new_password") }}
+          {{ $t("auth.create_new_password") }}
         </h1>
         <div
           class="flex flex-col justify-center items-center text-secondary-grey sm:text-sm"
         >
-          <span>{{ $t("your_new_password_must_be_different") }}</span>
-          <span>{{ $t("from_previous_used_passwords") }}</span>
+          <span>{{ $t("auth.your_new_password_must_be_different") }}</span>
+          <span>{{ $t("auth.from_previous_used_passwords") }}</span>
         </div>
       </div>
       <PasswordChangeForm />
@@ -18,7 +18,9 @@
         class="flex justify-center items-center mt-8 mb-2"
       >
         <IconArrowLeft />
-        <span class="text-secondary-grey ml-2">{{ $t("back_to_log_in") }}</span>
+        <span class="text-secondary-grey ml-2">{{
+          $t("auth.back_to_log_in")
+        }}</span>
       </div>
     </div>
   </TheModal>

@@ -1,0 +1,10 @@
+{
+  "news_feed": "ახალი ამბები",
+  "search_by": "ძებნა",
+  "search_by_expanded": "შეიყვანე {searchKeyword} რომ მოძებნო ფილმები, შეიყვანე {quoteKeyword} რომ მოძებნო ციტატები",
+  "notifications": "შეტყობინებები",
+  "mark_all_as_read": "მონიშნე ყველა წაკითხულად",
+  "new": "ახალი",
+  "write_new_quote": "დაწერე ახალი ციტატა",
+  "to_search_movies": "რომ მოძებნო ფილმი"
+}

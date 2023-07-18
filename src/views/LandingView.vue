@@ -3,8 +3,10 @@
   <div class="flex flex-col justify-center items-center mt-72">
     <div class="text-primary-yellow">
       <div class="flex flex-col items-center text-6xl mb-6 sm:text-2xl">
-        <span class="sm:font-bold">{{ $t("find_any_quote_in") }} </span>
-        <span class="sm:font-bold">{{ $t("millions_of_movie_lines") }}</span>
+        <span class="sm:font-bold">{{ $t("landing.find_any_quote_in") }} </span>
+        <span class="sm:font-bold">{{
+          $t("landing.millions_of_movie_lines")
+        }}</span>
       </div>
     </div>
     <div class="sm:mt-2">
@@ -12,7 +14,7 @@
         class="bg-primary-red px-4 py-2 rounded text-white mb-40"
         @click="handleModalName('register')"
       >
-        {{ $t("get_started") }}
+        {{ $t("landing.get_started") }}
       </button>
     </div>
     <RegistrationView v-if="paginationStore.modalName == 'register'" />
@@ -51,14 +53,14 @@
               class="text-5xl text-white w-[700px] sm:text-sm sm:max-w-[330px] mb-8"
             >
               <p class="font-bold">
-                “{{ $t("you_have_to_leave_something") }} <br />
-                {{ $t("behind_to_go_forward") }}”
+                “{{ $t("landing.you_have_to_leave_something") }} <br />
+                {{ $t("landing.behind_to_go_forward") }}”
               </p>
             </div>
             <div
               class="w-[700px] sm:max-w-[330px] text-3xl sm:text-sm text-primary-grey font-bold"
             >
-              {{ $t("interstellar") }}, 2014
+              {{ $t("landing.interstellar") }}, 2014
             </div>
           </div>
         </div>
@@ -80,15 +82,16 @@
           <div class="flex flex-col">
             <div class="w-[900px] sm:max-w-[330px] mb-6">
               <p class="text-5xl text-white sm:text-sm font-bold">
-                {{ $t("i_think_we_just_gonna_have") }} <br />
-                {{ $t("to_be_secretly_in_love_with_each_other") }} <br />
-                {{ $t("and_leave_it_that") }}
+                {{ $t("landing.i_think_we_just_gonna_have") }} <br />
+                {{ $t("landing.to_be_secretly_in_love_with_each_other") }}
+                <br />
+                {{ $t("landing.and_leave_it_that") }}
               </p>
             </div>
             <div
               class="w-[700px] sm:max-w-[330px] text-3xl sm:text-sm text-primary-grey font-bold"
             >
-              {{ $t("the_royal_tenenbaums") }},2001
+              {{ $t("landing.the_royal_tenenbaums") }},2001
             </div>
           </div>
         </div>
@@ -110,15 +113,16 @@
           <div class="flex flex-col">
             <div class="w-[900px] sm:max-w-[330px] mb-6">
               <p class="text-5xl text-white sm:text-sm font-bold">
-                {{ $t("i_think_we_just_gonna_have") }} <br />
-                {{ $t("to_be_secretly_in_love_with_each_other") }} <br />
-                {{ $t("and_leave_it_that") }}
+                {{ $t("landing.i_think_we_just_gonna_have") }} <br />
+                {{ $t("landing.to_be_secretly_in_love_with_each_other") }}
+                <br />
+                {{ $t("landing.and_leave_it_that") }}
               </p>
             </div>
             <div
               class="w-[700px] sm:max-w-[330px] text-3xl sm:text-sm text-primary-grey font-bold"
             >
-              {{ $t("the_royal_tenenbaums") }},2001
+              {{ $t("landing.the_royal_tenenbaums") }},2001
             </div>
           </div>
         </div>
@@ -126,7 +130,7 @@
     </div>
     <footer class="w-full bg-gradient-to-t px-8 py-4">
       <span class="text-primary-yellow font-medium text-lg sm:text-xs"
-        >© 2022 {{ $t("footer_message") }}</span
+        >© 2022 {{ $t("landing.footer_message") }}</span
       >
     </footer>
   </div>

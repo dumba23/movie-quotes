@@ -9,7 +9,7 @@
       <div class="flex items-center justify-center sm:w-full">
         <InputAuth
           name="dummy_name"
-          :labelName="$t('username')"
+          :labelName="$t('profile.username')"
           type="text"
           class="sm:mx-0 sm:bg-transparent"
           :placeholder="userStore.user.username"
@@ -20,13 +20,13 @@
           class="ml-4 text-light-grey sm:ml-0"
           @click="handleToggleInputs('username')"
         >
-          {{ $t("edit") }}
+          {{ $t("profile.edit") }}
         </div>
       </div>
       <InputAuth
         v-if="isUsernameOpen"
         name="username"
-        :labelName="$t('new_username')"
+        :labelName="$t('profile.new_username')"
         type="text"
         class="text-black"
         :placeholder="userStore.user.username"
@@ -37,7 +37,7 @@
       <div class="flex items-center justify-center">
         <InputAuth
           name="dummy_email"
-          :labelName="$t('email')"
+          :labelName="$t('profile.email')"
           type="email"
           :placeholder="userStore.user.email"
           :requiredLabel="false"
@@ -48,14 +48,14 @@
           class="ml-4 text-light-grey"
           @click="handleToggleInputs('email')"
         >
-          {{ $t("edit") }}
+          {{ $t("profile.edit") }}
         </div>
         <div v-if="userStore.user.google_id" class="w-12"></div>
       </div>
       <InputAuth
         v-if="isEmailOpen"
         name="email"
-        :labelName="$t('email')"
+        :labelName="$t('profile.email')"
         disabled
         type="email"
         :placeholder="userStore.user.email"
@@ -65,7 +65,7 @@
       <div class="flex items-center justify-center sm:w-full">
         <InputAuth
           name="dummy_password"
-          :labelName="$t('password')"
+          :labelName="$t('profile.password')"
           type="text"
           placeholder="••••••••••••"
           class="sm:mx-0"
@@ -76,14 +76,14 @@
           class="ml-4 text-light-grey sm:ml-0 sm:mr-4"
           @click="handleToggleInputs('password')"
         >
-          {{ $t("edit") }}
+          {{ $t("profile.edit") }}
         </div>
       </div>
       <div
         v-if="isPasswordOpen"
         class="border border-stone-800 w-96 p-5 rounded space-y-4 mb-4"
       >
-        <p class="text-white">{{ $t("password_should_contain") }}:</p>
+        <p class="text-white">{{ $t("profile.password_should_contain") }}:</p>
         <div class="text-sm text-gray">
           <div
             :class="
@@ -92,7 +92,7 @@
               'text-primary-success'
             "
           >
-            <span class="mr-2">•</span>{{ $t("8_or_more_characters") }}
+            <span class="mr-2">•</span>{{ $t("profile.8_or_more_characters") }}
           </div>
           <div
             :class="
@@ -103,14 +103,15 @@
                 : ''
             "
           >
-            <span class="mr-2">•</span>{{ $t("15_lowercase_character") }}
+            <span class="mr-2">•</span
+            >{{ $t("profile.15_lowercase_character") }}
           </div>
         </div>
       </div>
       <InputAuth
         v-if="isPasswordOpen"
         name="password"
-        :labelName="$t('new_password')"
+        :labelName="$t('profile.new_password')"
         type="password"
         placeholder="New password"
         rules="required|min:8|max:15|lowerCaseAndNum"
@@ -119,7 +120,7 @@
       <InputAuth
         v-if="isPasswordOpen"
         name="password_confirmation"
-        :labelName="$t('confirm_new_password')"
+        :labelName="$t('profile.confirm_new_password')"
         type="password"
         placeholder="Confirm password"
         rules="required|confirmed:@password"
@@ -130,9 +131,9 @@
         class="absolute bottom-1 right-1 translate-y-24 flex justify-center items-center space-x-10 pb-10"
       >
         <div class="h-10 flex items-center mt-2" @click="handleCancelEdit">
-          {{ $t("cancell") }}
+          {{ $t("profile.cancell") }}
         </div>
-        <ButtonSubmit :name="$t('save_changes')" class="w-48" />
+        <ButtonSubmit :name="$t('profile.save_changes')" class="w-48" />
       </div>
     </div>
     <div class="hidden sm:block bg-secondary-black h-screen relative">
@@ -141,33 +142,33 @@
         <div
           class="flex flex-col border-b border-secondary-grey pb-2 space-y-2"
         >
-          <div>{{ $t("username") }}</div>
+          <div>{{ $t("profile.username") }}</div>
           <div class="flex justify-between w-full">
             <div>{{ userStore.user.username }}</div>
             <div class="cursor-pointer" @click="handleToggleInputs('username')">
-              {{ $t("edit") }}
+              {{ $t("profile.edit") }}
             </div>
           </div>
         </div>
         <div
           class="flex flex-col border-b border-secondary-grey pb-2 space-y-2"
         >
-          <div>{{ $t("email") }}</div>
+          <div>{{ $t("profile.email") }}</div>
           <div class="flex justify-between w-full">
             <div>{{ userStore.user.email }}</div>
             <div v-if="!userStore.user.google_id" class="cursor-pointer">
-              {{ $t("edit") }}
+              {{ $t("profile.edit") }}
             </div>
           </div>
         </div>
         <div
           class="flex flex-col border-b border-secondary-grey pb-2 space-y-2"
         >
-          <div>{{ $t("password") }}</div>
+          <div>{{ $t("profile.password") }}</div>
           <div class="flex justify-between w-full">
             <div class="text-light-grey text-xl">••••••••••••</div>
             <div class="cursor-pointer" @click="handleToggleInputs('password')">
-              {{ $t("edit") }}
+              {{ $t("profile.edit") }}
             </div>
           </div>
         </div>
@@ -181,7 +182,7 @@
         >
           <InputAuth
             name="username"
-            :labelName="$t('enter_new_username')"
+            :labelName="$t('profile.enter_new_username')"
             type="text"
             class="text-black sm:mx-0"
             :placeholder="userStore.user.username"
@@ -201,13 +202,13 @@
               }
             "
           >
-            {{ $t("cancell") }}
+            {{ $t("profile.cancell") }}
           </button>
           <div
             @click="handleToggleConfirm"
             class="w-14 h-8 bg-light-red rounded mt-2 text-white flex justify-center items-center"
           >
-            {{ $t("edit") }}
+            {{ $t("profile.edit") }}
           </div>
         </div>
       </div>
@@ -221,7 +222,7 @@
           <InputAuth
             v-if="isEmailOpen"
             name="email"
-            :labelName="$t('email')"
+            :labelName="$t('profile.email')"
             disabled
             type="email"
             :placeholder="userStore.user.email"
@@ -234,13 +235,13 @@
             class="h-10 flex items-center mt-2"
             @click="handleToggleInputs('email')"
           >
-            {{ $t("cancell") }}
+            {{ $t("profile.cancell") }}
           </div>
           <div
             @click="handleToggleConfirm"
             class="w-14 h-8 bg-light-red rounded mt-2 text-white flex justify-center items-center"
           >
-            {{ $t("edit") }}
+            {{ $t("profile.edit") }}
           </div>
         </div>
       </div>
@@ -254,7 +255,7 @@
           <InputAuth
             v-if="isPasswordOpen"
             name="password"
-            :labelName="$t('new_password')"
+            :labelName="$t('profile.new_password')"
             type="password"
             placeholder="New password"
             rules="required|min:8|max:15|lowerCaseAndNum"
@@ -263,7 +264,7 @@
           <InputAuth
             v-if="isPasswordOpen"
             name="password_confirmation"
-            :labelName="$t('confirm_new_password')"
+            :labelName="$t('profile.confirm_new_password')"
             type="password"
             placeholder="Confirm password"
             rules="required|confirmed:@password"
@@ -281,13 +282,13 @@
               }
             "
           >
-            {{ $t("cancell") }}
+            {{ $t("profile.cancell") }}
           </button>
           <div
             @click="handleToggleConfirm"
             class="w-14 h-8 bg-light-red rounded mt-2 text-white flex justify-center items-center"
           >
-            {{ $t("edit") }}
+            {{ $t("profile.edit") }}
           </div>
         </div>
       </div>
@@ -313,7 +314,7 @@
       <div
         class="bg-secondary-black h-52 rounded-2xl flex sm:w-full flex-col justify-center items-center text-xs"
       >
-        <div>{{ $t("are_you_sure_to_make_changes") }} ?</div>
+        <div>{{ $t("profile.are_you_sure_to_make_changes") }} ?</div>
         <div class="flex justify-between items-center pb-10 ml-6">
           <div
             class="h-10 flex items-center mt-2"
@@ -326,7 +327,7 @@
               }
             "
           >
-            {{ $t("cancell") }}
+            {{ $t("profile.cancell") }}
           </div>
           <ButtonSubmit
             @click="
@@ -338,7 +339,7 @@
                 resetField('email');
               }
             "
-            :name="$t('confirm')"
+            :name="$t('profile.confirm')"
             class="sm:w-16"
           />
         </div>

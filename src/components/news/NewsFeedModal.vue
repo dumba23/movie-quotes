@@ -5,7 +5,9 @@
         id="modal"
         class="border-b border-medium-gray flex items-center justify-center h-16 py-12"
       >
-        <h1 class="text-2xl text-white font-medium">{{ $t("add_quote") }}</h1>
+        <h1 class="text-2xl text-white font-medium">
+          {{ $t("quotes.add_quote") }}
+        </h1>
         <span
           class="absolute top-10 right-9 cursor-pointer"
           @click="handleCloseModal"
@@ -41,7 +43,7 @@
           />
           <FileUploadMovie class="mt-4" />
           <SelectMovie />
-          <SubmitMovie :name="$t('add_quote')" />
+          <SubmitMovie :name="$t('quotes.add_quote')" />
         </form>
       </div>
     </template>

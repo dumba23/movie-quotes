@@ -3,32 +3,34 @@
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
         <h1 class="text-3xl text-white mt-6 mb-2 sm:text-xl">
-          {{ $t("forgot_password") }}?
+          {{ $t("auth.forgot_password") }}?
         </h1>
         <div
           class="flex flex-col justify-center items-center text-secondary-grey sm:text-sm"
         >
-          <div>{{ $t("enter_the_email_and_we_send_an_email_with") }}</div>
-          <div>{{ $t("instructions_to_reset_your_password") }}</div>
+          <div>{{ $t("auth.enter_the_email_and_we_send_an_email_with") }}</div>
+          <div>{{ $t("auth.instructions_to_reset_your_password") }}</div>
         </div>
       </div>
       <form @submit.prevent="handleSendMail">
         <InputAuth
           name="email"
-          :labelName="$t('email')"
+          :labelName="$t('auth.email')"
           type="email"
-          :placeholder="$t('enter_your_email')"
+          :placeholder="$t('profile.enter_your_email')"
           rules="required|email"
           :errorMessage="errorMessage"
         />
-        <ButtonSubmit :name="$t('send_instructions')" />
+        <ButtonSubmit :name="$t('auth.send_instructions')" />
       </form>
       <div
         @click="handleModalName('auth')"
         class="flex justify-center items-center mt-8 mb-2"
       >
         <IconArrowLeft />
-        <span class="text-secondary-grey ml-2">{{ $t("back_to_log_in") }}</span>
+        <span class="text-secondary-grey ml-2">{{
+          $t("auth.back_to_log_in")
+        }}</span>
       </div>
     </div>
   </TheModal>

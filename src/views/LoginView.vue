@@ -3,20 +3,20 @@
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
         <h1 class="text-3xl text-white mt-6 mb-2 sm:text-xl">
-          {{ $t("log_in_to_your_account") }}
+          {{ $t("auth.log_in_to_your_account") }}
         </h1>
         <p class="text-secondary-grey sm:text-sm">
-          {{ $t("welcome_back_please_enter_your_details") }}.
+          {{ $t("auth.welcome_back_please_enter_your_details") }}.
         </p>
       </div>
       <LoginForm />
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
-          {{ $t("dont_have_an_account") }}?<button
+          {{ $t("auth.dont_have_an_account") }}?<button
             @click="handleModalName('register')"
             class="text-primary-blue underline ml-1"
           >
-            {{ $t("sign_up") }}
+            {{ $t("landing.sign_up") }}
           </button>
         </p>
       </div>

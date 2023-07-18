@@ -21,7 +21,9 @@
         <template #text>
           <div class="text-white flex flex-col">
             <div class="">{{ username }}</div>
-            <a href="/profile" class="">{{ $t("edit_your_profile") }}</a>
+            <a href="/profile" class="">{{
+              $t("profile.edit_your_profile")
+            }}</a>
           </div>
         </template>
       </ProfileSidebarField>
@@ -36,7 +38,7 @@
         </template>
         <template #text>
           <RouterLink to="/news-feed" class="text-white cursor-pointer">
-            {{ $t("news_feed") }}
+            {{ $t("news.news_feed") }}
           </RouterLink>
         </template>
       </ProfileSidebarField>
@@ -54,7 +56,7 @@
             to="/movies"
             class="text-white flex flex-col cursor-pointer"
           >
-            {{ $t("list_of_movies") }}
+            {{ $t("movies.list_of_movies") }}
           </RouterLink>
         </template>
       </ProfileSidebarField>

@@ -28,7 +28,7 @@
           </span>
         </template>
       </div>
-      <span v-else>{{ $t("select_genres") }}</span>
+      <span v-else>{{ $t("movies.select_genres") }}</span>
     </div>
     <ErrorMessage name="genre" />
     <div

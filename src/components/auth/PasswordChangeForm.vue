@@ -2,19 +2,19 @@
   <form @submit.prevent="handlePasswordChange">
     <InputAuth
       name="password"
-      :labelName="$t('password')"
+      :labelName="$t('auth.password')"
       type="password"
-      :placeholder="$t('password_placeholder')"
+      :placeholder="$t('auth.password_placeholder')"
       rules="required|min:8|max:15|lowerCaseAndNum"
     />
     <InputAuth
       name="password_confirmation"
-      :labelName="$t('confirm_password')"
+      :labelName="$t('auth.confirm_password')"
       type="password"
-      :placeholder="$t('confirm_password')"
+      :placeholder="$t('auth.confirm_password')"
       rules="required|confirmed:@password"
     />
-    <ButtonSubmit :name="$t('reset_password')" />
+    <ButtonSubmit :name="$t('auth.reset_password')" />
   </form>
 </template>
 

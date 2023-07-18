@@ -2,36 +2,36 @@
   <form @submit.prevent="handleRegister">
     <InputAuth
       name="username"
-      :labelName="$t('name')"
+      :labelName="$t('auth.name')"
       type="text"
-      :placeholder="$t('name_placeholder')"
+      :placeholder="$t('auth.name_placeholder')"
       rules="required|min:3|max:15|lowerCaseAndNum"
     />
     <InputAuth
       name="email"
-      :labelName="$t('email')"
+      :labelName="$t('auth.email')"
       type="email"
-      :placeholder="$t('email_placeholder')"
+      :placeholder="$t('auth.email_placeholder')"
       rules="required|email"
     />
     <InputAuth
       name="password"
-      :labelName="$t('password')"
+      :labelName="$t('auth.password')"
       type="password"
-      :placeholder="$t('password_placeholder')"
+      :placeholder="$t('auth.password_placeholder')"
       rules="required|min:8|max:15|lowerCaseAndNum"
     />
     <InputAuth
       name="password_confirmation"
-      :labelName="$t('confirm_password')"
+      :labelName="$t('auth.confirm_password')"
       type="password"
-      :placeholder="$t('confirm_password')"
+      :placeholder="$t('auth.confirm_password')"
       rules="required|confirmed:@password"
     />
-    <ButtonSubmit :name="$t('get_started')" />
+    <ButtonSubmit :name="$t('landing.get_started')" />
   </form>
   <GoogleSignButton
-    :name="$t('sign_up_with_google')"
+    :name="$t('auth.sign_up_with_google')"
     @click="handleGoogleLogIn"
   />
 </template>

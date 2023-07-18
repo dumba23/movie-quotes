@@ -5,7 +5,9 @@
         id="modal"
         class="border-b border-medium-gray flex items-center justify-center h-16 py-12"
       >
-        <h1 class="text-2xl text-white font-medium">{{ $t("add_quote") }}</h1>
+        <h1 class="text-2xl text-white font-medium">
+          {{ $t("quotes.add_quote") }}
+        </h1>
         <span
           class="absolute top-10 right-9 cursor-pointer"
           @click="handleCloseModal"
@@ -51,7 +53,7 @@
             <div
               class="flex space-x-3 text-lg sm:text-sm sm:space-x-1 font-bold"
             >
-              <h2>{{ $t("director") }}:</h2>
+              <h2>{{ $t("movies.director") }}:</h2>
               <h2>{{ movie.director?.[i18n.global.locale.value] }}</h2>
             </div>
             <div class="hidden sm:flex flex-wrap">
@@ -79,7 +81,7 @@
             name="title_ka"
           />
           <FileUploadMovie class="mt-10 mb-8 sm:hidden" />
-          <SubmitMovie :name="$t('add_quote')" />
+          <SubmitMovie :name="$t('quotes.add_quote')" />
         </form>
       </div>
     </template>

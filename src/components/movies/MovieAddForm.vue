@@ -55,7 +55,7 @@
         name="description_ka"
       />
       <FileUploadMovie />
-      <SubmitMovie :name="$t('add_movie')" />
+      <SubmitMovie :name="$t('movies.add_movie')" />
     </form>
   </div>
 </template>

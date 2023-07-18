@@ -28,7 +28,7 @@
           @click="handleModalName('register')"
           class="px-7 py-2 bg-primary-red rounded text-white sm:px-2.5 sm:py-0 sm:text-xs sm:h-8"
         >
-          {{ $t("sign_up") }}
+          {{ $t("landing.sign_up") }}
         </button>
       </div>
       <div>
@@ -36,7 +36,7 @@
           @click="handleModalName('auth')"
           class="px-7 py-2 text-white border border-white rounded sm:px-2.5 sm:py-0 sm:text-xs sm:h-8"
         >
-          {{ $t("log_in") }}
+          {{ $t("landing.log_in") }}
         </button>
       </div>
     </div>

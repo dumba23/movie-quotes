@@ -22,7 +22,7 @@
           @click="handleLogOut"
           class="px-7 py-2 ml-6 mr-28 text-white border border-white rounded"
         >
-          {{ $t("log_out") }}
+          {{ $t("auth.log_out") }}
         </button>
       </div>
     </transition>
@@ -41,13 +41,13 @@
         >
           <div class="flex justify-between items-center mb-5">
             <div class="font-medium text-2xl tooltiptext">
-              {{ $t("notifications") }}
+              {{ $t("news.notifications") }}
             </div>
             <div
               @click="handleMarkAllNotificationRead"
               class="underline cursor-pointer text-lg"
             >
-              {{ $t("mark_all_as_read") }}
+              {{ $t("news.mark_all_as_read") }}
             </div>
           </div>
           <QuoteNotificationCard
@@ -84,7 +84,7 @@
           @click="handleLogOut"
           class="px-7 py-2 text-white border border-white rounded"
         >
-          {{ $t("log_out") }}
+          {{ $t("auth.log_out") }}
         </button>
       </div>
     </div>
@@ -223,7 +223,7 @@ onMounted(() => {
     color: white;
     border-radius: 10px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
   }
 

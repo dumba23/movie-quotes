@@ -3,20 +3,20 @@
     <div class="flex flex-col" ref="target">
       <div class="flex flex-col justify-center items-center mb-4">
         <h1 class="text-3xl text-white mt-6 sm:text-xl">
-          {{ $t("create_an_account") }}
+          {{ $t("landing.create_an_account") }}
         </h1>
         <p class="text-secondary-grey sm:text-sm">
-          {{ $t("start_your_journey") }}!
+          {{ $t("landing.start_your_journey") }}!
         </p>
       </div>
       <RegistrationForm />
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
-          {{ $t("already_have_an_account") }}?<button
+          {{ $t("auth.already_have_an_account") }}?<button
             @click="handleModalName('auth')"
             class="text-primary-blue underline ml-1"
           >
-            {{ $t("log_in") }}
+            {{ $t("landing.log_in") }}
           </button>
         </p>
       </div>

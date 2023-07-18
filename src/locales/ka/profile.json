@@ -1,0 +1,21 @@
+{
+  "edit_your_profile": "შეცვალე პროფილი",
+  "my_profile": "ჩემი პროფილი",
+  "upload_new_photo": "ატვირთე ახალი ფოტო",
+  "edit": "შეცვლა",
+  "username": "მოხმარებლის სახელი",
+  "new_username": "ახალი მომხმარებლის სახელი",
+  "new_password": "ახალი პაროლი",
+  "confirm_new_password": "გაიმეორე ახალი პაროლი",
+  "passwords_should_contain": "პაროლი უნდა შეიცავდეს:",
+  "8_or_more_characters": "8 ან მეტი სიმბოლო",
+  "15_lowercase_character": "15 დაბალი რეგისტრის სიმბოლო",
+  "cancell": "გაუქმება",
+  "save_changes": "შეინახე ცვლილებები",
+  "enter_new_username": "შეიყვანე ახალი მომხმარებლის სახელი",
+  "enter_your_email": "შეიყვანე შენი მეილი",
+  "password_should_contain": "პაროლი უნდა შეიცავდეს",
+  "confirm": "დადასტურება",
+  "are_you_sure_to_make_changes": "დარწმუნებული ხარ რომ გსურს ცვლილებების განხორციელება",
+  "enter": "შეიყვანე"
+}

@@ -14,7 +14,7 @@
           :class="!isSearchExpanded ? 'w-full' : 'min-w-[14rem]'"
           @click="handleOpenQuoteModal"
         >
-          <IconPencil /><span>{{ $t("write_new_quote") }}</span>
+          <IconPencil /><span>{{ $t("news.write_new_quote") }}</span>
         </button>
         <NewsFeedModal v-if="paginationStore.modalName === 'newsfeed'" />
         <div
@@ -29,11 +29,11 @@
           <input
             :placeholder="
               isSearchExpanded
-                ? $t('search_by_expanded', {
+                ? $t('news.search_by_expanded', {
                     searchKeyword: '@',
                     quoteKeyword: '#',
                   })
-                : $t('search_by')
+                : $t('news.search_by')
             "
             class="bg-transparent focus:outline-none sm:hidden"
             :class="isSearchExpanded ? 'w-full ' : 'max-w-[6rem]'"
@@ -57,12 +57,12 @@
             />
           </div>
           <div class="text-secondary-grey text-base px-8">
-            {{ $t("enter") }} <span class="text-white">@</span>
-            {{ $t("to_search_movies") }}
+            {{ $t("profile.enter") }} <span class="text-white">@</span>
+            {{ $t("news.to_search_movies") }}
           </div>
           <div class="text-secondary-grey text-base px-8">
-            {{ $t("enter") }} <span class="text-white">#</span>
-            {{ $t("to_search_movies") }}
+            {{ $t("profile.enter") }} <span class="text-white">#</span>
+            {{ $t("news.to_search_movies") }}
           </div>
         </div>
       </div>

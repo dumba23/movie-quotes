@@ -15,15 +15,15 @@
       :class="selectedFile && 'flex-col space-y-4'"
     >
       <span v-if="selectedFile" class="text-primary-yellow font-bold">{{
-        $t("replace_photo")
+        $t("movies.replace_photo")
       }}</span>
       <div class="flex">
         <span class="mr-2"><IconImageUpload /></span>
         <span class="sm:hidden">{{
-          $t("drag_&_drop_your_image_here_or")
+          $t("movies.drag_&_drop_your_image_here_or")
         }}</span>
         <span class="hidden sm:block text-base min-w-max">{{
-          $t("upload_image")
+          $t("movies.upload_image")
         }}</span>
       </div>
       <label class="text-center" :class="selectedFile && 'translate-y-2'">

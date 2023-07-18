@@ -4,25 +4,27 @@
       <div class="flex flex-col justify-center items-center mb-4 space-y-8">
         <IconMailConfirm />
         <div class="font-medium text-white text-3xl sm:text-xl">
-          {{ $t("thank_you") }}!
+          {{ $t("auth.thank_you") }}!
         </div>
         <div
           class="flex flex-col justify-center items-center text-white sm:text-sm"
         >
           <span class="sm:w-80 sm:text-center"
-            >{{ $t("please_check_your_email_and_follow_the_instructions_to") }}
+            >{{
+              $t("auth.please_check_your_email_and_follow_the_instructions_to")
+            }}
             <span class="hidden sm:inline"
-              >{{ $t("activate_your_account") }}.</span
+              >{{ $t("auth.activate_your_account") }}.</span
             >
           </span>
-          <span class="sm:hidden">{{ $t("activate_your_account") }}.</span>
+          <span class="sm:hidden">{{ $t("auth.activate_your_account") }}.</span>
         </div>
         <a
           class="bg-primary-red text-white w-96 sm:w-60 h-10 rounded flex justify-center items-center"
           href="https://www.google.com/gmail/about/"
           target="_blank"
         >
-          {{ $t("go_to_my_email") }}
+          {{ $t("auth.go_to_my_email") }}
         </a>
       </div>
     </div>

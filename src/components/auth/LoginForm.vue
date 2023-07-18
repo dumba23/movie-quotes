@@ -2,35 +2,35 @@
   <form @submit.prevent="handleLogin">
     <InputAuth
       name="login"
-      :labelName="$t('email')"
+      :labelName="$t('auth.email')"
       type="text"
-      :placeholder="$t('email_placeholder')"
+      :placeholder="$t('auth.email_placeholder')"
       rules="required|min:3"
     />
     <InputAuth
       name="password"
-      :labelName="$t('password')"
+      :labelName="$t('auth.password')"
       type="password"
-      :placeholder="$t('password_placeholder')"
+      :placeholder="$t('auth.password_placeholder')"
       rules="required"
     />
     <div class="flex justify-between mb-2 sm:mx-8">
       <label class="text-white"
         ><input type="checkbox" name="remember_token" class="mr-2" />{{
-          $t("remember_me")
+          $t("auth.remember_me")
         }}</label
       >
       <div
         @click="handleModalName('recovery_mail_send')"
         class="text-blue-600 underline"
       >
-        {{ $t("forgot_password") }}
+        {{ $t("auth.forgot_password") }}
       </div>
     </div>
-    <ButtonSubmit :name="$t('get_started')" />
+    <ButtonSubmit :name="$t('landing.get_started')" />
   </form>
   <GoogleSignButton
-    :name="$t('sign_up_with_google')"
+    :name="$t('auth.sign_up_with_google')"
     @click="handleGoogleLogIn"
   />
 </template>

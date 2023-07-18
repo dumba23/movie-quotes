@@ -26,7 +26,9 @@
         class="hidden"
       />
     </Field>
-    <span class="relative mt-10">{{ $t("upload_new_photo") }}</span></label
+    <span class="relative mt-10">{{
+      $t("profile.upload_new_photo")
+    }}</span></label
   >
 </template>
 

@@ -25,19 +25,19 @@
           class="flex items-center px-12 py-8 sm:py-6 sm:px-12 space-x-3"
           @click="handleOpenModal('view')"
         >
-          <span><IconEye /></span><span>{{ $t("view_quote") }}</span>
+          <span><IconEye /></span><span>{{ $t("quotes.view_quote") }}</span>
         </button>
         <button
           class="flex items-center px-12 py-8 sm:py-6 sm:px-12 space-x-3"
           @click="handleOpenModal('edit')"
         >
-          <span><IconEdit /></span><span>{{ $t("edit") }}</span>
+          <span><IconEdit /></span><span>{{ $t("profile.edit") }}</span>
         </button>
         <button
           class="flex items-center px-12 py-8 sm:py-6 sm:px-12 space-x-3"
           @click="handleDeleteQuote"
         >
-          <IconTrash /><span>{{ $t("delete") }}</span>
+          <IconTrash /><span>{{ $t("movies.delete") }}</span>
         </button>
       </div>
       <QuoteViewModal
