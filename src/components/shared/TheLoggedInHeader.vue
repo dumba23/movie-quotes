@@ -107,6 +107,7 @@ import { onMounted, ref, watch } from "vue";
 import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
 import { onClickOutside } from "@vueuse/core";
 import i18n from "@/plugins/i18";
+import { setLocale } from "@vee-validate/i18n";
 
 const router = useRouter();
 const notificationsStore = useNotificationsStore();
@@ -194,6 +195,7 @@ const handleSwitchlanguage = async (lang) => {
     if (res.status === 200) {
       i18n.global.locale.value = lang;
       localStorage.setItem("locale", lang);
+      setLocale(lang);
     }
   } catch (error) {
     return;

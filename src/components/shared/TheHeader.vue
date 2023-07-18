@@ -47,6 +47,7 @@
 import IconCaretDown from "@/components/icons/IconCaretDown.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { switchLanguage } from "@/services/lang";
+import { setLocale } from "@vee-validate/i18n";
 import { ref } from "vue";
 import i18n from "@/plugins/i18";
 
@@ -64,6 +65,7 @@ const handleSwitchlanguage = async (lang) => {
     if (res.status === 200) {
       i18n.global.locale.value = lang;
       localStorage.setItem("locale", lang);
+      setLocale(lang);
     }
   } catch (error) {
     return;
