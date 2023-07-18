@@ -66,7 +66,7 @@ const handleSwitchlanguage = async (lang) => {
       localStorage.setItem("locale", lang);
     }
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 

@@ -175,7 +175,7 @@ const handleRemoveMovie = async () => {
       router.push({ name: "movies" });
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 

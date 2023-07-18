@@ -20,7 +20,7 @@ export const useNotificationsStore = defineStore("notifications", {
           await markSelectedAsRead(visibleNotificationIds);
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     },
     async initializeNotificationsData() {
@@ -36,7 +36,7 @@ export const useNotificationsStore = defineStore("notifications", {
           this.total = pagination.total;
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     },
     async loadMoreNotifications() {
@@ -51,7 +51,7 @@ export const useNotificationsStore = defineStore("notifications", {
             this.markVisibleAsRead();
           }
         } catch (error) {
-          console.error(error);
+          return;
         }
       }
     },

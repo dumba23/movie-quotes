@@ -166,7 +166,7 @@ const handleMarkAllNotificationRead = async () => {
       notificationsStore.initializeNotificationsData();
     }
   } catch (error) {
-    console.error();
+    return;
   }
 };
 
@@ -184,7 +184,7 @@ const handleLogOut = async () => {
       router.push({ name: "home" });
     }
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 
@@ -196,7 +196,7 @@ const handleSwitchlanguage = async (lang) => {
       localStorage.setItem("locale", lang);
     }
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 

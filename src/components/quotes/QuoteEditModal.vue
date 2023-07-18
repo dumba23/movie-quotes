@@ -95,7 +95,7 @@ const handleUpdateQuote = handleSubmit(async () => {
       paginationStore.updateModalName({ name: "" });
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 });
 
@@ -141,7 +141,7 @@ const handleDeleteQuote = async () => {
       paginationStore.updateModalName({ name: "" });
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 </script>

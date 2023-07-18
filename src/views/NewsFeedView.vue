@@ -197,7 +197,7 @@ onMounted(async () => {
           quotesStore.initializeAllQuotesData();
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     } else {
       notificationsStore.initializeNotificationsData();
@@ -220,7 +220,7 @@ onMounted(async () => {
         quotesStore.initializeAllQuotesData();
       }
     } catch (error) {
-      console.error(error);
+      return;
     }
   });
 });

@@ -84,7 +84,7 @@ const handleAddComment = async (data) => {
       quotesStore.initializeAllQuotesData();
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 
@@ -99,7 +99,7 @@ const handleLike = async () => {
       quotesStore.initializeAllQuotesData();
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 </script>

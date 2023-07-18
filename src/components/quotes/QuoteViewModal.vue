@@ -134,7 +134,7 @@ const fetchUserQuoteInfo = async () => {
       likes.value = res?.data?.data.likes;
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 
@@ -154,7 +154,7 @@ const handleAddComment = async (data) => {
       moviesStore.initializeMovieData({ id });
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 
@@ -191,7 +191,7 @@ const handleDeleteQuote = async () => {
       paginationStore.updateModalName({ name: "" });
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 </script>

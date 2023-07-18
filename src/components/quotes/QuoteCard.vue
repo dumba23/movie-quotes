@@ -134,7 +134,7 @@ const handleDeleteQuote = async () => {
       isDropdownOpen.value = false;
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 </script>

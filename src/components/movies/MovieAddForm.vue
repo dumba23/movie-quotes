@@ -133,7 +133,7 @@ onMounted(async () => {
       genres.value = res.data;
     }
   } catch (error) {
-    console.log(error);
+    return;
   }
 });
 </script>
