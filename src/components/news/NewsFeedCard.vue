@@ -45,15 +45,15 @@
         "
         class="h-10 w-10 rounded-full mr-4"
       />
-      <Form @submit="(values) => handleAddComment(values)" class="w-full">
+      <form @submit.prevent="handleAddComment" class="w-full">
         <InputComment />
-      </Form>
+      </form>
     </div>
   </div>
 </template>
 
 <script setup>
-import { Form } from "vee-validate";
+import { useForm } from "vee-validate";
 import IconComment from "@/components/icons/IconComment.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
 import InputComment from "@/components/ui/InputComment.vue";
@@ -70,17 +70,20 @@ const props = defineProps({
   user: { type: Object, required: true, defult: () => {} },
 });
 
+const { resetField, values } = useForm();
+
 const quotesStore = useQuotesStore();
 const userStore = useUserStore();
 
-const handleAddComment = async (data) => {
+const handleAddComment = async () => {
   const {
     data: { id },
   } = props;
 
   try {
-    const res = await addCommentOnQuote(id, data);
+    const res = await addCommentOnQuote(id, values);
     if (res.status === 201) {
+      resetField("content");
       quotesStore.initializeAllQuotesData();
     }
   } catch (error) {

@@ -77,9 +77,9 @@
             :src="userStore.user.avatar"
             class="h-10 w-10 rounded-full mr-4"
           />
-          <Form @submit="(values) => handleAddComment(values)" class="w-full">
+          <form @submit.prevent="handleAddComment" class="w-full">
             <InputComment />
-          </Form>
+          </form>
         </div>
       </div>
     </template>
@@ -87,7 +87,7 @@
 </template>
 
 <script setup>
-import { Form } from "vee-validate";
+import { useForm } from "vee-validate";
 import InputComment from "@/components/ui/InputComment.vue";
 import IconClose from "@/components/icons/IconClose.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
@@ -115,6 +115,8 @@ const props = defineProps({
   imageUrl: { type: String, required: true, default: "" },
 });
 
+const { resetField, values } = useForm();
+
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const route = useRoute();
@@ -125,6 +127,7 @@ const isModalOpen = ref(true);
 const target = ref(null);
 const comments = ref([]);
 const likes = ref([]);
+const comment = ref("");
 
 const fetchUserQuoteInfo = async () => {
   try {
@@ -142,14 +145,16 @@ onMounted(() => {
   fetchUserQuoteInfo();
 });
 
-const handleAddComment = async (data) => {
+const handleAddComment = async () => {
   const {
     params: { id },
   } = route;
 
   try {
-    const res = await addCommentOnQuote(props.quoteId, data);
+    const res = await addCommentOnQuote(props.quoteId, values);
     if (res.status === 201) {
+      resetField("content");
+      comment.value = "";
       fetchUserQuoteInfo();
       moviesStore.initializeMovieData({ id });
     }
