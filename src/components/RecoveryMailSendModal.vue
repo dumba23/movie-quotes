@@ -21,7 +21,7 @@
           rules="required|email"
           :errorMessage="errorMessage"
         />
-        <ButtonSubmit name="Send instructions" />
+        <ButtonSubmit :name="$t('send_instructions')" />
       </form>
       <div
         @click="handleModalName('auth')"

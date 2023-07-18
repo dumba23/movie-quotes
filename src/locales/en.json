@@ -105,5 +105,6 @@
   "all_quotes": "All Quotes",
   "enter_new_username": "Enter new username",
   "password_should_contain": "Password should contain",
-  "footer_message": "movie quotes. All rights reserverd."
+  "footer_message": "movie quotes. All rights reserverd.",
+  "enter_your_email": "Enter your email"
 }
