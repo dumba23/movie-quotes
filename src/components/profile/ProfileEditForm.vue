@@ -355,7 +355,7 @@ import InputAuth from "@/components/ui/InputAuth.vue";
 import FileUpload from "@/components/ui/FileUpload.vue";
 import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import { watch, ref } from "vue";
-import { editUserData } from "@/services/user";
+import { updateUserData } from "@/services/user";
 import { useUserStore } from "@/store/user";
 
 defineProps({
@@ -408,7 +408,7 @@ const handleUpdateUser = async (data) => {
   handleToggleConfirm();
   handleCancelEdit();
   try {
-    const res = await editUserData({
+    const res = await updateUserData({
       ...data,
       old_email: userStore.user.email,
     });
