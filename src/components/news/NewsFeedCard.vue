@@ -60,8 +60,8 @@ import InputComment from "@/components/ui/InputComment.vue";
 import { toggleLikeOnQuote, addCommentOnQuote } from "@/services/quotes";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
-import QuoteCommentCard from "@/components/QuoteCommentCard.vue";
-import i18n from "../plugins/i18";
+import QuoteCommentCard from "@/components/quotes/QuoteCommentCard.vue";
+import i18n from "@/plugins/i18";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 

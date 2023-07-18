@@ -54,7 +54,7 @@
 <script setup>
 import IconClose from "@/components/icons/IconClose.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
-import MovieModal from "@/components/MovieModal.vue";
+import MovieModal from "@/components/movies/MovieModal.vue";
 import { useForm } from "vee-validate";
 import TextareaMovie from "@/components/ui/TextareaMovie.vue";
 import FileUploadQuote from "@/components/ui/FileUploadQuote.vue";

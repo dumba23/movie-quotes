@@ -130,14 +130,14 @@
 
 <script setup>
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
-import ProfileSidebar from "@/components/ProfileSidebar.vue";
-import MovieModal from "@/components/MovieModal.vue";
+import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
+import MovieModal from "@/components/movies/MovieModal.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
 import IconPlus from "@/components/icons/IconPlus.vue";
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieEdit from "@/components/MovieEdit.vue";
-import QuoteAddModal from "@/components/QuoteAddModal.vue";
+import MovieEdit from "@/components/movies/MovieEdit.vue";
+import QuoteAddModal from "@/components/quotes/QuoteAddModal.vue";
 import { useMoviesStore } from "@/store/movies";
 import { usePaginationStore } from "@/store/pagination";
 import { useUserStore } from "@/store/user";
@@ -146,8 +146,8 @@ import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { deleteMovie } from "@/services/movies";
 import { useRouter } from "vue-router";
-import QuoteCardList from "@/components/QuoteCardList.vue";
-import i18n from "../plugins/i18";
+import QuoteCardList from "@/components/quotes/QuoteCardList.vue";
+import i18n from "@/plugins/i18";
 
 const props = defineProps(["id"]);
 

@@ -134,15 +134,15 @@
 
 <script setup>
 import TheHeader from "@/components/shared/TheHeader.vue";
-import MailConfirmModal from "@/components/MailConfirmModal.vue";
+import MailConfirmModal from "@/components/auth/MailConfirmModal.vue";
 import RegistrationView from "@/views/RegistrationView.vue";
-import VerifyModal from "@/components/VerifyModal.vue";
+import VerifyModal from "@/components/auth/VerifyModal.vue";
 import LoginView from "@/views/LoginView.vue";
-import RecoveryMailSendModal from "@/components/RecoveryMailSendModal.vue";
+import RecoveryMailSendModal from "@/components/auth/RecoveryMailSendModal.vue";
 import PasswordChangeView from "@/views/PasswordChangeView.vue";
-import RecoverySentModal from "@/components/RecoverySentModal.vue";
-import SuccessModal from "@/components/SuccessModal.vue";
-import LinkExpiredModal from "@/components/LinkExpiredModal.vue";
+import RecoverySentModal from "@/components/auth/RecoverySentModal.vue";
+import SuccessModal from "@/components/auth/SuccessModal.vue";
+import LinkExpiredModal from "@/components/auth/LinkExpiredModal.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { useRoute, useRouter } from "vue-router";
 import { onMounted } from "vue";

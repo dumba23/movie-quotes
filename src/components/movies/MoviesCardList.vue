@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import MovieCard from "@/components/MovieCard.vue";
+import MovieCard from "@/components/movies/MovieCard.vue";
 
 defineProps({
   movies: { type: Array, required: true, default: () => [] },

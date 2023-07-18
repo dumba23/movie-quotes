@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import ProfileSidebarField from "@/components/ProfileSidebarField.vue";
+import ProfileSidebarField from "@/components/profile/ProfileSidebarField.vue";
 import IconMovies from "@/components/icons/IconMovies.vue";
 import IconNewsFeed from "@/components/icons/IconNewsFeed.vue";
 import { RouterLink, useRoute } from "vue-router";

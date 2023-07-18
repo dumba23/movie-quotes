@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import QuoteCard from "@/components/QuoteCard.vue";
+import QuoteCard from "@/components/quotes/QuoteCard.vue";
 
 defineProps({
   quotes: { type: Array, required: true, default: () => [] },

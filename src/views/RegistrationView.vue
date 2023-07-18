@@ -26,7 +26,7 @@
 
 <script setup>
 import TheModal from "@/components/shared/TheModal.vue";
-import RegistrationForm from "@/components/RegistrationForm.vue";
+import RegistrationForm from "@/components/auth/RegistrationForm.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";

@@ -23,62 +23,24 @@
                 : apiUrl + '/storage/' + userStore.user.avatar
             "
             alt="profile"
-            class="w-14 h-14 sm:h-10 sm:w-10 rounded-full mr-3"
+            class="w-14 h-14 rounded-full mr-3"
           />
           <div>{{ userStore.user.username }}</div>
         </div>
-        <div
-          class="flex space-x-10 mb-6 sm:space-x-2 sm:bg-primary-black sm:py-4"
-        >
-          <img
-            alt="movie"
-            :src="movie.image"
-            class="w-72 h-40 sm:w-24 sm:h-20 object-cover rounded-xl"
-          />
-          <div class="space-y-4 sm:space-y-1">
-            <h1 class="text-2xl font-medium text-primary-yellow sm:text-base">
-              {{ movie.title?.[i18n.global.locale.value] }} ({{
-                movie.release_date
-              }})
-            </h1>
-            <div
-              v-for="genre in movie.genres"
-              :key="genre.id"
-              class="sm:hidden text-lg sm:text-xs inline-flex items-center px-2 py-1 mr-1 text-xs font-semibold text-white bg-secondary-grey rounded font-bold"
-            >
-              {{ genre.name }}
-            </div>
-            <div
-              class="flex space-x-3 text-lg sm:text-sm sm:space-x-1 font-bold"
-            >
-              <h2>{{ $t("director") }}:</h2>
-              <h2>{{ movie.director?.[i18n.global.locale.value] }}</h2>
-            </div>
-            <div class="hidden sm:flex flex-wrap">
-              <div
-                v-for="genre in movie.genres"
-                :key="genre.id"
-                class="text-lg sm:text-xs mt-1 inline-flex items-center px-2 py-1 mr-1 text-xs font-semibold text-white bg-secondary-grey rounded font-bold"
-              >
-                {{ genre.name }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <form @submit.prevent="handleAddQuote">
-          <FileUploadMovie class="hidden mb-4 sm:block" />
+        <form @submit="(values) => handleAddQuote(values)">
           <TextareaMovie
             rules="required"
-            placeholder="Quote in English."
+            placeholder="Start create new quote"
             name="title_en"
             class="italic"
           />
           <TextareaMovie
             rules="required|georgian"
-            placeholder="ციტატა ქართულ ენაზე"
+            placeholder="ახალი ციტატა"
             name="title_ka"
           />
-          <FileUploadMovie class="mt-10 mb-8 sm:hidden" />
+          <FileUploadMovie class="mt-4" />
+          <SelectMovie />
           <SubmitMovie :name="$t('add_quote')" />
         </form>
       </div>
@@ -88,21 +50,21 @@
 
 <script setup>
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieModal from "@/components/MovieModal.vue";
+import MovieModal from "@/components/movies/MovieModal.vue";
 import { useForm } from "vee-validate";
 import TextareaMovie from "@/components/ui/TextareaMovie.vue";
 import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
 import SubmitMovie from "@/components/ui/SubmitMovie.vue";
+import SelectMovie from "@/components/ui/SelectMovie.vue";
 import { addQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
-import { useMoviesStore } from "@/store/movies";
+import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
-import { useRoute } from "vue-router";
-import i18n from "../plugins/i18";
+import i18n from "@/plugins/i18";
 
-const props = defineProps({
+defineProps({
   movie: { type: Object, required: true, default: () => {} },
 });
 
@@ -110,22 +72,18 @@ const { setFieldError, values, handleSubmit } = useForm({
   initialValues: {
     title_en: "",
     title_ka: "",
-    image: "",
   },
 });
 
-const route = useRoute();
-
-const moviesStore = useMoviesStore();
+const quotesStore = useQuotesStore();
+const paginationStore = usePaginationStore();
+const userStore = useUserStore();
 
 const handleAddQuote = handleSubmit(async () => {
-  const {
-    params: { id },
-  } = route;
   try {
-    const res = await addQuote({ ...values, movie_id: props.movie.id });
-    if (res.status === 201) {
-      moviesStore.initializeMovieData({ id });
+    const res = await addQuote({ ...values, movie_id: values.movie_id });
+    if (res.status === 200) {
+      quotesStore.initializeAllQuotesData();
       isModalOpen.value = false;
       paginationStore.updateModalName({ name: "" });
     }
@@ -145,8 +103,6 @@ const handleAddQuote = handleSubmit(async () => {
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-const paginationStore = usePaginationStore();
-const userStore = useUserStore();
 const isModalOpen = ref(true);
 const target = ref(null);
 

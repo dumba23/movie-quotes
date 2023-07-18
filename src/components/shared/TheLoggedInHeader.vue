@@ -95,7 +95,7 @@
 import IconBell from "@/components/icons/IconBell.vue";
 import IconCaretDown from "@/components/icons/IconCaretDown.vue";
 import IconList from "@/components/icons/IconList.vue";
-import QuoteNotificationCard from "@/components/QuoteNotificationCard.vue";
+import QuoteNotificationCard from "@/components/quotes/QuoteNotificationCard.vue";
 import Cookies from "js-cookie";
 import { useNotificationsStore } from "@/store/notifications";
 import { useUserStore } from "@/store/user";
@@ -104,9 +104,9 @@ import { switchLanguage } from "@/services/lang";
 import { logoutUser } from "@/services/auth";
 import { useRouter } from "vue-router";
 import { onMounted, ref, watch } from "vue";
-import ProfileSidebar from "../ProfileSidebar.vue";
+import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
 import { onClickOutside } from "@vueuse/core";
-import i18n from "../../plugins/i18";
+import i18n from "@/plugins/i18";
 
 const router = useRouter();
 const notificationsStore = useNotificationsStore();

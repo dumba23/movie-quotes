@@ -69,13 +69,13 @@
 
 <script setup>
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
-import ProfileSidebar from "@/components/ProfileSidebar.vue";
-import MovieModal from "@/components/MovieModal.vue";
-import MoviesCardList from "@/components/MoviesCardList.vue";
+import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
+import MovieModal from "@/components/movies/MovieModal.vue";
+import MoviesCardList from "@/components/movies/MoviesCardList.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconPlus from "@/components/icons/IconPlus.vue";
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieAddForm from "@/components/MovieAddForm.vue";
+import MovieAddForm from "@/components/movies/MovieAddForm.vue";
 import { useMoviesStore } from "@/store/movies";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";

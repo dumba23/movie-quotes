@@ -75,15 +75,15 @@ import IconTrash from "@/components/icons/IconTrash.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
 import IconComment from "@/components/icons/IconComment.vue";
-import QuoteViewModal from "@/components/QuoteViewModal.vue";
-import QuoteEditModal from "@/components/QuoteEditModal.vue";
+import QuoteViewModal from "@/components/quotes/QuoteViewModal.vue";
+import QuoteEditModal from "@/components/quotes/QuoteEditModal.vue";
 import { useMoviesStore } from "@/store/movies";
 import { deleteQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
 import { onMounted, ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { useRoute } from "vue-router";
-import i18n from "../plugins/i18";
+import i18n from "@/plugins/i18";
 
 const props = defineProps({
   quoteId: { type: String, required: true, default: "" },

@@ -26,7 +26,7 @@
 
 <script setup>
 import TheModal from "@/components/shared/TheModal.vue";
-import PasswordChangeForm from "@/components/PasswordChangeForm.vue";
+import PasswordChangeForm from "@/components/auth/PasswordChangeForm.vue";
 import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";

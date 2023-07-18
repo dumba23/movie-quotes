@@ -94,8 +94,8 @@ import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
 import IconComment from "@/components/icons/IconComment.vue";
-import MovieModal from "@/components/MovieModal.vue";
-import QuoteCommentCard from "@/components/QuoteCommentCard.vue";
+import MovieModal from "@/components/movies/MovieModal.vue";
+import QuoteCommentCard from "@/components/quotes/QuoteCommentCard.vue";
 import {
   deleteQuote,
   getUserQuote,

@@ -30,8 +30,8 @@
 
 <script setup>
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
-import ProfileSidebar from "@/components/ProfileSidebar.vue";
-import ProfileEditForm from "@/components/ProfileEditForm.vue";
+import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
+import ProfileEditForm from "@/components/profile/ProfileEditForm.vue";
 import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
 import { useUserStore } from "@/store/user";
 import { onMounted } from "vue";
