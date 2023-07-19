@@ -52,8 +52,10 @@
               moviesStore.movie.director?.[i18n.global?.locale.value]
             }}</span>
           </div>
-          <div class="text-lg">
-            {{ moviesStore.movie.description?.[i18n.global?.locale.value] }}
+          <div class="text-lg break-all">
+            <span>{{
+              moviesStore.movie.description?.[i18n.global?.locale.value]
+            }}</span>
           </div>
         </div>
       </div>

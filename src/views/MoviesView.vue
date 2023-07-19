@@ -14,7 +14,12 @@
         >
           {{ $t("movies.my_list_of_movies") }}
           <span class="ml-1 sm:ml-0 sm:text-xs"
-            >({{ $t("movies.total") }} {{ moviesStore.movies?.length }})</span
+            >({{ $t("movies.total") }}
+            {{
+              searchTerm.length === 0
+                ? moviesStore.movies?.length
+                : searchedMovies.length
+            }})</span
           >
         </div>
         <div class="flex justify-center items-center text-lg">
@@ -23,6 +28,7 @@
             <input
               class="ml-2 bg-transparent w-16 outline-none"
               type="text"
+              @input="handleSearchInput"
               :placeholder="$t('movies.search')"
             />
           </div>
@@ -36,7 +42,7 @@
         </div>
       </div>
       <MoviesCardList
-        :movies="moviesStore.movies"
+        :movies="searchTerm.length === 0 ? moviesStore.movies : searchedMovies"
         :quotes="quotesStore.quotes"
       />
     </div>
@@ -82,6 +88,7 @@ import { useUserStore } from "@/store/user";
 import { onMounted } from "vue";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
+import i18n from "@/plugins/i18";
 
 defineProps(["id"]);
 
@@ -91,11 +98,34 @@ const quotesStore = useQuotesStore();
 
 const isModalOpen = ref(false);
 const target = ref(null);
+const searchTerm = ref("");
+const searchedMovies = ref([]);
 
 onClickOutside(
   target,
   (event) => event.target.id !== "modal" && (isModalOpen.value = false)
 );
+
+const search = (input) => {
+  let filteredMovies = [];
+  moviesStore.movies.forEach((movie) => {
+    if (
+      movie.title[i18n.global.locale.value]
+        .toLowerCase()
+        .includes(input.toLowerCase())
+    ) {
+      filteredMovies = [...filteredMovies, movie];
+    }
+  });
+  return filteredMovies;
+};
+
+const handleSearchInput = (event) => {
+  const input = event.target.value;
+  searchTerm.value = input;
+
+  searchedMovies.value = [...search(input)];
+};
 
 const handleModalToggle = (value) => {
   isModalOpen.value = value;
