@@ -306,6 +306,22 @@
       </div>
     </div>
     <div
+      v-if="popupSuccessMessage"
+      class="absolute bg-primary-black bg-opacity-70 -translate-y-10 z-40 top-0 w-full h-full hidden sm:inline"
+    >
+      <div
+        class="flex justify-between items-center mt-10 w-[90%] bg-green-100 rounded text-primary-success font-semibold text-sm p-4 mx-auto delay-1000"
+      >
+        <IconAlertSuccess />
+        {{ $t("profile.popup_success_message") }}
+        <span
+          class="text-secondary-grey ml-2"
+          @click="popupSuccessMessage = false"
+          >X</span
+        >
+      </div>
+    </div>
+    <div
       class="absolute bg-primary-black bg-opacity-70 -translate-y-10 z-40 top-0 w-full h-full hidden sm:inline"
       v-if="popupErrorMessage.length > 0"
     >
@@ -368,6 +384,7 @@
 
 <script setup>
 import IconInputError from "@/components/icons/IconInputError.vue";
+import IconAlertSuccess from "@/components/icons/IconAlertSuccess.vue";
 import { Form } from "vee-validate";
 import InputAuth from "@/components/ui/InputAuth.vue";
 import FileUpload from "@/components/ui/FileUpload.vue";
@@ -375,6 +392,7 @@ import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import { watch, ref } from "vue";
 import { updateUserData } from "@/services/user";
 import { useUserStore } from "@/store/user";
+import i18n from "@/plugins/i18";
 
 defineProps({
   username: { required: true, type: String, default: "" },
@@ -390,6 +408,7 @@ const isEmailOpen = ref(false);
 const isPasswordOpen = ref(false);
 const isConfirmOpen = ref(false);
 const popupErrorMessage = ref("");
+const popupSuccessMessage = ref(false);
 
 watch(
   () => userStore.user,
@@ -431,6 +450,10 @@ const handleUpdateUser = async (data) => {
       old_email: userStore.user.email,
     });
     if (res.status === 200) {
+      popupSuccessMessage.value = true;
+      setTimeout(() => {
+        popupSuccessMessage.value = false;
+      }, 5000);
       userStore.initializeUserData();
     }
   } catch (error) {

@@ -17,5 +17,6 @@
   "password_should_contain": "პაროლი უნდა შეიცავდეს",
   "confirm": "დადასტურება",
   "are_you_sure_to_make_changes": "დარწმუნებული ხარ რომ გსურს ცვლილებების განხორციელება",
-  "enter": "შეიყვანე"
+  "enter": "შეიყვანე",
+  "popup_success_message": "მონაცემები წარმატებით შეიცვალა"
 }
