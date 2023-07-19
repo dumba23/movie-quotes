@@ -68,13 +68,13 @@
           </div>
         </div>
         <form @submit.prevent="handleAddQuote">
-          <TextareaMovie
+          <TextareaQuote
             rules="required|english"
             placeholder="Quote in English."
             name="title_en"
             class="italic"
           />
-          <TextareaMovie
+          <TextareaQuote
             rules="required|georgian"
             placeholder="ციტატა ქართულ ენაზე"
             class="italic"
@@ -95,7 +95,7 @@
 import IconClose from "@/components/icons/IconClose.vue";
 import MovieModal from "@/components/movies/MovieModal.vue";
 import { useForm } from "vee-validate";
-import TextareaMovie from "@/components/ui/TextareaMovie.vue";
+import TextareaQuote from "@/components/ui/TextareaQuote.vue";
 import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
 import SubmitMovie from "@/components/ui/SubmitMovie.vue";
 import { addQuote } from "@/services/quotes";

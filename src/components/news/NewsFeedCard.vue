@@ -21,7 +21,7 @@
     <img
       alt="quote"
       :src="data.image"
-      class="mb-5 rounded-xl px-4 sm:px-0 w-[91%] mx-4"
+      class="mb-5 rounded-xl sm:px-0 w-[97%] mx-4"
     />
     <div class="border-b border-secondary-grey flex space-x-10 pb-4 mx-4">
       <div class="flex sm:items-center">

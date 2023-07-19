@@ -36,13 +36,13 @@
           <div>{{ userStore.user.username }}</div>
         </div>
         <form @submit.prevent="handleUpdateQuote">
-          <TextareaMovie
+          <TextareaQuote
             rules="required|english"
             placeholder="Title in English"
             name="title_en"
             class="italic"
           />
-          <TextareaMovie
+          <TextareaQuote
             rules="required|georgian"
             placeholder="ციტატა ქართულად"
             name="title_ka"
@@ -60,7 +60,7 @@ import IconClose from "@/components/icons/IconClose.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
 import MovieModal from "@/components/movies/MovieModal.vue";
 import { useForm } from "vee-validate";
-import TextareaMovie from "@/components/ui/TextareaMovie.vue";
+import TextareaQuote from "@/components/ui/TextareaQuote.vue";
 import FileUploadQuote from "@/components/ui/FileUploadQuote.vue";
 import SubmitMovie from "@/components/ui/SubmitMovie.vue";
 import { deleteQuote, updateQuote } from "@/services/quotes";
