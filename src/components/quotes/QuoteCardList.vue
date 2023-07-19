@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap mt-12 justify-between space-y-8">
+  <div class="flex flex-wrap mt-12 mb-20 justify-between space-y-8">
     <QuoteCard
       v-for="quote in quotes"
       :key="quote.id"

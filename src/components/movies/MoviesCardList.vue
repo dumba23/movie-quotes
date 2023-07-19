@@ -10,7 +10,7 @@
       :quoteQuantity="countQuotes(movie.id, quotes)"
     />
     <div
-      v-if="movies.length % 2 === 0"
+      v-if="movies.length % 2 !== 0"
       class="flex flex-col mb-10 w-[27.5rem] space-y-4"
     ></div>
   </div>
