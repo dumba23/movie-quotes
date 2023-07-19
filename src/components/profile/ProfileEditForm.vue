@@ -135,7 +135,7 @@
         :requiredLabel="false"
       />
       <div
-        v-if="Object.keys(values).length > 4 || values.avatar"
+        v-if="isPasswordOpen || isUsernameOpen || isEmailOpen"
         class="absolute bottom-1 right-1 translate-y-24 flex justify-center items-center space-x-10 pb-10"
       >
         <div class="h-10 flex items-center mt-2" @click="handleCancelEdit">
@@ -392,7 +392,6 @@ import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import { watch, ref } from "vue";
 import { updateUserData } from "@/services/user";
 import { useUserStore } from "@/store/user";
-import i18n from "@/plugins/i18";
 
 defineProps({
   username: { required: true, type: String, default: "" },
