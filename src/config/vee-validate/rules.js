@@ -30,3 +30,12 @@ defineRule("georgian", (value) => {
   }
   return true;
 });
+defineRule("english", (value) => {
+  const englishWithSpaceRegex =
+    /^[a-zA-Z0-9\s!"#$%&'()*+,-./:;<=>?@[\\\]^_`{|}~]*$/;
+
+  if (!englishWithSpaceRegex.test(value)) {
+    return false;
+  }
+  return true;
+});

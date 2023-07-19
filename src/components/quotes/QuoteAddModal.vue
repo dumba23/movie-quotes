@@ -68,9 +68,8 @@
           </div>
         </div>
         <form @submit.prevent="handleAddQuote">
-          <FileUploadMovie class="hidden mb-4 sm:block" />
           <TextareaMovie
-            rules="required"
+            rules="required|english"
             placeholder="Quote in English."
             name="title_en"
             class="italic"
@@ -78,9 +77,13 @@
           <TextareaMovie
             rules="required|georgian"
             placeholder="ციტატა ქართულ ენაზე"
+            class="italic"
             name="title_ka"
           />
-          <FileUploadMovie class="mt-10 mb-8 sm:hidden" />
+          <FileUploadMovie
+            class="hidden mt-10 mb-8 sm:hidden"
+            rules="required"
+          />
           <SubmitMovie :name="$t('quotes.add_quote')" />
         </form>
       </div>

@@ -31,7 +31,7 @@
         </div>
         <form @submit="(values) => handleAddQuote(values)">
           <TextareaMovie
-            rules="required"
+            rules="required|english"
             placeholder="Start create new quote"
             name="title_en"
             class="italic"
@@ -41,7 +41,7 @@
             placeholder="ახალი ციტატა"
             name="title_ka"
           />
-          <FileUploadMovie class="mt-4" />
+          <FileUploadMovie class="mt-4" rules="required" />
           <SelectMovie />
           <SubmitMovie :name="$t('quotes.add_quote')" />
         </form>

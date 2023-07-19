@@ -37,7 +37,7 @@
         </div>
         <form @submit.prevent="handleUpdateQuote">
           <TextareaMovie
-            rules="required"
+            rules="required|english"
             placeholder="Title in English"
             name="title_en"
             class="italic"
@@ -48,7 +48,7 @@
             name="title_ka"
           />
           <FileUploadQuote :initialValue="imageUrl" />
-          <SubmitMovie :name="$t('profile.save_changes')" />
+          <SubmitMovie type="submit" :name="$t('profile.save_changes')" />
         </form>
       </div>
     </template>
@@ -79,13 +79,17 @@ const props = defineProps({
 });
 
 const formValues = {
-  title_en: `"${props.title.en}"`,
-  title_ka: `"${props.title.ka}"`,
+  title_en: props.title.en,
+  title_ka: props.title.ka,
 };
 
 const { values, handleSubmit } = useForm({ initialValues: formValues });
 
 const handleUpdateQuote = handleSubmit(async () => {
+  const {
+    params: { id },
+  } = route;
+
   const data = values;
 
   if (data.image == undefined) {
@@ -97,6 +101,7 @@ const handleUpdateQuote = handleSubmit(async () => {
     if (res.status === 200) {
       isModalOpen.value = false;
       paginationStore.updateModalName({ name: "" });
+      moviesStore.initializeMovieData({ id });
     }
   } catch (error) {
     return;

@@ -18,7 +18,7 @@
         labelName="Movie name:"
         name="title_en"
         :errorMessage="errorMessage"
-        rules="required|min:5"
+        rules="required|min:5|english"
       />
       <InputMovie
         type="text"
@@ -40,7 +40,7 @@
         labelName="Director:"
         name="director_en"
         :errorMessage="errorMessage"
-        rules="required|min:5"
+        rules="required|min:5|english"
       />
       <InputMovie
         type="text"
@@ -50,7 +50,7 @@
         rules="required|min:5|georgian"
       />
       <TextareaMovie
-        rules="required|min:30"
+        rules="required|min:30|english"
         labelName="Description:"
         name="description_en"
       />
@@ -60,7 +60,7 @@
         name="description_ka"
       />
       <FileUploadMovie :initialValue="movie.image" />
-      <SubmitMovie name="Update movie" />
+      <SubmitMovie type="submit" name="Update movie" />
     </form>
   </div>
 </template>
@@ -87,7 +87,6 @@ const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const route = useRoute();
 const router = useRouter();
-
 const formValues = {
   title_en: props.movie.title.en,
   title_ka: props.movie.title.ka,
@@ -98,7 +97,9 @@ const formValues = {
   release_date: props.movie.release_date,
 };
 
-const { values, handleSubmit } = useForm({ initialValues: formValues });
+const { values, handleSubmit } = useForm({
+  initialValues: formValues,
+});
 
 const errorMessage = ref("");
 const genres = ref([]);
@@ -108,6 +109,7 @@ const submitForm = handleSubmit(async () => {
     params: { id },
   } = route;
   const data = values;
+
   if (data.image == undefined) {
     delete data.image;
   }
@@ -118,10 +120,7 @@ const submitForm = handleSubmit(async () => {
       router.push({ name: "movies" });
     }
   } catch (error) {
-    const { status, message } = error.response.data;
-    if (!status) {
-      errorMessage.value = message;
-    }
+    return;
   }
 });
 
@@ -129,7 +128,7 @@ onBeforeMount(async () => {
   try {
     const res = await getMovieGenres();
     if (res.status === 200) {
-      genres.value = res.data;
+      genres.value = res.data.data;
     }
   } catch (error) {
     return;

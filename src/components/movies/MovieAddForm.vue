@@ -17,7 +17,7 @@
         type="text"
         placeholder="Movie name"
         name="title_en"
-        rules="required|min:5"
+        rules="required|min:5|english"
       />
       <InputMovie
         type="text"
@@ -36,7 +36,7 @@
         type="text"
         placeholder="Director"
         name="director_en"
-        rules="required|min:5"
+        rules="required|min:5|english"
       />
       <InputMovie
         type="text"
@@ -45,7 +45,7 @@
         rules="required|min:5|georgian"
       />
       <TextareaMovie
-        rules="required|min:30"
+        rules="required|min:30|english"
         placeholder="Description"
         name="description_en"
       />
@@ -54,7 +54,7 @@
         placeholder="აღწერა"
         name="description_ka"
       />
-      <FileUploadMovie />
+      <FileUploadMovie rules="required" />
       <SubmitMovie :name="$t('movies.add_movie')" />
     </form>
   </div>
@@ -130,7 +130,7 @@ onMounted(async () => {
   try {
     const res = await getMovieGenres();
     if (res.status === 200) {
-      genres.value = res.data;
+      genres.value = res.data.data;
     }
   } catch (error) {
     return;
