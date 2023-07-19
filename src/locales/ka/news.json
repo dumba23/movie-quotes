@@ -1,7 +1,7 @@
 {
   "news_feed": "ახალი ამბები",
   "search_by": "ძებნა",
-  "search_by_expanded": "შეიყვანე {searchKeyword} რომ მოძებნო ფილმები, შეიყვანე {quoteKeyword} რომ მოძებნო ციტატები",
+  "search_by_expanded": "შეიყვანე {searchKeyword} ფილმის მოსაძებნად, შეიყვანე {quoteKeyword} ციტატის მოსაძებნად",
   "notifications": "შეტყობინებები",
   "mark_all_as_read": "მონიშნე ყველა წაკითხულად",
   "new": "ახალი",
