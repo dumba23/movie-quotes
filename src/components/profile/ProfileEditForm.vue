@@ -321,39 +321,45 @@
     </div>
     <div
       v-if="isConfirmOpen && Object.keys(errors).length === 0"
-      class="absolute bg-primary-black bg-opacity-90 z-40 top-0 w-full h-full hidden sm:inline"
+      class="absolute bg-primary-black bg-opacity-90 z-40 top-0 w-full h-full hidden sm:flex justify-center"
     >
       <div
-        class="bg-secondary-black h-52 rounded-2xl flex sm:w-full flex-col justify-center items-center text-xs"
+        class="bg-secondary-black h-52 rounded-2xl flex sm:w-[80%] flex-col justify-center items-center text-xs"
       >
-        <div>{{ $t("profile.are_you_sure_to_make_changes") }} ?</div>
-        <div class="flex justify-between items-center pb-10 ml-6">
-          <div
-            class="h-10 flex items-center mt-2"
-            @click="
-              () => {
-                handleToggleConfirm();
-                isPasswordOpen = false;
-                isUsernameOpen = false;
-                isEmailOpen = false;
-              }
-            "
-          >
-            {{ $t("profile.cancell") }}
+        <div class="h-36 flex justify-center items-center">
+          {{ $t("profile.are_you_sure_to_make_changes") }} ?
+        </div>
+        <div class="w-full">
+          <div class="border w-full border-light-grey border-opacity-20"></div>
+          <div class="flex justify-between items-center mx-4">
+            <div
+              class="h-10 flex items-center justfiy-center mt-1"
+              @click="
+                () => {
+                  handleToggleConfirm();
+                  isPasswordOpen = false;
+                  isUsernameOpen = false;
+                  isEmailOpen = false;
+                }
+              "
+            >
+              {{ $t("profile.cancell") }}
+            </div>
+            <button
+              @click="
+                () => {
+                  handleUpdateUser(values);
+                  resetField('username');
+                  resetField('password');
+                  resetField('password_confirmation');
+                  resetField('email');
+                }
+              "
+              class="py-1 px-1 bg-light-red rounded-sm mt-2 text-white"
+            >
+              {{ $t("profile.confirm") }}
+            </button>
           </div>
-          <ButtonSubmit
-            @click="
-              () => {
-                handleUpdateUser(values);
-                resetField('username');
-                resetField('password');
-                resetField('password_confirmation');
-                resetField('email');
-              }
-            "
-            :name="$t('profile.confirm')"
-            class="sm:w-16"
-          />
         </div>
       </div>
     </div>
