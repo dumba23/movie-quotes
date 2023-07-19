@@ -7,13 +7,15 @@
       ref="selectRef"
       class="text-white bg-black rounded-lg w-full px-16 py-8 custom-select"
     >
-      <option value="" selected disabled>Choose Movie</option>
+      <option value="" selected disabled>
+        {{ $t("movies.choose_movie") }}
+      </option>
       <option
         v-for="movie in moviesStore.movies"
         :key="movie.id"
         :value="movie.id"
       >
-        {{ movie.title }}
+        {{ movie.title?.[i18n.global.locale.value] }}
       </option>
     </Field>
     <IconDropdownArrow
@@ -28,6 +30,7 @@ import { Field } from "vee-validate";
 import IconMovie from "@/components/icons/IconMovie.vue";
 import IconDropdownArrow from "@/components/icons/IconDropdownArrow.vue";
 import { ref, onMounted } from "vue";
+import i18n from "@/plugins/i18";
 import { useMoviesStore } from "@/store/movies";
 
 const selectRef = ref(null);
