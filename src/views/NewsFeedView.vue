@@ -188,7 +188,7 @@ onMounted(async () => {
         sender_id: event.user.id,
         quote_id: event.quote.id,
         type: "like",
-        message: "Reacted to your quote",
+        message: "Reacted to your quote: " + event.quote.title.en,
       };
 
       try {
@@ -211,7 +211,7 @@ onMounted(async () => {
       sender_id: event.user.id,
       quote_id: event.quote.id,
       type: "comment",
-      message: "Commented to your quote",
+      message: "Commented to your quote: " + event.quote.title.en,
     };
 
     try {

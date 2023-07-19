@@ -37,7 +37,7 @@
         <div
           v-if="isDropdownOpen"
           ref="notificationsRef"
-          class="absolute overflow-y-scroll max-h-96 notifications-dropdown flex flex-col bg-black text-white top-10 w-[36rem] translate-y-16 rounded-xl translate-x-[-44%] p-4 py-8 z-20 sm:w-[23.5rem] sm:translate-x-[-43%] sm:-translate-y-0"
+          class="absolute max-h-96 overflow-scroll no-scrollbar notifications-dropdown flex flex-col bg-black text-white top-10 w-[36rem] translate-y-16 rounded-xl translate-x-[-44%] p-4 py-8 z-20 sm:w-[23.5rem] sm:translate-x-[-43%] sm:-translate-y-0"
         >
           <div class="flex justify-between items-center mb-5">
             <div class="font-medium text-2xl tooltiptext">
