@@ -84,7 +84,7 @@ const userStore = useUserStore();
 const handleAddQuote = handleSubmit(async () => {
   try {
     const res = await addQuote({ ...values, movie_id: values.movie_id });
-    if (res.status === 200) {
+    if (res.status === 201) {
       quotesStore.initializeAllQuotesData();
       isModalOpen.value = false;
       paginationStore.updateModalName({ name: "" });
