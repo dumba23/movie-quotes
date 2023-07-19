@@ -7,11 +7,9 @@ export const recoverByMail = async (data) => {
 };
 
 export const checkTokenIsValid = async (token) => {
-  return axios.get(
-    "/api/recovery/validate",
-    { headers: { "Accept-Language": localStorage.getItem("locale") } },
-    { params: { token: token } }
-  );
+  return axios.get(`/api/recovery/validate?token=${token}`, {
+    headers: { "Accept-Language": localStorage.getItem("locale") },
+  });
 };
 
 export const changePassword = async (data, token) => {

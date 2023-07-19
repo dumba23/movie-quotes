@@ -15,7 +15,7 @@
           class="bg-primary-red text-white w-96 sm:w-60 h-10 rounded flex justify-center items-center"
           @click="handleModalName('auth')"
         >
-          {{ $t("auth.log_in") }}
+          {{ $t("landing.log_in") }}
         </button>
       </div>
     </div>
