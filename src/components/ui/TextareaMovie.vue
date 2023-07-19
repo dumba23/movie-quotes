@@ -9,7 +9,7 @@
           <div class="flex-1">
             <textarea
               v-bind="field"
-              class="placeholder:text-white bg-transparent rounded h-20 w-full pr-6 focus:outline-none relative"
+              class="placeholder:text-white bg-transparent rounded h-20 w-full pr-6 focus:outline-none relative overflow-hidden"
               :class="
                 labelName
                   ? name.includes('_en')
