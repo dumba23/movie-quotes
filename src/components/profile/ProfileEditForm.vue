@@ -64,7 +64,12 @@
         rules="'required|email'"
         :requiredLabel="false"
       />
-      <div class="flex items-center justify-center sm:w-full">
+      <div
+        :class="
+          !userStore.user.google_id &&
+          'flex items-center justify-center sm:w-full'
+        "
+      >
         <InputAuth
           name="dummy_password"
           :labelName="$t('auth.password')"
@@ -76,6 +81,7 @@
         />
         <div
           class="ml-4 text-light-grey sm:ml-0 sm:mr-4"
+          v-if="!userStore.user.google_id"
           @click="handleToggleInputs('password')"
         >
           {{ $t("profile.edit") }}
@@ -169,7 +175,11 @@
           <div>{{ $t("auth.password") }}</div>
           <div class="flex justify-between w-full">
             <div class="text-light-grey text-xl">••••••••••••</div>
-            <div class="cursor-pointer" @click="handleToggleInputs('password')">
+            <div
+              v-if="!userStore.user.google_id"
+              class="cursor-pointer"
+              @click="handleToggleInputs('password')"
+            >
               {{ $t("profile.edit") }}
             </div>
           </div>
