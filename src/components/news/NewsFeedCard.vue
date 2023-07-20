@@ -31,7 +31,7 @@
       <div class="flex sm:items-center">
         <span class="mr-2">{{ data.likes.length }}</span>
         <IconHeart
-          v-if="userStore.user.id !== data.likes[index]?.id"
+          v-if="!checkIfIdExists(userStore.user.id)"
           @click="handleLike"
           class="cursor-pointer sm:w-6 sm:h-6"
         />
@@ -84,6 +84,11 @@ const { resetField, values } = useForm();
 
 const quotesStore = useQuotesStore();
 const userStore = useUserStore();
+
+const userIds = props.data.likes.map((obj) => obj.id);
+const checkIfIdExists = (id) => {
+  return userIds.includes(id);
+};
 
 const handleAddComment = async () => {
   const {
