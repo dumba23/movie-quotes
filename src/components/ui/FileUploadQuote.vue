@@ -10,7 +10,7 @@
       <label class="text-center" :class="selectedFile && 'translate-y-2'">
         <Field
           name="image"
-          rules="required"
+          :rules="rules"
           v-slot="{ handleChange, handleBlur }"
         >
           <input
@@ -32,16 +32,19 @@
         </div>
       </label>
     </div>
+    <ErrorMessage name="image" />
   </div>
 </template>
 
 <script setup>
 import { Field } from "vee-validate";
+import ErrorMessage from "@/components/ui/ErrorMessage.vue";
 import IconImageUpload from "@/components/icons/IconImageUpload.vue";
 import { ref } from "vue";
 
 const props = defineProps({
   initialValue: { required: false, type: String, default: "" },
+  rules: { required: false, type: String, default: "" },
 });
 
 const selectedFile = ref(props.initialValue);

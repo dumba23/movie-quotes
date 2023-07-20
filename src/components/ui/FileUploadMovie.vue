@@ -5,7 +5,7 @@
   >
     <img
       v-if="initialValue || selectedFile"
-      :src="initialValue || selectedFile"
+      :src="selectedFile || initialValue"
       alt="profile"
       class="w-[50%] h-36 max-h-[12rem] mx-2 object-cover"
     />
@@ -29,7 +29,7 @@
       <label class="text-center" :class="selectedFile && 'translate-y-2'">
         <Field
           name="image"
-          rules="required"
+          :rules="rules"
           v-slot="{ handleChange, handleBlur }"
         >
           <input
@@ -51,16 +51,19 @@
       </label>
     </div>
   </div>
+  <ErrorMessage name="image" />
 </template>
 
 <script setup>
 import { Field } from "vee-validate";
+import ErrorMessage from "@/components/ui/ErrorMessage.vue";
 import IconImageUpload from "@/components/icons/IconImageUpload.vue";
 import { ref } from "vue";
 
 const props = defineProps({
   profileUrl: { required: true, type: String, default: "" },
   initialValue: { required: false, type: String, default: "" },
+  rules: { required: false, type: String, default: "" },
 });
 
 const selectedFile = ref(props.initialValue);
