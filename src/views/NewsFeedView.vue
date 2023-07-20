@@ -98,11 +98,11 @@ import { useMoviesStore } from "@/store/movies";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
 import { useNotificationsStore } from "@/store/notifications";
+import { addNotification } from "@/services/notification";
 import { usePaginationStore } from "@/store/pagination";
 import { onMounted } from "vue";
 import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
-import { addNotification } from "@/services/notification";
 import NewsFeedModal from "@/components/news/NewsFeedModal.vue";
 import i18n from "@/plugins/i18";
 
@@ -187,10 +187,8 @@ onMounted(async () => {
   quotesStore.initializeAllQuotesData();
   moviesStore.initializeAllMoviesData();
 
-  const channel = window.Echo.private(`post.${userStore.user.id}`);
-
-  channel.listen("NewLikeEvent", async (event) => {
-    if (event.like) {
+  window.Echo.channel("like").listen("NewLikeEvent", async (event) => {
+    if (event.like && event.user.id === userStore.user.id) {
       const newNotification = {
         sender_id: event.user.id,
         quote_id: event.quote.id,
@@ -213,22 +211,26 @@ onMounted(async () => {
     }
   });
 
-  channel.listen("NewCommentEvent", async (event) => {
-    const newNotification = {
-      sender_id: event.user.id,
-      quote_id: event.quote.id,
-      type: "comment",
-      message: "Commented to your quote: " + event.quote.title.en,
-    };
+  window.Echo.channel("comment").listen("NewCommentEvent", async (event) => {
+    if (event.user.id === userStore.user.id) {
+      const newNotification = {
+        sender_id: event.user.id,
+        quote_id: event.quote.id,
+        type: "comment",
+        message: "Commented to your quote: " + event.quote.title.en,
+      };
 
-    try {
-      const res = await addNotification(newNotification);
-      if (res.status === 200) {
-        notificationsStore.initializeNotificationsData();
-        quotesStore.initializeAllQuotesData();
+      try {
+        const res = await addNotification(newNotification);
+        if (res.status === 200) {
+          notificationsStore.initializeNotificationsData();
+          quotesStore.initializeAllQuotesData();
+        }
+      } catch (error) {
+        return;
       }
-    } catch (error) {
-      return;
+    } else {
+      quotesStore.initializeAllQuotesData();
     }
   });
 });
@@ -237,9 +239,7 @@ onBeforeUnmount(() => {
   moviesStore.clearMovieData();
   moviesStore.clearMoviesData();
 
-  const channel = window.Echo.private(`post.${userStore.user.id}`);
-
-  channel.stopListening("NewLikeEvent");
-  channel.stopListening("NewCommentEvent");
+  window.Echo.leaveChannel("comment");
+  window.Echo.leaveChannel("like");
 });
 </script>
