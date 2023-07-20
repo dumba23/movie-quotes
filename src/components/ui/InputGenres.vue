@@ -30,7 +30,7 @@
       </div>
       <span v-else>{{ $t("movies.select_genres") }}</span>
     </div>
-    <ErrorMessage name="genre" />
+    <ErrorMessage name="genreIds" />
     <div
       :class="isOpen ? '' : 'hidden'"
       class="absolute z-10 mt-1 w-full px-4 py-2 bg-light-grey text-black rounded-md shadow-lg overflow-y-auto h-36"
