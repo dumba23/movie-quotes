@@ -104,6 +104,7 @@ import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { addNotification } from "@/services/notification";
 import NewsFeedModal from "@/components/news/NewsFeedModal.vue";
+import i18n from "@/plugins/i18";
 
 const userStore = useUserStore();
 const quotesStore = useQuotesStore();
@@ -144,7 +145,11 @@ const search = (input, movies, quotes) => {
     const searchTerm = input.slice(1);
     let filteredMovies = [];
     movies.forEach((movie) => {
-      if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+      if (
+        movie.title?.[i18n.global.locale.value]
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      ) {
         filteredMovies = [...filteredMovies, movie];
       }
     });
@@ -159,7 +164,9 @@ const search = (input, movies, quotes) => {
   if (input.startsWith("#")) {
     const searchTerm = input.slice(1);
     newQuotesArray = quotes.filter((quote) => {
-      return quote.title.en.toLowerCase().includes(searchTerm.toLowerCase());
+      return quote.title?.[i18n.global.locale.value]
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
     });
   }
 
