@@ -5,7 +5,7 @@
     v-slot="{ values, errors, resetField }"
   >
     <div class="sm:hidden">
-      <FileUpload :profileUrl="userStore.user.avatar" />
+      <InputFileUpload :profileUrl="userStore.user.avatar" />
       <div class="flex items-center justify-center sm:w-full">
         <InputAuth
           name="dummy_name"
@@ -145,7 +145,7 @@
       </div>
     </div>
     <div class="hidden sm:block bg-secondary-black h-screen relative">
-      <FileUpload :profileUrl="userStore.user.avatar" />
+      <InputFileUpload :profileUrl="userStore.user.avatar" />
       <div class="pt-60 mx-4 space-y-6">
         <div
           class="flex flex-col border-b border-secondary-grey pb-2 space-y-2"
@@ -387,7 +387,7 @@ import IconInputError from "@/components/icons/IconInputError.vue";
 import IconAlertSuccess from "@/components/icons/IconAlertSuccess.vue";
 import { Form } from "vee-validate";
 import InputAuth from "@/components/ui/InputAuth.vue";
-import FileUpload from "@/components/ui/FileUpload.vue";
+import InputFileUpload from "@/components/ui/InputFileUpload.vue";
 import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
 import { watch, ref } from "vue";
 import { updateUserData } from "@/services/user";

@@ -1,5 +1,5 @@
 <template>
-  <MovieModal v-if="isModalOpen">
+  <MovieModalBase v-if="isModalOpen">
     <template #header>
       <div
         id="modal"
@@ -83,7 +83,7 @@
         </div>
       </div>
     </template>
-  </MovieModal>
+  </MovieModalBase>
 </template>
 
 <script setup>
@@ -94,8 +94,8 @@ import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
 import IconComment from "@/components/icons/IconComment.vue";
-import MovieModal from "@/components/movies/MovieModal.vue";
-import QuoteCommentCard from "@/components/quotes/QuoteCommentCard.vue";
+import MovieModalBase from "@/components/movie/MovieModalBase.vue";
+import QuoteCommentCard from "@/components/quote/QuoteCommentCard.vue";
 import {
   deleteQuote,
   getUserQuote,

@@ -17,21 +17,21 @@
         {{ $t("landing.get_started") }}
       </button>
     </div>
-    <RegistrationModal v-if="paginationStore.modalName == 'register'" />
-    <MailConfirmModal v-else-if="paginationStore.modalName == 'confirm'" />
-    <VerifyModal v-else-if="paginationStore.modalName == 'verify'" />
-    <LoginModal v-else-if="paginationStore.modalName == 'auth'" />
-    <RecoveryMailSendModal
+    <ModalRegistration v-if="paginationStore.modalName == 'register'" />
+    <ModalMailConfirm v-else-if="paginationStore.modalName == 'confirm'" />
+    <ModalVerify v-else-if="paginationStore.modalName == 'verify'" />
+    <ModalLogin v-else-if="paginationStore.modalName == 'auth'" />
+    <ModalRecoveryMailSend
       v-else-if="paginationStore.modalName == 'recovery_mail_send'"
     />
-    <RecoverySentModal
+    <ModalRecoverySent
       v-else-if="paginationStore.modalName == 'recovery_mail_sent'"
     />
     <PasswordChangeView
       v-else-if="paginationStore.modalName == 'change_password'"
     />
-    <LinkExpiredModal v-else-if="paginationStore.modalName == 'link_expired'" />
-    <SuccessModal v-else-if="paginationStore.modalName == 'success'" />
+    <ModalLinkExpired v-else-if="paginationStore.modalName == 'link_expired'" />
+    <ModalSuccess v-else-if="paginationStore.modalName == 'success'" />
     <div class="h-full w-full">
       <div
         class="min-h-screen interstellar min-w-screen sm:max-h-96 sm:bg-cover sm:bg-top sm:min-h-parallax-small justify-center items-center bg-para1 bg-fixed bg-no-repeat bg-cover"
@@ -142,15 +142,15 @@
 
 <script setup>
 import TheHeader from "@/components/shared/TheHeader.vue";
-import MailConfirmModal from "@/components/auth/MailConfirmModal.vue";
-import RegistrationModal from "@/components/auth/RegistrationModal.vue";
-import VerifyModal from "@/components/auth/VerifyModal.vue";
-import LoginModal from "@/components/auth/LoginModal.vue";
-import RecoveryMailSendModal from "@/components/auth/RecoveryMailSendModal.vue";
+import ModalMailConfirm from "@/components/auth/ModalMailConfirm.vue";
+import ModalRegistration from "@/components/auth/ModalRegistration.vue";
+import ModalVerify from "@/components/auth/ModalVerify.vue";
+import ModalLogin from "@/components/auth/ModalLogin.vue";
+import ModalRecoveryMailSend from "@/components/auth/ModalRecoveryMailSend.vue";
 import PasswordChangeView from "@/views/PasswordChangeView.vue";
-import RecoverySentModal from "@/components/auth/RecoverySentModal.vue";
-import SuccessModal from "@/components/auth/SuccessModal.vue";
-import LinkExpiredModal from "@/components/auth/LinkExpiredModal.vue";
+import ModalRecoverySent from "@/components/auth/ModalRecoverySent.vue";
+import ModalSuccess from "@/components/auth/ModalSuccess.vue";
+import ModalLinkExpired from "@/components/auth/ModalLinkExpired.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { useRoute, useRouter } from "vue-router";
 import { onMounted } from "vue";

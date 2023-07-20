@@ -20,7 +20,7 @@
           :src="moviesStore.movie.image"
           class="w-[50rem] h-[27.5rem] sm:w-full sm:h-60 object-cover rounded-xl"
         />
-        <div class="max-w-[36rem] space-y-4 sm:space-y-3 sm:mt-6">
+        <div class="max-w-[32rem] space-y-4 sm:space-y-3 sm:mt-6">
           <div class="flex flex-row justify-between">
             <h2 class="text-primary-yellow text-2xl">
               {{ moviesStore.movie.title?.[i18n.global.locale.value] }} ({{
@@ -98,11 +98,11 @@
       </div>
       <QuoteCardList :quotes="moviesStore.movie.quotes" />
     </div>
-    <QuoteAddModal
+    <QuoteModalAdd
       v-if="paginationStore.modalName === 'add-quote'"
       :movie="moviesStore.movie"
     />
-    <MovieModal v-if="isModalOpen">
+    <MovieModalBase v-if="isModalOpen">
       <template #header>
         <div
           id="modal"
@@ -127,20 +127,20 @@
           />
         </div>
       </template>
-    </MovieModal>
+    </MovieModalBase>
   </div>
 </template>
 
 <script setup>
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
 import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
-import MovieModal from "@/components/movies/MovieModal.vue";
+import MovieModalBase from "@/components/movie/MovieModalBase.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
 import IconPlus from "@/components/icons/IconPlus.vue";
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieEdit from "@/components/movies/MovieEdit.vue";
-import QuoteAddModal from "@/components/quotes/QuoteAddModal.vue";
+import MovieEdit from "@/components/movie/MovieEdit.vue";
+import QuoteModalAdd from "@/components/quote/QuoteModalAdd.vue";
 import { useMoviesStore } from "@/store/movies";
 import { usePaginationStore } from "@/store/pagination";
 import { useUserStore } from "@/store/user";
@@ -149,7 +149,7 @@ import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { deleteMovie } from "@/services/movies";
 import { useRouter } from "vue-router";
-import QuoteCardList from "@/components/quotes/QuoteCardList.vue";
+import QuoteCardList from "@/components/quote/QuoteCardList.vue";
 import i18n from "@/plugins/i18";
 
 const props = defineProps(["id"]);

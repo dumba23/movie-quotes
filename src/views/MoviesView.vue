@@ -41,12 +41,12 @@
           </button>
         </div>
       </div>
-      <MoviesCardList
+      <MovieCardList
         :movies="searchTerm.length === 0 ? moviesStore.movies : searchedMovies"
         :quotes="quotesStore.quotes"
       />
     </div>
-    <MovieModal v-if="isModalOpen">
+    <MovieModalBase v-if="isModalOpen">
       <template #header>
         <div
           id="modal"
@@ -69,19 +69,19 @@
           />
         </div>
       </template>
-    </MovieModal>
+    </MovieModalBase>
   </div>
 </template>
 
 <script setup>
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
 import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
-import MovieModal from "@/components/movies/MovieModal.vue";
-import MoviesCardList from "@/components/movies/MoviesCardList.vue";
+import MovieModalBase from "@/components/movie/MovieModalBase.vue";
+import MovieCardList from "@/components/movie/MovieCardList.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconPlus from "@/components/icons/IconPlus.vue";
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieAddForm from "@/components/movies/MovieAddForm.vue";
+import MovieAddForm from "@/components/movie/MovieAddForm.vue";
 import { useMoviesStore } from "@/store/movies";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";

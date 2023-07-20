@@ -40,14 +40,14 @@
           <IconTrash /><span>{{ $t("movies.delete") }}</span>
         </button>
       </div>
-      <QuoteViewModal
+      <QuoteModalView
         v-if="paginationStore.modalName === 'view' && quoteId === modalId"
         :modalId="modalId"
         :quoteId="quoteId"
         :title="title"
         :imageUrl="imageUrl"
       />
-      <QuoteEditModal
+      <QuoteModalEdit
         v-if="paginationStore.modalName === 'edit' && quoteId === modalId"
         :modalId="modalId"
         :quoteId="quoteId"
@@ -75,8 +75,8 @@ import IconTrash from "@/components/icons/IconTrash.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
 import IconComment from "@/components/icons/IconComment.vue";
-import QuoteViewModal from "@/components/quotes/QuoteViewModal.vue";
-import QuoteEditModal from "@/components/quotes/QuoteEditModal.vue";
+import QuoteModalView from "@/components/quote/QuoteModalView.vue";
+import QuoteModalEdit from "@/components/quote/QuoteModalEdit.vue";
 import { useMoviesStore } from "@/store/movies";
 import { deleteQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";

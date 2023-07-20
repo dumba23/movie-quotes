@@ -35,12 +35,12 @@
         </div>
       </div>
     </Field>
-    <ErrorMessage :name="name" />
+    <ErrorMessage :name="name" class="text-primary-red" />
   </div>
 </template>
 
 <script setup>
-import ErrorMessage from "@/components/ui/ErrorMessage.vue";
+import { ErrorMessage } from "vee-validate";
 import { Field } from "vee-validate";
 defineProps({
   name: { type: String, required: true, default: "" },

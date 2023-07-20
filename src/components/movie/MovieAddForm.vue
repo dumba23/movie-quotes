@@ -12,55 +12,50 @@
       />
       <div>{{ username }}</div>
     </div>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="handleAddMovie">
       <InputMovie
         type="text"
-        labelName="Movie name:"
+        placeholder="Movie name"
         name="title_en"
-        :errorMessage="errorMessage"
         rules="required|min:5|english"
       />
       <InputMovie
         type="text"
-        labelName="ფილმის სახელი:"
+        placeholder="ფილმის სახელი"
         name="title_ka"
-        :errorMessage="errorMessage"
         rules="required|min:5|georgian"
       />
-      <InputGenres :genres="genres" :initialValue="movie.genres" />
+      <InputGenres :genres="genres" />
       <InputMovie
         type="text"
-        labelName="წელი/Year:"
+        placeholder="წელი/Year"
         name="release_date"
-        :errorMessage="errorMessage"
-        rules="required|numeric|min:4|max:4"
+        rules="required|numeric"
       />
       <InputMovie
         type="text"
-        labelName="Director:"
+        placeholder="Director"
         name="director_en"
-        :errorMessage="errorMessage"
         rules="required|min:5|english"
       />
       <InputMovie
         type="text"
-        labelName="რეჟისორი:"
+        placeholder="რეჟისორი"
         name="director_ka"
-        :errorMessage="errorMessage"
         rules="required|min:5|georgian"
       />
       <TextareaMovie
         rules="required|min:30|english"
-        labelName="Description:"
+        placeholder="Description"
         name="description_en"
       />
       <TextareaMovie
         rules="required|min:30|georgian"
-        labelName="აღწერა:"
+        placeholder="აღწერა"
         name="description_ka"
       />
-      <FileUploadMovie :initialValue="movie.image" />
-      <SubmitMovie type="submit" name="Update movie" />
+      <InputFileUploadMovie rules="required" />
+      <ButtonSubmitMovie :name="$t('movies.add_movie')" />
     </form>
   </div>
 </template>
@@ -68,63 +63,70 @@
 <script setup>
 import { useForm } from "vee-validate";
 import InputMovie from "@/components/ui/InputMovie.vue";
-import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
+import InputFileUploadMovie from "@/components/ui/InputFileUploadMovie.vue";
 import TextareaMovie from "@/components/ui/TextareaMovie.vue";
-import SubmitMovie from "@/components/ui/SubmitMovie.vue";
+import ButtonSubmitMovie from "@/components/ui/ButtonSubmitMovie.vue";
 import InputGenres from "@/components/ui/InputGenres.vue";
-import { updateMovie } from "@/services/movies";
-import { onBeforeMount, ref } from "vue";
+import { addMovie } from "@/services/movies";
+import { onMounted, ref } from "vue";
 import { getMovieGenres } from "@/services/movies";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
+import { useMoviesStore } from "@/store/movies";
+import i18n from "@/plugins/i18";
 
-const props = defineProps({
+defineProps({
   username: { type: String, required: true, default: "" },
   profileImageUrl: { type: String, required: true, default: "" },
-  movie: { type: Object, required: true, default: () => {} },
 });
+
+const emit = defineEmits(["closeModal"]);
+
+const { setFieldError, values, handleSubmit } = useForm({
+  initialValues: {
+    email: "",
+    title_en: "",
+    title_ka: "",
+    release_date: "",
+    description_en: "",
+    description_ka: "",
+    director_en: "",
+    director_ka: "",
+    genreIds: "",
+    image: "",
+  },
+});
+
+const moviesStore = useMoviesStore();
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-const route = useRoute();
 const router = useRouter();
-const formValues = {
-  title_en: props.movie.title.en,
-  title_ka: props.movie.title.ka,
-  director_en: props.movie.director.en,
-  director_ka: props.movie.director.ka,
-  description_en: props.movie.description.en,
-  description_ka: props.movie.description.ka,
-  release_date: props.movie.release_date,
-};
 
-const { values, handleSubmit } = useForm({
-  initialValues: formValues,
-});
-
-const errorMessage = ref("");
 const genres = ref([]);
 
-const submitForm = handleSubmit(async () => {
-  const {
-    params: { id },
-  } = route;
-  const data = values;
-
-  if (data.image == undefined) {
-    delete data.image;
-  }
-
+const handleAddMovie = handleSubmit(async () => {
   try {
-    const res = await updateMovie(data, id);
-    if (res.status === 200) {
+    const res = await addMovie(values);
+    if (res.status === 201) {
       router.push({ name: "movies" });
+      emit("closeModal");
+      moviesStore.initializeMoviesData();
     }
   } catch (error) {
-    return;
+    if (!error.response.data.errors) {
+      setFieldError(
+        "login",
+        error.response.data.message?.[i18n.global.locale.value]
+      );
+    } else {
+      Object.keys(error.response.data.errors).forEach((key) => {
+        setFieldError(key, error.response.data.errors[key]);
+      });
+    }
   }
 });
 
-onBeforeMount(async () => {
+onMounted(async () => {
   try {
     const res = await getMovieGenres();
     if (res.status === 200) {

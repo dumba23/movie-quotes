@@ -1,5 +1,5 @@
 <template>
-  <MovieModal v-if="isModalOpen">
+  <MovieModalBase v-if="isModalOpen">
     <template #header>
       <div
         id="modal"
@@ -80,24 +80,24 @@
             class="italic"
             name="title_ka"
           />
-          <FileUploadMovie
+          <InputFileUploadMovie
             class="hidden mt-10 mb-8 sm:hidden"
             rules="required"
           />
-          <SubmitMovie :name="$t('quotes.add_quote')" />
+          <ButtonSubmitMovie :name="$t('quotes.add_quote')" />
         </form>
       </div>
     </template>
-  </MovieModal>
+  </MovieModalBase>
 </template>
 
 <script setup>
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieModal from "@/components/movies/MovieModal.vue";
+import MovieModalBase from "@/components/movie/MovieModalBase.vue";
 import { useForm } from "vee-validate";
 import TextareaQuote from "@/components/ui/TextareaQuote.vue";
-import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
-import SubmitMovie from "@/components/ui/SubmitMovie.vue";
+import InputFileUploadMovie from "@/components/ui/InputFileUploadMovie.vue";
+import ButtonSubmitMovie from "@/components/ui/ButtonSubmitMovie.vue";
 import { addQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
 import { useMoviesStore } from "@/store/movies";

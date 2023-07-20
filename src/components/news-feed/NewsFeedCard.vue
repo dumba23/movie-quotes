@@ -14,14 +14,14 @@
     <div class="flex space-x-4 mb-8 px-4 sm:text-base">
       <p>"{{ data.title?.[i18n.global.locale.value] }}"</p>
       <h3 class="text-primary-yellow">
-        {{ data.movie.director?.[i18n.global.locale.value] }}.
+        {{ data.movie.title?.[i18n.global.locale.value] }}.
       </h3>
       <span>({{ data.movie.release_date }})</span>
     </div>
     <img
       alt="quote"
       :src="data.image"
-      class="mb-5 rounded-xl sm:px-0 w-[97%] mx-4"
+      class="mb-5 rounded-xl sm:px-0 w-[97%] mx-4 sm:mx-0 sm:w-full sm:rounded-none"
     />
     <div class="border-b border-secondary-grey flex space-x-10 pb-4 mx-4">
       <div class="flex sm:items-center">
@@ -70,7 +70,7 @@ import InputComment from "@/components/ui/InputComment.vue";
 import { toggleLikeOnQuote, addCommentOnQuote } from "@/services/quotes";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
-import QuoteCommentCard from "@/components/quotes/QuoteCommentCard.vue";
+import QuoteCommentCard from "@/components/quote/QuoteCommentCard.vue";
 import i18n from "@/plugins/i18";
 import { watch, ref } from "vue";
 

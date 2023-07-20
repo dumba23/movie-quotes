@@ -40,7 +40,7 @@
         </span>
       </div>
     </Field>
-    <ErrorMessage :name="name" />
+    <ErrorMessage :name="name" class="text-primary-red" />
     <ErrorMessageApi v-if="type !== 'password'">{{
       errorMessage
     }}</ErrorMessageApi>
@@ -50,7 +50,7 @@
 <script setup>
 import IconInputError from "@/components/icons/IconInputError.vue";
 import IconInputSuccess from "@/components/icons/IconInputSuccess.vue";
-import ErrorMessage from "@/components/ui/ErrorMessage.vue";
+import { ErrorMessage } from "vee-validate";
 import { Field } from "vee-validate";
 import ErrorMessageApi from "@/components/ui/ErrorMessageApi.vue";
 defineProps({
