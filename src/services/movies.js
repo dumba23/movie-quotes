@@ -33,12 +33,21 @@ export const updateMovie = async (data, movieId) => {
 
   formData.append("_method", "PUT");
 
+  if (Object.prototype.hasOwnProperty.call(data, "image")) {
+    const imageFile = data["image"];
+    formData.append("image", imageFile);
+  }
+
   Object.keys(data).forEach((key) => {
-    if (typeof data[key] === "object") {
-      data[key].forEach((value) => {
-        formData.append(`${key}[]`, value);
-      });
-    } else formData.append(key, data[key]);
+    if (key !== "image") {
+      if (Array.isArray(data[key])) {
+        data[key].forEach((value) => {
+          formData.append(`${key}[]`, value);
+        });
+      } else {
+        formData.append(key, data[key]);
+      }
+    }
   });
 
   return await axios.post("/api/movies/" + movieId, formData, {
