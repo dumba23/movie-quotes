@@ -12,7 +12,7 @@
     </div>
     <div class="relative w-full">
       <h1 class="text-2xl font-medium my-8 sm:hidden">
-        {{ $t("movie_description") }}
+        {{ $t("movies.movie_description") }}
       </h1>
       <div class="flex flex-row justify-between sm:flex-col">
         <img
@@ -46,20 +46,22 @@
           </div>
           <div class="text-lg">
             <span class="font-bold text-light-grey mr-3 sm:text-base"
-              >{{ $t("director") }}:</span
+              >{{ $t("movies.director") }}:</span
             >
             <span class="font-medium text-white sm:text-base">{{
               moviesStore.movie.director?.[i18n.global?.locale.value]
             }}</span>
           </div>
-          <div class="text-lg">
-            {{ moviesStore.movie.description?.[i18n.global?.locale.value] }}
+          <div class="text-lg break-all">
+            <span>{{
+              moviesStore.movie.description?.[i18n.global?.locale.value]
+            }}</span>
           </div>
         </div>
       </div>
       <div class="flex items-center mt-8 sm:hidden">
         <div class="text-2xl border-r border-secondary-grey pr-4">
-          {{ $t("quotes") }} ({{ $t("total") }}
+          {{ $t("quotes.quotes") }} ({{ $t("movies.total") }}
           {{ moviesStore.movie.quotes?.length }})
         </div>
         <button
@@ -70,7 +72,7 @@
           <span
             class="ml-2"
             @click="paginationStore.updateModalName({ name: 'add-quote' })"
-            >{{ $t("add_quote") }}</span
+            >{{ $t("quotes.add_quote") }}</span
           >
         </button>
       </div>
@@ -83,13 +85,14 @@
           <span
             class="text-base ml-2"
             @click="paginationStore.updateModalName({ name: 'add-quote' })"
-            >{{ $t("add_quote") }}</span
+            >{{ $t("quotes.add_quote") }}</span
           >
         </button>
         <div class="border-t border-secondary-grey w-full pt-12 flex flex-col">
-          <span class="text-md">{{ $t("all_quotes") }}</span>
+          <span class="text-md">{{ $t("quotes.all_quotes") }}</span>
           <span class="text-base"
-            >({{ $t("total") }} {{ moviesStore.movie.quotes?.length }})</span
+            >({{ $t("movies.total") }}
+            {{ moviesStore.movie.quotes?.length }})</span
           >
         </div>
       </div>
@@ -106,7 +109,7 @@
           class="border-b border-medium-gray flex items-center justify-center h-16 py-12"
         >
           <h1 class="text-2xl text-white font-medium">
-            {{ $t("edit_movie") }}
+            {{ $t("movies.edit_movie") }}
           </h1>
           <span
             class="absolute top-10 right-4 cursor-pointer"
@@ -130,14 +133,14 @@
 
 <script setup>
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
-import ProfileSidebar from "@/components/ProfileSidebar.vue";
-import MovieModal from "@/components/MovieModal.vue";
+import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
+import MovieModal from "@/components/movies/MovieModal.vue";
 import IconEdit from "@/components/icons/IconEdit.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
 import IconPlus from "@/components/icons/IconPlus.vue";
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieEdit from "@/components/MovieEdit.vue";
-import QuoteAddModal from "@/components/QuoteAddModal.vue";
+import MovieEdit from "@/components/movies/MovieEdit.vue";
+import QuoteAddModal from "@/components/quotes/QuoteAddModal.vue";
 import { useMoviesStore } from "@/store/movies";
 import { usePaginationStore } from "@/store/pagination";
 import { useUserStore } from "@/store/user";
@@ -146,8 +149,8 @@ import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { deleteMovie } from "@/services/movies";
 import { useRouter } from "vue-router";
-import QuoteCardList from "@/components/QuoteCardList.vue";
-import i18n from "../plugins/i18";
+import QuoteCardList from "@/components/quotes/QuoteCardList.vue";
+import i18n from "@/plugins/i18";
 
 const props = defineProps(["id"]);
 
@@ -175,7 +178,7 @@ const handleRemoveMovie = async () => {
       router.push({ name: "movies" });
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
 };
 

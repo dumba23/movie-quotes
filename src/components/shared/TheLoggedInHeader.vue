@@ -22,7 +22,7 @@
           @click="handleLogOut"
           class="px-7 py-2 ml-6 mr-28 text-white border border-white rounded"
         >
-          {{ $t("log_out") }}
+          {{ $t("auth.log_out") }}
         </button>
       </div>
     </transition>
@@ -37,17 +37,17 @@
         <div
           v-if="isDropdownOpen"
           ref="notificationsRef"
-          class="absolute overflow-y-scroll max-h-96 notifications-dropdown flex flex-col bg-black text-white top-10 w-[36rem] translate-y-16 rounded-xl translate-x-[-44%] p-4 py-8 z-20 sm:w-[23.5rem] sm:translate-x-[-43%] sm:-translate-y-0"
+          class="absolute max-h-96 overflow-scroll no-scrollbar notifications-dropdown flex flex-col bg-black text-white top-10 w-[36rem] translate-y-16 rounded-xl translate-x-[-44%] p-4 py-8 z-20 sm:w-[23.5rem] sm:translate-x-[-43%] sm:-translate-y-0"
         >
           <div class="flex justify-between items-center mb-5">
             <div class="font-medium text-2xl tooltiptext">
-              {{ $t("notifications") }}
+              {{ $t("news.notifications") }}
             </div>
             <div
               @click="handleMarkAllNotificationRead"
               class="underline cursor-pointer text-lg"
             >
-              {{ $t("mark_all_as_read") }}
+              {{ $t("news.mark_all_as_read") }}
             </div>
           </div>
           <QuoteNotificationCard
@@ -84,7 +84,7 @@
           @click="handleLogOut"
           class="px-7 py-2 text-white border border-white rounded"
         >
-          {{ $t("log_out") }}
+          {{ $t("auth.log_out") }}
         </button>
       </div>
     </div>
@@ -95,7 +95,7 @@
 import IconBell from "@/components/icons/IconBell.vue";
 import IconCaretDown from "@/components/icons/IconCaretDown.vue";
 import IconList from "@/components/icons/IconList.vue";
-import QuoteNotificationCard from "@/components/QuoteNotificationCard.vue";
+import QuoteNotificationCard from "@/components/quotes/QuoteNotificationCard.vue";
 import Cookies from "js-cookie";
 import { useNotificationsStore } from "@/store/notifications";
 import { useUserStore } from "@/store/user";
@@ -104,9 +104,10 @@ import { switchLanguage } from "@/services/lang";
 import { logoutUser } from "@/services/auth";
 import { useRouter } from "vue-router";
 import { onMounted, ref, watch } from "vue";
-import ProfileSidebar from "../ProfileSidebar.vue";
+import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
 import { onClickOutside } from "@vueuse/core";
-import i18n from "../../plugins/i18";
+import i18n from "@/plugins/i18";
+import { setLocale } from "@vee-validate/i18n";
 
 const router = useRouter();
 const notificationsStore = useNotificationsStore();
@@ -166,7 +167,7 @@ const handleMarkAllNotificationRead = async () => {
       notificationsStore.initializeNotificationsData();
     }
   } catch (error) {
-    console.error();
+    return;
   }
 };
 
@@ -184,7 +185,7 @@ const handleLogOut = async () => {
       router.push({ name: "home" });
     }
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 
@@ -194,9 +195,10 @@ const handleSwitchlanguage = async (lang) => {
     if (res.status === 200) {
       i18n.global.locale.value = lang;
       localStorage.setItem("locale", lang);
+      setLocale(lang);
     }
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 
@@ -223,7 +225,7 @@ onMounted(() => {
     color: white;
     border-radius: 10px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
   }
 

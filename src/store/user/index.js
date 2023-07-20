@@ -10,10 +10,10 @@ export const useUserStore = defineStore("user", {
       try {
         const res = await getUserData();
         if (res.status === 200) {
-          this.user = res.data[0];
+          this.user = res.data.data;
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     },
   },

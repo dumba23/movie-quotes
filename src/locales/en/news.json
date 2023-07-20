@@ -1,0 +1,10 @@
+{
+  "news_feed": "News feed",
+  "search_by": "Search by",
+  "search_by_expanded": "Enter {searchKeyword} to search movies, Enter {quoteKeyword} to search quotes",
+  "notifications": "Notifications",
+  "mark_all_as_read": "Mark all as read",
+  "new": "New",
+  "write_new_quote": "Write new quote",
+  "to_search_movies": "To search movies"
+}

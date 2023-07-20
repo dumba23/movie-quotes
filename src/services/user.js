@@ -3,15 +3,15 @@ import axiosInstance from "@/plugins/axios/axios.js";
 
 export const getUserData = async () => {
   await axiosInstance.get("/sanctum/csrf-cookie");
-  return await axiosInstance.get("/api/user", {
+  return await axiosInstance.get("/api/users", {
     headers: { "Accept-Language": localStorage.getItem("locale") },
   });
 };
 
-export const editUserData = async (data) => {
+export const updateUserData = async (data) => {
   await axiosInstance.get("/sanctum/csrf-cookie");
   return await axios.post(
-    import.meta.env.VITE_API_BASE_URL + "/api/user/edit",
+    import.meta.env.VITE_API_BASE_URL + "/api/users/edit",
     data,
     {
       headers: {

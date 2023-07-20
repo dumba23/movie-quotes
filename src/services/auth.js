@@ -5,7 +5,7 @@ export const checkAuth = async () => {
   return await axios.get(`/api/auth/check`, { lang: "ka" });
 };
 
-export const authByDefault = async (data) => {
+export const login = async (data) => {
   await axios.get("/sanctum/csrf-cookie");
 
   return await axios.post("/api/login", data, {

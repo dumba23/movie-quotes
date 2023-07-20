@@ -14,7 +14,7 @@
           :class="!isSearchExpanded ? 'w-full' : 'min-w-[14rem]'"
           @click="handleOpenQuoteModal"
         >
-          <IconPencil /><span>{{ $t("write_new_quote") }}</span>
+          <IconPencil /><span>{{ $t("news.write_new_quote") }}</span>
         </button>
         <NewsFeedModal v-if="paginationStore.modalName === 'newsfeed'" />
         <div
@@ -29,11 +29,11 @@
           <input
             :placeholder="
               isSearchExpanded
-                ? $t('search_by_expanded', {
+                ? $t('news.search_by_expanded', {
                     searchKeyword: '@',
                     quoteKeyword: '#',
                   })
-                : $t('search_by')
+                : $t('news.search_by')
             "
             class="bg-transparent focus:outline-none sm:hidden"
             :class="isSearchExpanded ? 'w-full ' : 'max-w-[6rem]'"
@@ -57,19 +57,20 @@
             />
           </div>
           <div class="text-secondary-grey text-base px-8">
-            {{ $t("enter") }} <span class="text-white">@</span>
-            {{ $t("to_search_movies") }}
+            {{ $t("profile.enter") }} <span class="text-white">@</span>
+            {{ $t("news.to_search_movies") }}
           </div>
           <div class="text-secondary-grey text-base px-8">
-            {{ $t("enter") }} <span class="text-white">#</span>
-            {{ $t("to_search_movies") }}
+            {{ $t("profile.enter") }} <span class="text-white">#</span>
+            {{ $t("news.to_search_movies") }}
           </div>
         </div>
       </div>
       <div class="space-y-8" v-if="searchTerm.length === 0">
         <NewsFeedCard
-          v-for="quote in quotesStore.allQuotes"
+          v-for="(quote, index) in quotesStore.allQuotes"
           :key="quote.id"
+          :index="index"
           :data="quote"
           :user="quote.movie.user"
         />
@@ -88,11 +89,11 @@
 
 <script setup>
 import TheLoggedInHeader from "@/components/shared/TheLoggedInHeader.vue";
-import ProfileSidebar from "@/components/ProfileSidebar.vue";
+import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconPencil from "@/components/icons/IconPencil.vue";
 import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
-import NewsFeedCard from "@/components/NewsFeedCard.vue";
+import NewsFeedCard from "@/components/news/NewsFeedCard.vue";
 import { useMoviesStore } from "@/store/movies";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
@@ -102,7 +103,7 @@ import { onMounted } from "vue";
 import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { addNotification } from "@/services/notification";
-import NewsFeedModal from "@/components/NewsFeedModal.vue";
+import NewsFeedModal from "@/components/news/NewsFeedModal.vue";
 
 const userStore = useUserStore();
 const quotesStore = useQuotesStore();
@@ -187,7 +188,7 @@ onMounted(async () => {
         sender_id: event.user.id,
         quote_id: event.quote.id,
         type: "like",
-        message: "Reacted to your quote",
+        message: "Reacted to your quote: " + event.quote.title.en,
       };
 
       try {
@@ -197,7 +198,7 @@ onMounted(async () => {
           quotesStore.initializeAllQuotesData();
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     } else {
       notificationsStore.initializeNotificationsData();
@@ -210,7 +211,7 @@ onMounted(async () => {
       sender_id: event.user.id,
       quote_id: event.quote.id,
       type: "comment",
-      message: "Commented to your quote",
+      message: "Commented to your quote: " + event.quote.title.en,
     };
 
     try {
@@ -220,13 +221,14 @@ onMounted(async () => {
         quotesStore.initializeAllQuotesData();
       }
     } catch (error) {
-      console.error(error);
+      return;
     }
   });
 });
 
 onBeforeUnmount(() => {
   moviesStore.clearMovieData();
+  moviesStore.clearMoviesData();
 
   const channel = window.Echo.private(`post.${userStore.user.id}`);
 

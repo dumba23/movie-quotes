@@ -19,7 +19,7 @@ export const useMoviesStore = defineStore("movies", {
           this.movies = [...res.data.data];
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     },
     async initializeMoviesData() {
@@ -29,7 +29,7 @@ export const useMoviesStore = defineStore("movies", {
           this.movies = [...res.data.data];
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     },
     async initializeMovieData(payload) {
@@ -44,6 +44,9 @@ export const useMoviesStore = defineStore("movies", {
     },
     clearMovieData() {
       this.movie = {};
+    },
+    clearMoviesData() {
+      this.movies = [];
     },
   },
 });

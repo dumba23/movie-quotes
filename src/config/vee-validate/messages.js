@@ -9,6 +9,7 @@ configure({
         min: "{field} should contain minimum 0:{min} symbols",
         max: "{field} should contain maximum 0:{max} symbols",
         georgian: "{field} should contain only georgian alphabet characters",
+        english: "{field} should contain only english alphabet characters",
         email: "Your provided {field} is not correct",
         lowerCaseAndNum:
           "This should contain be lowercase and only with digits",
@@ -36,7 +37,8 @@ configure({
         required: "მოცემული ველი სავალდებულოა",
         min: "{field} უნდა შეიცავდეს მინიმუმ 0:{min} სიმბოლოს",
         max: "{field} უნდა შეიცავდეს მაქსიმუმ 0:{max} სიმბოლოს",
-        georgian: "{field} ველი უნდა შეიცავდეს მხოლოდ ანბანის ასოებს",
+        georgian: "{field} ველი უნდა შეიცავდეს მხოლოდ ქართული ანბანის ასოებს",
+        english: "{field} ველი უნდა შეიცავდეს მხოლოდ ინგლისური ანბანის ასოებს",
         email: "თქვენ მიერ შეყვანილი {field} არასწორია",
         lowerCaseAndNum:
           "უნდა შეიცავდეს მხოლოდ დაბალი რეგისტრის სიმბოლოებს და ციფრებს",

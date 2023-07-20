@@ -1,0 +1,17 @@
+{
+  "list_of_movies": "List of movies",
+  "my_list_of_movies": "My list of movies",
+  "total": "Total",
+  "search": "Search",
+  "add_movie": "Add movie",
+  "edit_movie": "Edit movie",
+  "delete": "Delete",
+  "movie_description": "Movie description",
+  "director": "Director",
+  "select_genres": "Select genres",
+  "replace_photo": "REPLACE PHOTO",
+  "drag_&_drop_your_image_here_or": "Drag & drop your image here or",
+  "upload_image": "Upload Image",
+  "change_photo": "Change photo",
+  "choose_movie": "Choose movie"
+}

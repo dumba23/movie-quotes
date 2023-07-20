@@ -14,7 +14,7 @@ export const useQuotesStore = defineStore("quotes", {
           this.quotes = [...res.data.data];
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     },
     async initializeAllQuotesData() {
@@ -24,7 +24,7 @@ export const useQuotesStore = defineStore("quotes", {
           this.allQuotes = [...res.data.data];
         }
       } catch (error) {
-        console.error(error);
+        return;
       }
     },
   },
