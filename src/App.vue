@@ -9,7 +9,7 @@ const router = useRoute();
 
 onBeforeMount(async () => {
   const locale = localStorage.getItem("locale");
-  i18n.global.locale.value = locale;
+  i18n.global.locale.value = locale || "en";
   setLocale(locale);
   await switchLanguage(locale);
 });
