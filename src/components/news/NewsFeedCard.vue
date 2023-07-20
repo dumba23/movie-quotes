@@ -72,6 +72,7 @@ import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
 import QuoteCommentCard from "@/components/quotes/QuoteCommentCard.vue";
 import i18n from "@/plugins/i18";
+import { watch, ref } from "vue";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -85,9 +86,17 @@ const { resetField, values } = useForm();
 const quotesStore = useQuotesStore();
 const userStore = useUserStore();
 
-const userIds = props.data.likes.map((obj) => obj.id);
+const userIds = ref(props.data.likes.map((obj) => obj.id));
+
+watch(
+  () => props.data.likes.length,
+  () => {
+    userIds.value = props.data.likes.map((obj) => obj.id);
+  }
+);
+
 const checkIfIdExists = (id) => {
-  return userIds.includes(id);
+  return userIds.value.includes(id);
 };
 
 const handleAddComment = async () => {
