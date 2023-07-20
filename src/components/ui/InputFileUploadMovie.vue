@@ -51,12 +51,12 @@
       </label>
     </div>
   </div>
-  <ErrorMessage name="image" />
+  <ErrorMessage name="image" class="text-primary-red" />
 </template>
 
 <script setup>
 import { Field } from "vee-validate";
-import ErrorMessage from "@/components/ui/ErrorMessage.vue";
+import { ErrorMessage } from "vee-validate";
 import IconImageUpload from "@/components/icons/IconImageUpload.vue";
 import { ref } from "vue";
 

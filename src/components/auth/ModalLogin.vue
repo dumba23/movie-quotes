@@ -9,7 +9,7 @@
           {{ $t("auth.welcome_back_please_enter_your_details") }}.
         </p>
       </div>
-      <LoginForm />
+      <FormLogin />
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
           {{ $t("auth.dont_have_an_account") }}?<button
@@ -26,7 +26,7 @@
 
 <script setup>
 import TheModal from "@/components/shared/TheModal.vue";
-import LoginForm from "@/components/auth/LoginForm.vue";
+import FormLogin from "@/components/auth/FormLogin.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";

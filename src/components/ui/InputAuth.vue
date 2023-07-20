@@ -32,7 +32,7 @@
         />
       </div>
     </Field>
-    <ErrorMessage :name="name" class="sm:ml-4" />
+    <ErrorMessage :name="name" class="sm:ml-4 text-primary-red" />
     <ErrorMessageApi v-if="type !== 'password'">{{
       errorMessage?.[i18n?.global.locale.value]
     }}</ErrorMessageApi>
@@ -42,8 +42,7 @@
 <script setup>
 import IconInputError from "@/components/icons/IconInputError.vue";
 import IconInputSuccess from "@/components/icons/IconInputSuccess.vue";
-import ErrorMessage from "@/components/ui/ErrorMessage.vue";
-import { Field } from "vee-validate";
+import { Field, ErrorMessage } from "vee-validate";
 import ErrorMessageApi from "@/components/ui/ErrorMessageApi.vue";
 import i18n from "@/plugins/i18";
 defineProps({

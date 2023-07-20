@@ -95,7 +95,7 @@
 import IconBell from "@/components/icons/IconBell.vue";
 import IconCaretDown from "@/components/icons/IconCaretDown.vue";
 import IconList from "@/components/icons/IconList.vue";
-import QuoteNotificationCard from "@/components/quotes/QuoteNotificationCard.vue";
+import QuoteNotificationCard from "@/components/quote/QuoteNotificationCard.vue";
 import Cookies from "js-cookie";
 import { useNotificationsStore } from "@/store/notifications";
 import { useUserStore } from "@/store/user";

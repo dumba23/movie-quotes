@@ -1,5 +1,5 @@
 <template>
-  <MovieModal v-if="isModalOpen">
+  <MovieModalBase v-if="isModalOpen">
     <template #header>
       <div
         id="modal"
@@ -41,22 +41,22 @@
             placeholder="ახალი ციტატა"
             name="title_ka"
           />
-          <FileUploadMovie class="mt-4" rules="required" />
+          <InputFileUploadMovie class="mt-4" rules="required" />
           <SelectMovie />
-          <SubmitMovie :name="$t('quotes.add_quote')" />
+          <ButtonSubmitMovie :name="$t('quotes.add_quote')" />
         </form>
       </div>
     </template>
-  </MovieModal>
+  </MovieModalBase>
 </template>
 
 <script setup>
 import IconClose from "@/components/icons/IconClose.vue";
-import MovieModal from "@/components/movies/MovieModal.vue";
+import MovieModalBase from "@/components/movie/MovieModalBase.vue";
 import { useForm } from "vee-validate";
 import TextareaMovie from "@/components/ui/TextareaMovie.vue";
-import FileUploadMovie from "@/components/ui/FileUploadMovie.vue";
-import SubmitMovie from "@/components/ui/SubmitMovie.vue";
+import InputFileUploadMovie from "@/components/ui/InputFileUploadMovie.vue";
+import ButtonSubmitMovie from "@/components/ui/ButtonSubmitMovie.vue";
 import SelectMovie from "@/components/ui/SelectMovie.vue";
 import { addQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";

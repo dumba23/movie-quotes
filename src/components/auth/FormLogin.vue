@@ -29,7 +29,7 @@
     </div>
     <ButtonSubmit :name="$t('landing.get_started')" />
   </form>
-  <GoogleSignButton
+  <ButtonSubmitGoogle
     :name="$t('auth.sign_up_with_google')"
     @click="handleGoogleLogIn"
   />
@@ -39,7 +39,7 @@
 import { useForm } from "vee-validate";
 import InputAuth from "@/components/ui/InputAuth.vue";
 import ButtonSubmit from "@/components/ui/ButtonSubmit.vue";
-import GoogleSignButton from "@/components/ui/buttons/GoogleSignButton.vue";
+import ButtonSubmitGoogle from "@/components/ui/ButtonSubmitGoogle.vue";
 import { login } from "@/services/auth";
 import { authWithGoogle } from "@/services/oauth";
 import { usePaginationStore } from "@/store/pagination";

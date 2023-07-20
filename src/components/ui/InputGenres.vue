@@ -30,7 +30,7 @@
       </div>
       <span v-else>{{ $t("movies.select_genres") }}</span>
     </div>
-    <ErrorMessage name="genreIds" />
+    <ErrorMessage name="genreIds" class="text-primary-red" />
     <div
       :class="isOpen ? '' : 'hidden'"
       class="absolute z-10 mt-1 w-full px-4 py-2 bg-light-grey text-black rounded-md shadow-lg overflow-y-auto h-36"
@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import ErrorMessage from "@/components/ui/ErrorMessage.vue";
+import { ErrorMessage } from "vee-validate";
 import IconClose from "@/components/icons/IconClose.vue";
 import { Field } from "vee-validate";
 import { onClickOutside } from "@vueuse/core";

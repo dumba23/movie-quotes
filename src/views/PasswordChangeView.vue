@@ -12,7 +12,7 @@
           <span>{{ $t("auth.from_previous_used_passwords") }}</span>
         </div>
       </div>
-      <PasswordChangeForm />
+      <FormPasswordChange />
       <div
         @click="handleModalName('auth')"
         class="flex justify-center items-center mt-8 mb-2"
@@ -28,7 +28,7 @@
 
 <script setup>
 import TheModal from "@/components/shared/TheModal.vue";
-import PasswordChangeForm from "@/components/auth/PasswordChangeForm.vue";
+import FormPasswordChange from "@/components/auth/FormPasswordChange.vue";
 import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";

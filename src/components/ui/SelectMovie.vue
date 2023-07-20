@@ -40,9 +40,3 @@ onMounted(() => {
   moviesStore.initializeMoviesData();
 });
 </script>
-
-<style scoped>
-.custom-select {
-  appearance: none !important;
-}
-</style>

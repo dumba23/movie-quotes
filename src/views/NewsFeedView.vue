@@ -93,7 +93,7 @@ import ProfileSidebar from "@/components/profile/ProfileSidebar.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconPencil from "@/components/icons/IconPencil.vue";
 import IconArrowLeft from "@/components/icons/IconArrowLeft.vue";
-import NewsFeedCard from "@/components/news/NewsFeedCard.vue";
+import NewsFeedCard from "@/components/news-feed/NewsFeedCard.vue";
 import { useMoviesStore } from "@/store/movies";
 import { useQuotesStore } from "@/store/quotes";
 import { useUserStore } from "@/store/user";
@@ -103,7 +103,7 @@ import { usePaginationStore } from "@/store/pagination";
 import { onMounted } from "vue";
 import { ref, onBeforeUnmount } from "vue";
 import { onClickOutside } from "@vueuse/core";
-import NewsFeedModal from "@/components/news/NewsFeedModal.vue";
+import NewsFeedModal from "@/components/news-feed/NewsFeedModal.vue";
 import i18n from "@/plugins/i18";
 
 const userStore = useUserStore();
@@ -206,8 +206,8 @@ onMounted(async () => {
         return;
       }
     } else {
-      notificationsStore.initializeNotificationsData();
       quotesStore.initializeAllQuotesData();
+      notificationsStore.initializeNotificationsData();
     }
   });
 
@@ -231,6 +231,7 @@ onMounted(async () => {
       }
     } else {
       quotesStore.initializeAllQuotesData();
+      notificationsStore.initializeNotificationsData();
     }
   });
 });

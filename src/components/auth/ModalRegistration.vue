@@ -9,7 +9,7 @@
           {{ $t("landing.start_your_journey") }}!
         </p>
       </div>
-      <RegistrationForm />
+      <FormRegistration />
       <div class="flex justify-center mt-8 mb-8">
         <p class="text-secondary-grey">
           {{ $t("auth.already_have_an_account") }}?<button
@@ -26,7 +26,7 @@
 
 <script setup>
 import TheModal from "@/components/shared/TheModal.vue";
-import RegistrationForm from "@/components/auth/RegistrationForm.vue";
+import FormRegistration from "@/components/auth/FormRegistration.vue";
 import { usePaginationStore } from "@/store/pagination";
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";

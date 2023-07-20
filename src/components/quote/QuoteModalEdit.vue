@@ -1,5 +1,5 @@
 <template>
-  <MovieModal v-if="isModalOpen">
+  <MovieModalBase v-if="isModalOpen">
     <template #header>
       <div
         id="modal"
@@ -47,22 +47,22 @@
             placeholder="ციტატა ქართულად"
             name="title_ka"
           />
-          <FileUploadQuote :initialValue="imageUrl" />
-          <SubmitMovie type="submit" :name="$t('profile.save_changes')" />
+          <InputFileUploadQuote :initialValue="imageUrl" />
+          <ButtonSubmitMovie type="submit" :name="$t('profile.save_changes')" />
         </form>
       </div>
     </template>
-  </MovieModal>
+  </MovieModalBase>
 </template>
 
 <script setup>
 import IconClose from "@/components/icons/IconClose.vue";
 import IconTrash from "@/components/icons/IconTrash.vue";
-import MovieModal from "@/components/movies/MovieModal.vue";
+import MovieModalBase from "@/components/movie/MovieModalBase.vue";
 import { useForm } from "vee-validate";
 import TextareaQuote from "@/components/ui/TextareaQuote.vue";
-import FileUploadQuote from "@/components/ui/FileUploadQuote.vue";
-import SubmitMovie from "@/components/ui/SubmitMovie.vue";
+import InputFileUploadQuote from "@/components/ui/InputFileUploadQuote.vue";
+import ButtonSubmitMovie from "@/components/ui/ButtonSubmitMovie.vue";
 import { deleteQuote, updateQuote } from "@/services/quotes";
 import { usePaginationStore } from "@/store/pagination";
 import { useUserStore } from "@/store/user";
